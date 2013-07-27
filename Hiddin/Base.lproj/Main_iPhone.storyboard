@@ -22,7 +22,22 @@
             </objects>
             <point key="canvasLocation" x="290" y="49"/>
         </scene>
-        <!--Content View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="oQd-KH-oaE">
+            <objects>
+                <navigationController storyboardIdentifier="contentNavigationController" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HqW-gM-w6n" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vOC-yK-uqo">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="hd4-dl-zPB" kind="relationship" relationship="rootViewController" id="zgd-BJ-8Gx"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pZ9-WD-DSS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-71" y="711"/>
+        </scene>
+        <!--Content View Controller - Hiddin-->
         <scene sceneID="qYS-T1-Pv4">
             <objects>
                 <viewController storyboardIdentifier="contentViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hd4-dl-zPB" customClass="ContentViewController" sceneMemberID="viewController">
@@ -41,9 +56,18 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7oB-5M-RLI">
+                                <rect key="frame" x="0.0" y="63" width="320" height="505"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Hiddin" id="PPB-q3-Uo8"/>
+                    <connections>
+                        <outlet property="imageView" destination="7oB-5M-RLI" id="PdU-we-6Gy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ip-YR-gP9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

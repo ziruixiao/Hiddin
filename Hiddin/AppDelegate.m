@@ -12,14 +12,14 @@ NSString *const FBSessionStateChangedNotification =
 @"FelixXiao.com.Hiddin.Login:FBSessionStateChangedNotification";
 
 @implementation AppDelegate
-@synthesize MyPhotos,databasePath,dirPaths,docsDir;
+@synthesize MyContent,databasePath,dirPaths,docsDir;
 @synthesize loggedInUser;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //[self createEditableCopyOfDatabaseIfNeeded];
-    //[self createDefaultCopyOfDatabaseIfNeeded];
-    //[self openDB];
+    [self createEditableCopyOfDatabaseIfNeeded];
+    [self createDefaultCopyOfDatabaseIfNeeded];
+    [self openDB];
     
     return YES;
 }
@@ -33,13 +33,13 @@ NSString *const FBSessionStateChangedNotification =
     NSError *error;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *writableDBPath = [documentsDirectory stringByAppendingPathComponent:@"MyPhotos.sqlite"];
+    NSString *writableDBPath = [documentsDirectory stringByAppendingPathComponent:@"MyContent.sqlite"];
     success = [fileManager fileExistsAtPath:writableDBPath];
     if (success)
         return;
     
     //a writable MyPhotos database does not exist, so copy the default to the appropriate location
-    NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"MyPhotos.sqlite"];
+    NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"MyContent.sqlite"];
     success = [fileManager copyItemAtPath:defaultDBPath toPath:writableDBPath error:&error];
     if (!success) {
         NSAssert1(0,@"Failed to create writable database file with message '%@'.",[error localizedDescription]);
@@ -55,13 +55,13 @@ NSString *const FBSessionStateChangedNotification =
     NSError *error;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *writableDBPath = [documentsDirectory stringByAppendingPathComponent:@"MyPhotos_Default.sqlite"];
+    NSString *writableDBPath = [documentsDirectory stringByAppendingPathComponent:@"MyContent_Default.sqlite"];
     success = [fileManager fileExistsAtPath:writableDBPath];
     if (success)
         return;
     
     //a writable MyPhotos_Default database does not exist, so copy the default to the appropriate location
-    NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"MyPhotos.sqlite"];
+    NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"MyContent.sqlite"];
     success = [fileManager copyItemAtPath:defaultDBPath toPath:writableDBPath error:&error];
     if (!success) {
         NSAssert1(0,@"Failed to create writable database file with message '%@'.",[error localizedDescription]);
@@ -73,10 +73,10 @@ NSString *const FBSessionStateChangedNotification =
 {
     dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
     docsDir = [dirPaths objectAtIndex:0];
-    databasePath = [[NSString alloc] initWithString: [docsDir stringByAppendingPathComponent:@"MyPhotos.sqlite"]];
+    databasePath = [[NSString alloc] initWithString: [docsDir stringByAppendingPathComponent:@"MyContent.sqlite"]];
     const char *dbpath = [databasePath UTF8String];
     
-    if (sqlite3_open_v2(dbpath,&MyPhotos,SQLITE_OPEN_READWRITE,NULL) == SQLITE_OK) {
+    if (sqlite3_open_v2(dbpath,&MyContent,SQLITE_OPEN_READWRITE,NULL) == SQLITE_OK) {
         NSLog(@"The local database has been opened.");
     } else {
         NSLog(@"The local database could not be opened.");
@@ -87,7 +87,7 @@ NSString *const FBSessionStateChangedNotification =
 //DONE - CLOSES THE LOCAL DATABASE
 - (void)closeDB
 {
-    sqlite3_close(MyPhotos);
+    sqlite3_close(MyContent);
     NSLog(@"The local database has been closed.");
 }
 

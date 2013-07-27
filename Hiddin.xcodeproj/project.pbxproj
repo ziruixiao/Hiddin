@@ -40,6 +40,8 @@
 		DC0DB09317A42E0F006CC531 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0DB09217A42E0F006CC531 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DC0DB09617A4373A006CC531 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0DB09517A4373A006CC531 /* FacebookSDK.framework */; };
 		DC0DB09917A44084006CC531 /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0DB09817A44084006CC531 /* ContentViewController.m */; };
+		DC0DB09C17A44DEE006CC531 /* Content.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0DB09B17A44DEE006CC531 /* Content.m */; };
+		DC0DB09E17A455F2006CC531 /* MyContent.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = DC0DB09D17A455F2006CC531 /* MyContent.sqlite */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +98,9 @@
 		DC0DB09517A4373A006CC531 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		DC0DB09717A44084006CC531 /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
 		DC0DB09817A44084006CC531 /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
+		DC0DB09A17A44DEE006CC531 /* Content.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Content.h; sourceTree = "<group>"; };
+		DC0DB09B17A44DEE006CC531 /* Content.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Content.m; sourceTree = "<group>"; };
+		DC0DB09D17A455F2006CC531 /* MyContent.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = MyContent.sqlite; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +193,8 @@
 				DC0DB08417A42D60006CC531 /* SplashViewController.m */,
 				DC0DB09717A44084006CC531 /* ContentViewController.h */,
 				DC0DB09817A44084006CC531 /* ContentViewController.m */,
+				DC0DB09A17A44DEE006CC531 /* Content.h */,
+				DC0DB09B17A44DEE006CC531 /* Content.m */,
 				DC0DB04417A42A32006CC531 /* Images.xcassets */,
 				DC0DB03017A42A32006CC531 /* Supporting Files */,
 			);
@@ -197,6 +204,7 @@
 		DC0DB03017A42A32006CC531 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DC0DB09D17A455F2006CC531 /* MyContent.sqlite */,
 				DC0DB06517A42BB6006CC531 /* FacebookSDKResources.bundle */,
 				DC0DB06617A42BB6006CC531 /* FBUserSettingsViewResources.bundle */,
 				DC0DB03117A42A32006CC531 /* Hiddin-Info.plist */,
@@ -334,6 +342,7 @@
 				DC0DB07C17A42C4C006CC531 /* Main_iPad.storyboard in Resources */,
 				DC0DB04517A42A32006CC531 /* Images.xcassets in Resources */,
 				DC0DB06717A42BB6006CC531 /* FacebookSDKResources.bundle in Resources */,
+				DC0DB09E17A455F2006CC531 /* MyContent.sqlite in Resources */,
 				DC0DB06817A42BB6006CC531 /* FBUserSettingsViewResources.bundle in Resources */,
 				DC0DB03417A42A32006CC531 /* InfoPlist.strings in Resources */,
 			);
@@ -361,6 +370,7 @@
 				DC0DB09917A44084006CC531 /* ContentViewController.m in Sources */,
 				DC0DB03617A42A32006CC531 /* main.m in Sources */,
 				DC0DB08A17A42DAF006CC531 /* JASidePanelController.m in Sources */,
+				DC0DB09C17A44DEE006CC531 /* Content.m in Sources */,
 				DC0DB08517A42D60006CC531 /* SplashViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

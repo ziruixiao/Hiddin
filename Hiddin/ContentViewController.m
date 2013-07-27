@@ -7,12 +7,16 @@
 //
 
 #import "ContentViewController.h"
+#import "MenuViewController.h"
+#import "UIViewController+JASidePanel.h"
+#import "Content.h"
 
 @interface ContentViewController ()
 
 @end
 
 @implementation ContentViewController
+@synthesize appDelegate,imageView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,7 +30,64 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.appDelegate = [[UIApplication sharedApplication] delegate];
+    [self getFacebookPhotos];
+    
+    
 	// Do any additional setup after loading the view.
+}
+
+- (void)getFacebookPhotos
+{
+    [FBRequestConnection startWithGraphPath:@"me/photos?limit=1"
+                                 parameters:[NSDictionary dictionaryWithObject:@"id,created_time,from,images" forKey:@"fields"]
+                                 HTTPMethod:@"GET"
+                          completionHandler:^(FBRequestConnection *connection, id result, NSError *error){
+                              if (!error) {
+                                  //NSLog(@"Results: %@", result);
+                                  
+                                  NSArray* imageArray = [result objectForKey:@"data"]; //array of dictionaries
+                                  
+                                  NSLog(@"count is %i",[imageArray count]);
+                                  for (NSDictionary *imageData in imageArray) {
+                                      Content *newContent = [[Content alloc] init];
+                                      
+                                      newContent.contentID = [imageData objectForKey:@"id"];
+                                      newContent.contentType = @"photo";
+                                      NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+                                      [dateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH:mm:ssZ"];
+                                      NSDate* date = [dateFormatter dateFromString:[imageData objectForKey:@"created_time"]];
+                                      newContent.contentTimestamp = [date timeIntervalSince1970]/1;
+                                      newContent.contentUserID = self.appDelegate.loggedInUser.id;
+                                      newContent.contentFromID = [[imageData objectForKey:@"from"] objectForKey:@"id"];
+                                      newContent.contentFromName = [[imageData objectForKey:@"from"] objectForKey:@"name"];
+                                      
+                                      NSArray *arrayOfURLs = [imageData objectForKey:@"images"];
+                                      for (NSDictionary *urlData in arrayOfURLs) {
+                                          if ([[urlData objectForKey:@"width"] integerValue] == 720) {
+                                              newContent.contentImageURL = [urlData objectForKey:@"source"];
+                                              break;
+                                          }
+                                      }
+                                      
+                                      newContent.contentActive = @"yes";
+                                      newContent.contentSorting = @"none";
+                                      
+                                      NSURL *url = [NSURL URLWithString:newContent.contentImageURL];
+                                      NSData *data = [NSData dataWithContentsOfURL:url];
+                                      UIImage *img = [UIImage imageWithData:data];
+                                      self.imageView.image = img;
+                                      
+                                      //add to database, check to see if it has already been first
+                                      [newContent insertContent:newContent];
+                                  }
+                                  //don't worry about comments and likes for now
+                                  
+                              } else {
+                                  NSLog(@"%@",error);
+                              }
+                              
+    }];
 }
 
 - (void)didReceiveMemoryWarning

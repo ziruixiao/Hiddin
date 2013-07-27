@@ -17,14 +17,14 @@ extern NSString *const FBSessionStateChangedNotification;
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 {
     //private variables for accessing SQLite database
-    sqlite3 *MyPhotos;
+    sqlite3 *MyContent;
     NSString *databasePath;
     NSString *docsDir;
     NSArray *dirPaths;
 }
 
 //SQLite database properties
-@property (nonatomic) sqlite3 *MyPhotos;
+@property (nonatomic) sqlite3 *MyContent;
 @property (strong,nonatomic) NSString *databasePath;
 @property (strong,nonatomic) NSString *docsDir;
 @property (strong,nonatomic) NSArray *dirPaths;

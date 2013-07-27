@@ -36,7 +36,7 @@ typedef enum _JASidePanelState {
     JASidePanelRightVisible
 } JASidePanelState;
 
-@interface JASidePanelController : UIViewController
+@interface JASidePanelController : UIViewController<UIGestureRecognizerDelegate>
 
 #pragma mark - Usage
 
@@ -68,7 +68,7 @@ typedef enum _JASidePanelState {
 @property (nonatomic) JASidePanelStyle style; // default is JASidePanelSingleActive
 
 // size the left panel based on % of total screen width
-@property (nonatomic) CGFloat leftGapPercentage; 
+@property (nonatomic) CGFloat leftGapPercentage;
 
 // size the left panel based on this fixed size. overrides leftGapPercentage
 @property (nonatomic) CGFloat leftFixedWidth;

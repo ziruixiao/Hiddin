@@ -29,7 +29,7 @@
 static char ja_kvoContext;
 
 @interface JASidePanelController() {
-    CGRect _centerPanelRestingFrame;		
+    CGRect _centerPanelRestingFrame;
     CGPoint _locationBeforePan;
 }
 
@@ -96,11 +96,11 @@ static char ja_kvoContext;
 		[[UIColor whiteColor] setFill];
 		[[UIBezierPath bezierPathWithRect:CGRectMake(0, 1, 20, 2)] fill];
 		[[UIBezierPath bezierPathWithRect:CGRectMake(0, 6,  20, 2)] fill];
-		[[UIBezierPath bezierPathWithRect:CGRectMake(0, 11, 20, 2)] fill];   
+		[[UIBezierPath bezierPathWithRect:CGRectMake(0, 11, 20, 2)] fill];
 		
 		defaultImage = UIGraphicsGetImageFromCurrentImageContext();
 		UIGraphicsEndImageContext();
-
+        
 	});
     return defaultImage;
 }
@@ -130,12 +130,12 @@ static char ja_kvoContext;
 }
 
 - (void)_baseInit {
-    self.style = JASidePanelMultipleActive;
+    self.style = JASidePanelSingleActive;
     self.leftGapPercentage = 0.8f;
     self.rightGapPercentage = 0.8f;
     self.minimumMovePercentage = 0.15f;
-    self.maximumAnimationDuration = 0.0f;
-    self.bounceDuration = 0.0f;
+    self.maximumAnimationDuration = 0.2f;
+    self.bounceDuration = 0.1f;
     self.bouncePercentage = 0.075f;
     self.panningLimitedToTopViewController = YES;
     self.recognizesPanGesture = YES;
@@ -155,14 +155,14 @@ static char ja_kvoContext;
     [super viewDidLoad];
     self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     
-    self.centerPanelContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 20, self.view.bounds.size.width, self.view.bounds.size.width-20)];
+    self.centerPanelContainer = [[UIView alloc] initWithFrame:self.view.bounds];
     _centerPanelRestingFrame = self.centerPanelContainer.frame;
     _centerPanelHidden = NO;
     
-    self.leftPanelContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 20, self.view.bounds.size.width, self.view.bounds.size.width-20)];
+    self.leftPanelContainer = [[UIView alloc] initWithFrame:self.view.bounds];
     self.leftPanelContainer.hidden = YES;
     
-    self.rightPanelContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 20, self.view.bounds.size.width, self.view.bounds.size.width-20)];
+    self.rightPanelContainer = [[UIView alloc] initWithFrame:self.view.bounds];
     self.rightPanelContainer.hidden = YES;
     
     [self _configureContainers];
@@ -203,7 +203,7 @@ static char ja_kvoContext;
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
     __strong UIViewController *visiblePanel = self.visiblePanel;
-
+    
     if (self.shouldDelegateAutorotateToVisiblePanel) {
         return [visiblePanel shouldAutorotateToInterfaceOrientation:toInterfaceOrientation];
     } else {
@@ -215,7 +215,7 @@ static char ja_kvoContext;
 
 - (BOOL)shouldAutorotate {
     __strong UIViewController *visiblePanel = self.visiblePanel;
-
+    
     if (self.shouldDelegateAutorotateToVisiblePanel && [visiblePanel respondsToSelector:@selector(shouldAutorotate)]) {
         return [visiblePanel shouldAutorotate];
     } else {
@@ -227,7 +227,7 @@ static char ja_kvoContext;
 #endif
 
 - (void)willAnimateRotationToInterfaceOrientation:(__unused UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    self.centerPanelContainer.frame = [self _adjustCenterFrame];	
+    self.centerPanelContainer.frame = [self _adjustCenterFrame];
     [self _layoutSideContainers:YES duration:duration];
     [self _layoutSidePanels];
     [self styleContainer:self.centerPanelContainer animate:YES duration:duration];
@@ -285,7 +285,7 @@ static char ja_kvoContext;
         animation.duration = duration;
         [container.layer addAnimation:animation forKey:@"shadowPath"];
     }
-    container.layer.shadowPath = shadowPath.CGPath;	
+    container.layer.shadowPath = shadowPath.CGPath;
     container.layer.shadowColor = [UIColor blackColor].CGColor;
     container.layer.shadowRadius = 10.0f;
     container.layer.shadowOpacity = 0.75f;
@@ -293,7 +293,7 @@ static char ja_kvoContext;
 }
 
 - (void)stylePanel:(UIView *)panel {
-    panel.layer.cornerRadius = 0.0f;
+    panel.layer.cornerRadius = 6.0f;
     panel.clipsToBounds = YES;
 }
 
@@ -318,8 +318,8 @@ static char ja_kvoContext;
     }
     self.leftPanelContainer.frame = leftFrame;
     self.rightPanelContainer.frame = rightFrame;
-    [self styleContainer:self.leftPanelContainer animate:animate duration:duration];	
-    [self styleContainer:self.rightPanelContainer animate:animate duration:duration];	
+    [self styleContainer:self.leftPanelContainer animate:animate duration:duration];
+    [self styleContainer:self.rightPanelContainer animate:animate duration:duration];
 }
 
 - (void)_layoutSidePanels {
@@ -360,7 +360,7 @@ static char ja_kvoContext;
         // update the state immediately to prevent user interaction on the side panels while animating
         JASidePanelState previousState = self.state;
         self.state = JASidePanelCenterVisible;
-        [UIView animateWithDuration:0.1f animations:^{
+        [UIView animateWithDuration:0.2f animations:^{
             if (self.bounceOnCenterPanelChange) {
                 // first move the centerPanel offscreen
                 CGFloat x = (previousState == JASidePanelLeftVisible) ? self.view.bounds.size.width : -self.view.bounds.size.width;
@@ -433,15 +433,15 @@ static char ja_kvoContext;
                 buttonController = [nav.viewControllers objectAtIndex:0];
             }
         }
-        if (!buttonController.navigationItem.leftBarButtonItem) {   
+        if (!buttonController.navigationItem.leftBarButtonItem) {
             buttonController.navigationItem.leftBarButtonItem = [self leftButtonForCenterPanel];
         }
-    }	
+    }
 }
 
 #pragma mark - Gesture Recognizer Delegate
+
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
-    
     if (gestureRecognizer.view == self.tapView) {
         return YES;
     } else if (self.panningLimitedToTopViewController && ![self _isOnTopLevelViewController:self.centerPanel]) {
@@ -469,10 +469,10 @@ static char ja_kvoContext;
 
 - (void)_addPanGestureToView:(UIView *)view {
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(_handlePan:)];
-    //panGesture.delegate = self;
+    panGesture.delegate = self;
     panGesture.maximumNumberOfTouches = 1;
     panGesture.minimumNumberOfTouches = 1;
-    //[view addGestureRecognizer:panGesture];
+    [view addGestureRecognizer:panGesture];
 }
 
 - (void)_handlePan:(UIGestureRecognizer *)sender {
@@ -502,7 +502,7 @@ static char ja_kvoContext;
         }
         
         if (sender.state == UIGestureRecognizerStateEnded) {
-            CGFloat deltaX =  frame.origin.x - _locationBeforePan.x;			
+            CGFloat deltaX =  frame.origin.x - _locationBeforePan.x;
             if ([self _validateThreshold:deltaX]) {
                 [self _completePan:deltaX];
             } else {
@@ -560,9 +560,9 @@ static char ja_kvoContext;
         if (_tapView) {
             _tapView.frame = self.centerPanelContainer.bounds;
             _tapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-            //[self _addTapGestureToView:_tapView];
+            [self _addTapGestureToView:_tapView];
             if (self.recognizesPanGesture) {
-                //[self _addPanGestureToView:_tapView];
+                [self _addPanGestureToView:_tapView];
             }
             [self.centerPanelContainer addSubview:_tapView];
         }
@@ -570,8 +570,8 @@ static char ja_kvoContext;
 }
 
 - (void)_addTapGestureToView:(UIView *)view {
-    //UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_centerPanelTapped:)];
-    //[view addGestureRecognizer:tapGesture];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_centerPanelTapped:)];
+    [view addGestureRecognizer:tapGesture];
 }
 
 - (void)_centerPanelTapped:(__unused UIGestureRecognizer *)gesture {
@@ -706,7 +706,7 @@ static char ja_kvoContext;
 #pragma mark - Animation
 
 - (CGFloat)_calculatedDuration {
-    CGFloat remaining = fabsf(self.centerPanelContainer.frame.origin.x - _centerPanelRestingFrame.origin.x);	
+    CGFloat remaining = fabsf(self.centerPanelContainer.frame.origin.x - _centerPanelRestingFrame.origin.x);
     CGFloat max = _locationBeforePan.x == _centerPanelRestingFrame.origin.x ? remaining : fabsf(_locationBeforePan.x - _centerPanelRestingFrame.origin.x);
     return max > 0.0f ? self.maximumAnimationDuration * (remaining / max) : self.maximumAnimationDuration;
 }
@@ -743,7 +743,7 @@ static char ja_kvoContext;
                 self.centerPanelContainer.frame = bounceFrame;
             } completion:^(__unused BOOL finished2) {
                 [UIView animateWithDuration:self.bounceDuration delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
-                    self.centerPanelContainer.frame = _centerPanelRestingFrame;				
+                    self.centerPanelContainer.frame = _centerPanelRestingFrame;
                 } completion:completion];
             }];
         } else if (completion) {
@@ -760,7 +760,7 @@ static char ja_kvoContext;
         case JASidePanelCenterVisible: {
             frame.origin.x = 0.0f;
             if (self.style == JASidePanelMultipleActive) {
-                frame.size.width = self.view.bounds.size.width;	
+                frame.size.width = self.view.bounds.size.width;
             }
             break;
 		}
@@ -788,7 +788,6 @@ static char ja_kvoContext;
     if (self.centerPanelHidden && self.shouldResizeLeftPanel) {
         return self.view.bounds.size.width;
     } else {
-
         return self.leftFixedWidth ? self.leftFixedWidth : floorf(self.view.bounds.size.width * self.leftGapPercentage);
     }
 }
@@ -798,7 +797,7 @@ static char ja_kvoContext;
         return self.view.bounds.size.width;
     } else {
         return self.rightFixedWidth ? self.rightFixedWidth : floorf(self.view.bounds.size.width * self.rightGapPercentage);
-    }    
+    }
 }
 
 #pragma mark - Showing Panels
@@ -812,7 +811,7 @@ static char ja_kvoContext;
     if (animated) {
         [self _animateCenterPanel:shouldBounce completion:nil];
     } else {
-        self.centerPanelContainer.frame = _centerPanelRestingFrame;	
+        self.centerPanelContainer.frame = _centerPanelRestingFrame;
         [self styleContainer:self.centerPanelContainer animate:NO duration:0.0f];
         if (self.style == JASidePanelMultipleActive) {
             [self _layoutSideContainers:NO duration:0.0f];
@@ -834,7 +833,7 @@ static char ja_kvoContext;
     if (animated) {
         [self _animateCenterPanel:shouldBounce completion:nil];
     } else {
-        self.centerPanelContainer.frame = _centerPanelRestingFrame;	
+        self.centerPanelContainer.frame = _centerPanelRestingFrame;
         [self styleContainer:self.centerPanelContainer animate:NO duration:0.0f];
         if (self.style == JASidePanelMultipleActive) {
             [self _layoutSideContainers:NO duration:0.0f];
@@ -859,7 +858,7 @@ static char ja_kvoContext;
             [self _unloadPanels];
         }];
     } else {
-        self.centerPanelContainer.frame = _centerPanelRestingFrame;	
+        self.centerPanelContainer.frame = _centerPanelRestingFrame;
         [self styleContainer:self.centerPanelContainer animate:NO duration:0.0f];
         if (self.style == JASidePanelMultipleActive) {
             [self _layoutSideContainers:NO duration:0.0f];
@@ -917,11 +916,10 @@ static char ja_kvoContext;
 #pragma mark - Key Value Observing
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(__unused NSDictionary *)change context:(void *)context {
-    
     if (context == &ja_kvoContext) {
         if ([keyPath isEqualToString:@"view"]) {
             if (self.centerPanel.isViewLoaded && self.recognizesPanGesture) {
-                //[self _addPanGestureToView:self.centerPanel.view];
+                [self _addPanGestureToView:self.centerPanel.view];
             }
         } else if ([keyPath isEqualToString:@"viewControllers"] && object == self.centerPanel) {
             // view controllers have changed, need to replace the button

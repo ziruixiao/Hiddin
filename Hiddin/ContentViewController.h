@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 
 @interface ContentViewController : UIViewController
 
+@property (strong,nonatomic) AppDelegate *appDelegate;
+@property (strong,nonatomic) IBOutlet UIImageView *imageView;
+
+- (void)getFacebookPhotos;
 @end

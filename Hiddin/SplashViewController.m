@@ -82,7 +82,7 @@
     //self.profilePic.profileID = user.id;
     self.appDelegate.loggedInUser = user;
     
-    [self.sidePanelController setCenterPanel:[self.storyboard instantiateViewControllerWithIdentifier:@"contentViewController"]];
+    [self.sidePanelController setCenterPanel:[self.storyboard instantiateViewControllerWithIdentifier:@"contentNavigationController"]];
     
     
 }
