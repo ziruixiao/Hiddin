@@ -9,14 +9,15 @@
 #import "ContentViewController.h"
 #import "MenuViewController.h"
 #import "UIViewController+JASidePanel.h"
-#import "Content.h"
 
 @interface ContentViewController ()
 
 @end
 
 @implementation ContentViewController
-@synthesize appDelegate,imageView;
+@synthesize appDelegate,imageView,content,selectedIndex;
+@synthesize topButton1,topButton2,topButton3,bottomButton1,bottomButton2,bottomButton3;
+@synthesize toolContent;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,14 +32,95 @@
 {
     [super viewDidLoad];
     self.appDelegate = [[UIApplication sharedApplication] delegate];
-    [self getFacebookPhotos];
     
+    //[self getAllTaggedFacebookPhotos];
     
+    self.toolContent = [[Content alloc] init];
+    self.content = [NSMutableArray array];
+    [toolContent getCurrentContent:self.content withType:@"photo_tagged"];
+    self.selectedIndex = 0;
+    
+    [self reloadImageView];
 	// Do any additional setup after loading the view.
+    
+    [self addButtons];
+     
 }
 
-- (void)getFacebookPhotos
+- (void)addButtons
 {
+    [self.topButton1 setImage:[UIImage imageNamed:@"hiddin_delete_B.png"] forState:UIControlStateHighlighted];
+    [self.topButton1 setImage:[UIImage imageNamed:@"hiddin_delete_B.png"] forState:UIControlStateSelected];
+    
+    [self.topButton2 setImage:[UIImage imageNamed:@"hiddin_later_B.png"] forState:UIControlStateHighlighted];
+    [self.topButton2 setImage:[UIImage imageNamed:@"hiddin_later_B.png"] forState:UIControlStateSelected];
+     
+    [self.topButton3 setImage:[UIImage imageNamed:@"hiddin_keep_B.png"] forState:UIControlStateHighlighted];
+    [self.topButton3 setImage:[UIImage imageNamed:@"hiddin_keep_B.png"] forState:UIControlStateSelected];
+    
+    [self.bottomButton1 setImage:[UIImage imageNamed:@"hiddin_left_B.png"] forState:UIControlStateHighlighted];
+    [self.bottomButton1 setImage:[UIImage imageNamed:@"hiddin_left_B.png"] forState:UIControlStateSelected];
+    
+    [self.bottomButton2 setImage:[UIImage imageNamed:@"hiddin_all_B.png"] forState:UIControlStateHighlighted];
+    [self.bottomButton2 setImage:[UIImage imageNamed:@"hiddin_all_B.png"] forState:UIControlStateSelected];
+    
+    [self.bottomButton3 setImage:[UIImage imageNamed:@"hiddin_right_B.png"] forState:UIControlStateHighlighted];
+    [self.bottomButton3 setImage:[UIImage imageNamed:@"hiddin_right_B.png"] forState:UIControlStateSelected];
+}
+
+- (void)reloadImageView
+{
+    //update the number which should be shown somewhere
+    
+    NSString *newContentID = (((Content*)[self.content objectAtIndex:selectedIndex]).contentImageURL);
+    NSData *data = [NSData dataWithContentsOfURL: [NSURL URLWithString:newContentID]];
+    self.toolContent.contentID = newContentID;
+    self.imageView.image = [UIImage imageWithData: data];
+}
+
+- (IBAction)deletePressed:(id)sender
+{
+    
+}
+
+- (IBAction)laterPressed:(id)sender
+{
+    [self.toolContent updateContent:self.toolContent inField:@"sorting" toNew:@"later" ifInt:-1];
+    [self.content removeObjectAtIndex:0];
+    [self reloadImageView];
+}
+
+- (IBAction)keepPressed:(id)sender
+{
+    [self.toolContent updateContent:self.toolContent inField:@"sorting" toNew:@"keep" ifInt:-1];
+    [self.content removeObjectAtIndex:0];
+    [self reloadImageView];
+}
+
+- (IBAction)leftPressed:(id)sender
+{
+    if (self.selectedIndex > 0) {
+        selectedIndex--;
+    }
+    [self reloadImageView];
+}
+
+- (IBAction)allPressed:(id)sender
+{
+    
+}
+
+- (IBAction)rightPressed:(id)sender
+{
+    if (self.selectedIndex < ([self.content count] - 1)) {
+        selectedIndex++;
+    }
+    [self reloadImageView];
+}
+
+- (void)getAllTaggedFacebookPhotos
+{
+    //tagged photos
     [FBRequestConnection startWithGraphPath:@"me/photos?limit=10000"
                                  parameters:[NSDictionary dictionaryWithObject:@"id,created_time,from,images,source" forKey:@"fields"]
                                  HTTPMethod:@"GET"
@@ -76,10 +158,10 @@
                                       newContent.contentActive = @"yes";
                                       newContent.contentSorting = @"none";
                                       
-                                      //add to database, check to see if it has already been first
-                                      [newContent insertContent:newContent];
+                                      if (![newContent alreadyExists:newContent.contentID]) {
+                                          [newContent insertContent:newContent];
+                                      }
                                   }
-                                  //don't worry about comments and likes for now
                                   
                               } else {
                                   NSLog(@"%@",error);

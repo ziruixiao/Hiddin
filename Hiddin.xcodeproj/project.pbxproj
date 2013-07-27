@@ -42,6 +42,18 @@
 		DC0DB09917A44084006CC531 /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0DB09817A44084006CC531 /* ContentViewController.m */; };
 		DC0DB09C17A44DEE006CC531 /* Content.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0DB09B17A44DEE006CC531 /* Content.m */; };
 		DC0DB09E17A455F2006CC531 /* MyContent.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = DC0DB09D17A455F2006CC531 /* MyContent.sqlite */; };
+		DC264B3717A47EB1008973D7 /* hiddin_later_A@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC264B3117A47EB1008973D7 /* hiddin_later_A@2x.png */; };
+		DC264B3817A47EB1008973D7 /* hiddin_later_B@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC264B3217A47EB1008973D7 /* hiddin_later_B@2x.png */; };
+		DC264B3917A47EB1008973D7 /* hiddin_delete_A@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC264B3317A47EB1008973D7 /* hiddin_delete_A@2x.png */; };
+		DC264B3A17A47EB1008973D7 /* hiddin_delete_B@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC264B3417A47EB1008973D7 /* hiddin_delete_B@2x.png */; };
+		DC264B3B17A47EB1008973D7 /* hiddin_keep_A@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC264B3517A47EB1008973D7 /* hiddin_keep_A@2x.png */; };
+		DC264B3C17A47EB1008973D7 /* hiddin_keep_B@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC264B3617A47EB1008973D7 /* hiddin_keep_B@2x.png */; };
+		DC264B4417A481EF008973D7 /* hiddin_all_B@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC264B3E17A481EF008973D7 /* hiddin_all_B@2x.png */; };
+		DC264B4517A481EF008973D7 /* hiddin_all_A@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC264B3F17A481EF008973D7 /* hiddin_all_A@2x.png */; };
+		DC264B4617A481EF008973D7 /* hiddin_right_A@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC264B4017A481EF008973D7 /* hiddin_right_A@2x.png */; };
+		DC264B4717A481EF008973D7 /* hiddin_right_B@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC264B4117A481EF008973D7 /* hiddin_right_B@2x.png */; };
+		DC264B4817A481EF008973D7 /* hiddin_left_B@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC264B4217A481EF008973D7 /* hiddin_left_B@2x.png */; };
+		DC264B4917A481EF008973D7 /* hiddin_left_A@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC264B4317A481EF008973D7 /* hiddin_left_A@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +113,18 @@
 		DC0DB09A17A44DEE006CC531 /* Content.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Content.h; sourceTree = "<group>"; };
 		DC0DB09B17A44DEE006CC531 /* Content.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Content.m; sourceTree = "<group>"; };
 		DC0DB09D17A455F2006CC531 /* MyContent.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = MyContent.sqlite; sourceTree = "<group>"; };
+		DC264B3117A47EB1008973D7 /* hiddin_later_A@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_later_A@2x.png"; sourceTree = "<group>"; };
+		DC264B3217A47EB1008973D7 /* hiddin_later_B@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_later_B@2x.png"; sourceTree = "<group>"; };
+		DC264B3317A47EB1008973D7 /* hiddin_delete_A@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_delete_A@2x.png"; sourceTree = "<group>"; };
+		DC264B3417A47EB1008973D7 /* hiddin_delete_B@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_delete_B@2x.png"; sourceTree = "<group>"; };
+		DC264B3517A47EB1008973D7 /* hiddin_keep_A@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_keep_A@2x.png"; sourceTree = "<group>"; };
+		DC264B3617A47EB1008973D7 /* hiddin_keep_B@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_keep_B@2x.png"; sourceTree = "<group>"; };
+		DC264B3E17A481EF008973D7 /* hiddin_all_B@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_all_B@2x.png"; sourceTree = "<group>"; };
+		DC264B3F17A481EF008973D7 /* hiddin_all_A@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_all_A@2x.png"; sourceTree = "<group>"; };
+		DC264B4017A481EF008973D7 /* hiddin_right_A@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_right_A@2x.png"; sourceTree = "<group>"; };
+		DC264B4117A481EF008973D7 /* hiddin_right_B@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_right_B@2x.png"; sourceTree = "<group>"; };
+		DC264B4217A481EF008973D7 /* hiddin_left_B@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_left_B@2x.png"; sourceTree = "<group>"; };
+		DC264B4317A481EF008973D7 /* hiddin_left_A@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_left_A@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				DC0DB08D17A42DBA006CC531 /* Libraries */,
+				DC264B3D17A47EB6008973D7 /* Images */,
 				DC0DB02F17A42A32006CC531 /* Hiddin */,
 				DC0DB02817A42A32006CC531 /* Frameworks */,
 				DC0DB05117A42A32006CC531 /* HiddinTests */,
@@ -262,6 +287,26 @@
 			name = Reachability;
 			sourceTree = "<group>";
 		};
+		DC264B3D17A47EB6008973D7 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				DC264B3117A47EB1008973D7 /* hiddin_later_A@2x.png */,
+				DC264B3217A47EB1008973D7 /* hiddin_later_B@2x.png */,
+				DC264B3317A47EB1008973D7 /* hiddin_delete_A@2x.png */,
+				DC264B3417A47EB1008973D7 /* hiddin_delete_B@2x.png */,
+				DC264B3517A47EB1008973D7 /* hiddin_keep_A@2x.png */,
+				DC264B3617A47EB1008973D7 /* hiddin_keep_B@2x.png */,
+				DC264B3E17A481EF008973D7 /* hiddin_all_B@2x.png */,
+				DC264B3F17A481EF008973D7 /* hiddin_all_A@2x.png */,
+				DC264B4017A481EF008973D7 /* hiddin_right_A@2x.png */,
+				DC264B4117A481EF008973D7 /* hiddin_right_B@2x.png */,
+				DC264B4217A481EF008973D7 /* hiddin_left_B@2x.png */,
+				DC264B4317A481EF008973D7 /* hiddin_left_A@2x.png */,
+			);
+			name = Images;
+			path = Hiddin;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -338,13 +383,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC264B4517A481EF008973D7 /* hiddin_all_A@2x.png in Resources */,
 				DC0DB07B17A42C4C006CC531 /* Main_iPhone.storyboard in Resources */,
+				DC264B3917A47EB1008973D7 /* hiddin_delete_A@2x.png in Resources */,
 				DC0DB07C17A42C4C006CC531 /* Main_iPad.storyboard in Resources */,
 				DC0DB04517A42A32006CC531 /* Images.xcassets in Resources */,
+				DC264B3C17A47EB1008973D7 /* hiddin_keep_B@2x.png in Resources */,
 				DC0DB06717A42BB6006CC531 /* FacebookSDKResources.bundle in Resources */,
+				DC264B3B17A47EB1008973D7 /* hiddin_keep_A@2x.png in Resources */,
+				DC264B4817A481EF008973D7 /* hiddin_left_B@2x.png in Resources */,
+				DC264B4417A481EF008973D7 /* hiddin_all_B@2x.png in Resources */,
 				DC0DB09E17A455F2006CC531 /* MyContent.sqlite in Resources */,
+				DC264B3A17A47EB1008973D7 /* hiddin_delete_B@2x.png in Resources */,
+				DC264B3817A47EB1008973D7 /* hiddin_later_B@2x.png in Resources */,
+				DC264B3717A47EB1008973D7 /* hiddin_later_A@2x.png in Resources */,
+				DC264B4717A481EF008973D7 /* hiddin_right_B@2x.png in Resources */,
+				DC264B4917A481EF008973D7 /* hiddin_left_A@2x.png in Resources */,
 				DC0DB06817A42BB6006CC531 /* FBUserSettingsViewResources.bundle in Resources */,
 				DC0DB03417A42A32006CC531 /* InfoPlist.strings in Resources */,
+				DC264B4617A481EF008973D7 /* hiddin_right_A@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

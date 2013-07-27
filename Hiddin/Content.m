@@ -126,7 +126,7 @@
     if (sqlite3_prepare_v2(MyContent,query_stmt,-1,&statement,NULL) == SQLITE_OK) {
         
         if (sqlite3_step(statement) == SQLITE_DONE) {
-            //NSLog(@"A row in the database has been updated with the statement: %s",query_stmt);
+            NSLog(@"A row in the database has been updated with the statement: %s",query_stmt);
             return YES;
         } else {
             NSLog(@"%s SQL error '%s' (%1d)",query_stmt,sqlite3_errmsg(MyContent),sqlite3_errcode(MyContent));
@@ -142,6 +142,60 @@
 
 }
 
+- (void)getCurrentContent:(NSMutableArray*)array withType:(NSString*)selectedType
+{
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    MyContent = [appDelegate MyContent];
+    sqlite3_stmt *statement;
+    
+    NSString *querySQL = [NSString stringWithFormat: @"SELECT * FROM local WHERE type=\"%@\" ORDER BY lastupdate DESC",selectedType];
+    
+    const char *query_stmt = [querySQL UTF8String];
+    
+    if (sqlite3_prepare_v2(MyContent,query_stmt,-1,&statement,NULL) == SQLITE_OK) {
+        
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            NSString *temp;
+            Content *tempContent = [[Content alloc] init];
+            //field 0: currently: 'id'
+            temp = [[NSString alloc] initWithUTF8String:(const char*) sqlite3_column_text(statement,0)];
+            [tempContent createContent:tempContent withContentID:temp];
+            [array addObject:tempContent];
+            
+            
+        }
+        sqlite3_finalize(statement);
+        
+    } else {
+        NSLog(@"%s SQL error '%s' (%1d)",query_stmt,sqlite3_errmsg(MyContent),sqlite3_errcode(MyContent));
+    }
+}
+
+- (BOOL)alreadyExists:(NSString*)myContentID
+{
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    MyContent = [appDelegate MyContent];
+    sqlite3_stmt *statement;
+    
+    NSString *querySQL = [NSString stringWithFormat:@"SELECT * FROM local WHERE id=\"%@\"",myContentID];
+    
+    const char *query_stmt = [querySQL UTF8String];
+    
+    if (sqlite3_prepare_v2(MyContent,query_stmt,-1,&statement,NULL) == SQLITE_OK) {
+        
+        if (sqlite3_step(statement) == SQLITE_ROW) {
+            return YES;
+        } else {
+            return NO;
+            NSLog(@"%s SQL error '%s' (%1d)",query_stmt,sqlite3_errmsg(MyContent),sqlite3_errcode(MyContent));
+        }
+        sqlite3_finalize(statement);
+        
+    } else {
+        NSLog(@"%s SQL error '%s' (%1d)",query_stmt,sqlite3_errmsg(MyContent),sqlite3_errcode(MyContent));
+    }
+    return NO;
+}
 
 
 @end

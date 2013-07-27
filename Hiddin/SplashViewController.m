@@ -18,7 +18,7 @@
 
 @synthesize appDelegate;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -57,8 +57,8 @@
 
 
 #pragma mark - FBLoginViewDelegate
-
-- (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
+- (void)loginViewShowingLoggedInUser:(FBLoginView*)loginView
+{
     NSLog(@"The user has logged in.");
     // first get the buttons set for login mode
     //self.buttonPostPhoto.enabled = YES;
@@ -70,8 +70,8 @@
     //[self.buttonPostStatus setTitle:@"Post Status Update (Logged On)" forState:self.buttonPostStatus.state];
 }
 
-- (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
-                            user:(id<FBGraphUser>)user {
+- (void)loginViewFetchedUserInfo:(FBLoginView*)loginView user:(id<FBGraphUser>)user
+{
     NSLog(@"Facebook Graph populated.");
     // here we use helper properties of FBGraphUser to dot-through to first_name and
     // id properties of the json response from the server; alternatively we could use
@@ -85,9 +85,11 @@
     [self.sidePanelController setCenterPanel:[self.storyboard instantiateViewControllerWithIdentifier:@"contentNavigationController"]];
     
     
+    
 }
 
-- (void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView {
+- (void)loginViewShowingLoggedOutUser:(FBLoginView*)loginView
+{
     // test to see if we can use the share dialog built into the Facebook application
     NSLog(@"logged out ");
     FBShareDialogParams *p = [[FBShareDialogParams alloc] init];
@@ -111,14 +113,12 @@
     //self.loggedInUser = nil;
 }
 
-- (void)loginView:(FBLoginView *)loginView handleError:(NSError *)error {
+- (void)loginView:(FBLoginView*)loginView handleError:(NSError*)error
+{
     // see https://developers.facebook.com/docs/reference/api/errors/ for general guidance on error handling for Facebook API
     // our policy here is to let the login view handle errors, but to log the results
     NSLog(@"FBLoginView encountered an error=%@", error);
 }
-
-
-
 
 
 - (void)didReceiveMemoryWarning
