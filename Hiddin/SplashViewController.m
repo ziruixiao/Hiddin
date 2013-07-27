@@ -59,7 +59,7 @@
 #pragma mark - FBLoginViewDelegate
 
 - (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
-    NSLog(@"in");
+    NSLog(@"The user has logged in.");
     // first get the buttons set for login mode
     //self.buttonPostPhoto.enabled = YES;
     //self.buttonPostStatus.enabled = YES;
@@ -72,7 +72,7 @@
 
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
                             user:(id<FBGraphUser>)user {
-    NSLog(@"info gotten");
+    NSLog(@"Facebook Graph populated.");
     // here we use helper properties of FBGraphUser to dot-through to first_name and
     // id properties of the json response from the server; alternatively we could use
     // NSDictionary methods such as objectForKey to get values from the my json object

@@ -39,8 +39,8 @@
 
 - (void)getFacebookPhotos
 {
-    [FBRequestConnection startWithGraphPath:@"me/photos?limit=1"
-                                 parameters:[NSDictionary dictionaryWithObject:@"id,created_time,from,images" forKey:@"fields"]
+    [FBRequestConnection startWithGraphPath:@"me/photos?limit=10000"
+                                 parameters:[NSDictionary dictionaryWithObject:@"id,created_time,from,images,source" forKey:@"fields"]
                                  HTTPMethod:@"GET"
                           completionHandler:^(FBRequestConnection *connection, id result, NSError *error){
                               if (!error) {
@@ -53,7 +53,7 @@
                                       Content *newContent = [[Content alloc] init];
                                       
                                       newContent.contentID = [imageData objectForKey:@"id"];
-                                      newContent.contentType = @"photo";
+                                      newContent.contentType = @"photo_tagged";
                                       NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
                                       [dateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH:mm:ssZ"];
                                       NSDate* date = [dateFormatter dateFromString:[imageData objectForKey:@"created_time"]];
@@ -69,14 +69,12 @@
                                               break;
                                           }
                                       }
+                                      if (!newContent.contentImageURL) {
+                                          newContent.contentImageURL = [imageData objectForKey:@"source"];
+                                      }
                                       
                                       newContent.contentActive = @"yes";
                                       newContent.contentSorting = @"none";
-                                      
-                                      NSURL *url = [NSURL URLWithString:newContent.contentImageURL];
-                                      NSData *data = [NSData dataWithContentsOfURL:url];
-                                      UIImage *img = [UIImage imageWithData:data];
-                                      self.imageView.image = img;
                                       
                                       //add to database, check to see if it has already been first
                                       [newContent insertContent:newContent];
