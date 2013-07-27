@@ -13,15 +13,32 @@
 		DC0DB03417A42A32006CC531 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DC0DB03217A42A32006CC531 /* InfoPlist.strings */; };
 		DC0DB03617A42A32006CC531 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0DB03517A42A32006CC531 /* main.m */; };
 		DC0DB03A17A42A32006CC531 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0DB03917A42A32006CC531 /* AppDelegate.m */; };
-		DC0DB03D17A42A32006CC531 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC0DB03B17A42A32006CC531 /* Main_iPhone.storyboard */; };
-		DC0DB04017A42A32006CC531 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC0DB03E17A42A32006CC531 /* Main_iPad.storyboard */; };
-		DC0DB04317A42A32006CC531 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0DB04217A42A32006CC531 /* ViewController.m */; };
 		DC0DB04517A42A32006CC531 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC0DB04417A42A32006CC531 /* Images.xcassets */; };
 		DC0DB04C17A42A32006CC531 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0DB04B17A42A32006CC531 /* XCTest.framework */; };
 		DC0DB04D17A42A32006CC531 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0DB02917A42A32006CC531 /* Foundation.framework */; };
 		DC0DB04E17A42A32006CC531 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0DB02D17A42A32006CC531 /* UIKit.framework */; };
 		DC0DB05617A42A32006CC531 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DC0DB05417A42A32006CC531 /* InfoPlist.strings */; };
 		DC0DB05817A42A32006CC531 /* HiddinTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0DB05717A42A32006CC531 /* HiddinTests.m */; };
+		DC0DB06217A42B67006CC531 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0DB06117A42B66006CC531 /* libsqlite3.dylib */; };
+		DC0DB06417A42B8F006CC531 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0DB06317A42B8F006CC531 /* FacebookSDK.framework */; };
+		DC0DB06717A42BB6006CC531 /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DC0DB06517A42BB6006CC531 /* FacebookSDKResources.bundle */; };
+		DC0DB06817A42BB6006CC531 /* FBUserSettingsViewResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DC0DB06617A42BB6006CC531 /* FBUserSettingsViewResources.bundle */; };
+		DC0DB06A17A42BC7006CC531 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0DB06917A42BC7006CC531 /* Accounts.framework */; };
+		DC0DB06C17A42BD4006CC531 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0DB06B17A42BD4006CC531 /* Social.framework */; };
+		DC0DB06E17A42BDF006CC531 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0DB06D17A42BDF006CC531 /* AdSupport.framework */; };
+		DC0DB07017A42BE4006CC531 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0DB06F17A42BE4006CC531 /* CFNetwork.framework */; };
+		DC0DB07217A42BEC006CC531 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0DB07117A42BEC006CC531 /* libz.dylib */; };
+		DC0DB07417A42BF5006CC531 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0DB07317A42BF5006CC531 /* MobileCoreServices.framework */; };
+		DC0DB07617A42BFD006CC531 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0DB07517A42BFD006CC531 /* Security.framework */; };
+		DC0DB07817A42C03006CC531 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0DB07717A42C03006CC531 /* QuartzCore.framework */; };
+		DC0DB07A17A42C36006CC531 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0DB07917A42C36006CC531 /* SystemConfiguration.framework */; };
+		DC0DB07B17A42C4C006CC531 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC0DB03B17A42A32006CC531 /* Main_iPhone.storyboard */; };
+		DC0DB07C17A42C4C006CC531 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC0DB03E17A42A32006CC531 /* Main_iPad.storyboard */; };
+		DC0DB08517A42D60006CC531 /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0DB08417A42D60006CC531 /* SplashViewController.m */; };
+		DC0DB08A17A42DAF006CC531 /* JASidePanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0DB08717A42DAF006CC531 /* JASidePanelController.m */; };
+		DC0DB08B17A42DAF006CC531 /* UIViewController+JASidePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0DB08917A42DAF006CC531 /* UIViewController+JASidePanel.m */; };
+		DC0DB09017A42DD1006CC531 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0DB08F17A42DD1006CC531 /* MenuViewController.m */; };
+		DC0DB09317A42E0F006CC531 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0DB09217A42E0F006CC531 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,14 +64,35 @@
 		DC0DB03917A42A32006CC531 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		DC0DB03C17A42A32006CC531 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		DC0DB03F17A42A32006CC531 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		DC0DB04117A42A32006CC531 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		DC0DB04217A42A32006CC531 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		DC0DB04417A42A32006CC531 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DC0DB04A17A42A32006CC531 /* HiddinTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HiddinTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC0DB04B17A42A32006CC531 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		DC0DB05317A42A32006CC531 /* HiddinTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HiddinTests-Info.plist"; sourceTree = "<group>"; };
 		DC0DB05517A42A32006CC531 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DC0DB05717A42A32006CC531 /* HiddinTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HiddinTests.m; sourceTree = "<group>"; };
+		DC0DB06117A42B66006CC531 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		DC0DB06317A42B8F006CC531 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		DC0DB06517A42BB6006CC531 /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FacebookSDKResources.bundle; sourceTree = "<group>"; };
+		DC0DB06617A42BB6006CC531 /* FBUserSettingsViewResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBUserSettingsViewResources.bundle; sourceTree = "<group>"; };
+		DC0DB06917A42BC7006CC531 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		DC0DB06B17A42BD4006CC531 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		DC0DB06D17A42BDF006CC531 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		DC0DB06F17A42BE4006CC531 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		DC0DB07117A42BEC006CC531 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		DC0DB07317A42BF5006CC531 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		DC0DB07517A42BFD006CC531 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		DC0DB07717A42C03006CC531 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		DC0DB07917A42C36006CC531 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		DC0DB08317A42D60006CC531 /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
+		DC0DB08417A42D60006CC531 /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
+		DC0DB08617A42DAF006CC531 /* JASidePanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASidePanelController.h; sourceTree = "<group>"; };
+		DC0DB08717A42DAF006CC531 /* JASidePanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASidePanelController.m; sourceTree = "<group>"; };
+		DC0DB08817A42DAF006CC531 /* UIViewController+JASidePanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JASidePanel.h"; sourceTree = "<group>"; };
+		DC0DB08917A42DAF006CC531 /* UIViewController+JASidePanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JASidePanel.m"; sourceTree = "<group>"; };
+		DC0DB08E17A42DD1006CC531 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		DC0DB08F17A42DD1006CC531 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		DC0DB09117A42E0F006CC531 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		DC0DB09217A42E0F006CC531 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,9 +100,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC0DB06A17A42BC7006CC531 /* Accounts.framework in Frameworks */,
+				DC0DB06E17A42BDF006CC531 /* AdSupport.framework in Frameworks */,
+				DC0DB07017A42BE4006CC531 /* CFNetwork.framework in Frameworks */,
 				DC0DB02C17A42A32006CC531 /* CoreGraphics.framework in Frameworks */,
-				DC0DB02E17A42A32006CC531 /* UIKit.framework in Frameworks */,
+				DC0DB06417A42B8F006CC531 /* FacebookSDK.framework in Frameworks */,
 				DC0DB02A17A42A32006CC531 /* Foundation.framework in Frameworks */,
+				DC0DB06217A42B67006CC531 /* libsqlite3.dylib in Frameworks */,
+				DC0DB07217A42BEC006CC531 /* libz.dylib in Frameworks */,
+				DC0DB07417A42BF5006CC531 /* MobileCoreServices.framework in Frameworks */,
+				DC0DB07817A42C03006CC531 /* QuartzCore.framework in Frameworks */,
+				DC0DB07617A42BFD006CC531 /* Security.framework in Frameworks */,
+				DC0DB06C17A42BD4006CC531 /* Social.framework in Frameworks */,
+				DC0DB07A17A42C36006CC531 /* SystemConfiguration.framework in Frameworks */,
+				DC0DB02E17A42A32006CC531 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,9 +133,10 @@
 		DC0DB01D17A42A32006CC531 = {
 			isa = PBXGroup;
 			children = (
+				DC0DB08D17A42DBA006CC531 /* Libraries */,
 				DC0DB02F17A42A32006CC531 /* Hiddin */,
-				DC0DB05117A42A32006CC531 /* HiddinTests */,
 				DC0DB02817A42A32006CC531 /* Frameworks */,
+				DC0DB05117A42A32006CC531 /* HiddinTests */,
 				DC0DB02717A42A32006CC531 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -103,6 +153,17 @@
 		DC0DB02817A42A32006CC531 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DC0DB07917A42C36006CC531 /* SystemConfiguration.framework */,
+				DC0DB07717A42C03006CC531 /* QuartzCore.framework */,
+				DC0DB07517A42BFD006CC531 /* Security.framework */,
+				DC0DB07317A42BF5006CC531 /* MobileCoreServices.framework */,
+				DC0DB07117A42BEC006CC531 /* libz.dylib */,
+				DC0DB06F17A42BE4006CC531 /* CFNetwork.framework */,
+				DC0DB06D17A42BDF006CC531 /* AdSupport.framework */,
+				DC0DB06B17A42BD4006CC531 /* Social.framework */,
+				DC0DB06917A42BC7006CC531 /* Accounts.framework */,
+				DC0DB06317A42B8F006CC531 /* FacebookSDK.framework */,
+				DC0DB06117A42B66006CC531 /* libsqlite3.dylib */,
 				DC0DB02917A42A32006CC531 /* Foundation.framework */,
 				DC0DB02B17A42A32006CC531 /* CoreGraphics.framework */,
 				DC0DB02D17A42A32006CC531 /* UIKit.framework */,
@@ -114,12 +175,14 @@
 		DC0DB02F17A42A32006CC531 /* Hiddin */ = {
 			isa = PBXGroup;
 			children = (
-				DC0DB03817A42A32006CC531 /* AppDelegate.h */,
-				DC0DB03917A42A32006CC531 /* AppDelegate.m */,
 				DC0DB03B17A42A32006CC531 /* Main_iPhone.storyboard */,
 				DC0DB03E17A42A32006CC531 /* Main_iPad.storyboard */,
-				DC0DB04117A42A32006CC531 /* ViewController.h */,
-				DC0DB04217A42A32006CC531 /* ViewController.m */,
+				DC0DB03817A42A32006CC531 /* AppDelegate.h */,
+				DC0DB03917A42A32006CC531 /* AppDelegate.m */,
+				DC0DB08E17A42DD1006CC531 /* MenuViewController.h */,
+				DC0DB08F17A42DD1006CC531 /* MenuViewController.m */,
+				DC0DB08317A42D60006CC531 /* SplashViewController.h */,
+				DC0DB08417A42D60006CC531 /* SplashViewController.m */,
 				DC0DB04417A42A32006CC531 /* Images.xcassets */,
 				DC0DB03017A42A32006CC531 /* Supporting Files */,
 			);
@@ -129,6 +192,8 @@
 		DC0DB03017A42A32006CC531 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DC0DB06517A42BB6006CC531 /* FacebookSDKResources.bundle */,
+				DC0DB06617A42BB6006CC531 /* FBUserSettingsViewResources.bundle */,
 				DC0DB03117A42A32006CC531 /* Hiddin-Info.plist */,
 				DC0DB03217A42A32006CC531 /* InfoPlist.strings */,
 				DC0DB03517A42A32006CC531 /* main.m */,
@@ -153,6 +218,35 @@
 				DC0DB05417A42A32006CC531 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DC0DB08C17A42DB3006CC531 /* JASidePanels */ = {
+			isa = PBXGroup;
+			children = (
+				DC0DB08617A42DAF006CC531 /* JASidePanelController.h */,
+				DC0DB08717A42DAF006CC531 /* JASidePanelController.m */,
+				DC0DB08817A42DAF006CC531 /* UIViewController+JASidePanel.h */,
+				DC0DB08917A42DAF006CC531 /* UIViewController+JASidePanel.m */,
+			);
+			name = JASidePanels;
+			sourceTree = "<group>";
+		};
+		DC0DB08D17A42DBA006CC531 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				DC0DB08C17A42DB3006CC531 /* JASidePanels */,
+				DC0DB09417A42E12006CC531 /* Reachability */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		DC0DB09417A42E12006CC531 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				DC0DB09117A42E0F006CC531 /* Reachability.h */,
+				DC0DB09217A42E0F006CC531 /* Reachability.m */,
+			);
+			name = Reachability;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,9 +325,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC0DB04017A42A32006CC531 /* Main_iPad.storyboard in Resources */,
+				DC0DB07B17A42C4C006CC531 /* Main_iPhone.storyboard in Resources */,
+				DC0DB07C17A42C4C006CC531 /* Main_iPad.storyboard in Resources */,
 				DC0DB04517A42A32006CC531 /* Images.xcassets in Resources */,
-				DC0DB03D17A42A32006CC531 /* Main_iPhone.storyboard in Resources */,
+				DC0DB06717A42BB6006CC531 /* FacebookSDKResources.bundle in Resources */,
+				DC0DB06817A42BB6006CC531 /* FBUserSettingsViewResources.bundle in Resources */,
 				DC0DB03417A42A32006CC531 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,9 +349,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC0DB04317A42A32006CC531 /* ViewController.m in Sources */,
+				DC0DB08B17A42DAF006CC531 /* UIViewController+JASidePanel.m in Sources */,
+				DC0DB09017A42DD1006CC531 /* MenuViewController.m in Sources */,
 				DC0DB03A17A42A32006CC531 /* AppDelegate.m in Sources */,
+				DC0DB09317A42E0F006CC531 /* Reachability.m in Sources */,
 				DC0DB03617A42A32006CC531 /* main.m in Sources */,
+				DC0DB08A17A42DAF006CC531 /* JASidePanelController.m in Sources */,
+				DC0DB08517A42D60006CC531 /* SplashViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +488,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Hiddin/Hiddin-Prefix.pch";
 				INFOPLIST_FILE = "Hiddin/Hiddin-Info.plist";
@@ -401,6 +505,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Hiddin/Hiddin-Prefix.pch";
 				INFOPLIST_FILE = "Hiddin/Hiddin-Info.plist";
