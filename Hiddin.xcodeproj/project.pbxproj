@@ -20,7 +20,6 @@
 		DC0DB05617A42A32006CC531 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DC0DB05417A42A32006CC531 /* InfoPlist.strings */; };
 		DC0DB05817A42A32006CC531 /* HiddinTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0DB05717A42A32006CC531 /* HiddinTests.m */; };
 		DC0DB06217A42B67006CC531 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0DB06117A42B66006CC531 /* libsqlite3.dylib */; };
-		DC0DB06417A42B8F006CC531 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0DB06317A42B8F006CC531 /* FacebookSDK.framework */; };
 		DC0DB06717A42BB6006CC531 /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DC0DB06517A42BB6006CC531 /* FacebookSDKResources.bundle */; };
 		DC0DB06817A42BB6006CC531 /* FBUserSettingsViewResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DC0DB06617A42BB6006CC531 /* FBUserSettingsViewResources.bundle */; };
 		DC0DB06A17A42BC7006CC531 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0DB06917A42BC7006CC531 /* Accounts.framework */; };
@@ -39,6 +38,8 @@
 		DC0DB08B17A42DAF006CC531 /* UIViewController+JASidePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0DB08917A42DAF006CC531 /* UIViewController+JASidePanel.m */; };
 		DC0DB09017A42DD1006CC531 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0DB08F17A42DD1006CC531 /* MenuViewController.m */; };
 		DC0DB09317A42E0F006CC531 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0DB09217A42E0F006CC531 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DC0DB09617A4373A006CC531 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0DB09517A4373A006CC531 /* FacebookSDK.framework */; };
+		DC0DB09917A44084006CC531 /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0DB09817A44084006CC531 /* ContentViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,7 +72,6 @@
 		DC0DB05517A42A32006CC531 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DC0DB05717A42A32006CC531 /* HiddinTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HiddinTests.m; sourceTree = "<group>"; };
 		DC0DB06117A42B66006CC531 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		DC0DB06317A42B8F006CC531 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		DC0DB06517A42BB6006CC531 /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FacebookSDKResources.bundle; sourceTree = "<group>"; };
 		DC0DB06617A42BB6006CC531 /* FBUserSettingsViewResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBUserSettingsViewResources.bundle; sourceTree = "<group>"; };
 		DC0DB06917A42BC7006CC531 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -93,6 +93,9 @@
 		DC0DB08F17A42DD1006CC531 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		DC0DB09117A42E0F006CC531 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		DC0DB09217A42E0F006CC531 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		DC0DB09517A4373A006CC531 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		DC0DB09717A44084006CC531 /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
+		DC0DB09817A44084006CC531 /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +107,6 @@
 				DC0DB06E17A42BDF006CC531 /* AdSupport.framework in Frameworks */,
 				DC0DB07017A42BE4006CC531 /* CFNetwork.framework in Frameworks */,
 				DC0DB02C17A42A32006CC531 /* CoreGraphics.framework in Frameworks */,
-				DC0DB06417A42B8F006CC531 /* FacebookSDK.framework in Frameworks */,
 				DC0DB02A17A42A32006CC531 /* Foundation.framework in Frameworks */,
 				DC0DB06217A42B67006CC531 /* libsqlite3.dylib in Frameworks */,
 				DC0DB07217A42BEC006CC531 /* libz.dylib in Frameworks */,
@@ -114,6 +116,7 @@
 				DC0DB06C17A42BD4006CC531 /* Social.framework in Frameworks */,
 				DC0DB07A17A42C36006CC531 /* SystemConfiguration.framework in Frameworks */,
 				DC0DB02E17A42A32006CC531 /* UIKit.framework in Frameworks */,
+				DC0DB09617A4373A006CC531 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +156,7 @@
 		DC0DB02817A42A32006CC531 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DC0DB09517A4373A006CC531 /* FacebookSDK.framework */,
 				DC0DB07917A42C36006CC531 /* SystemConfiguration.framework */,
 				DC0DB07717A42C03006CC531 /* QuartzCore.framework */,
 				DC0DB07517A42BFD006CC531 /* Security.framework */,
@@ -162,7 +166,6 @@
 				DC0DB06D17A42BDF006CC531 /* AdSupport.framework */,
 				DC0DB06B17A42BD4006CC531 /* Social.framework */,
 				DC0DB06917A42BC7006CC531 /* Accounts.framework */,
-				DC0DB06317A42B8F006CC531 /* FacebookSDK.framework */,
 				DC0DB06117A42B66006CC531 /* libsqlite3.dylib */,
 				DC0DB02917A42A32006CC531 /* Foundation.framework */,
 				DC0DB02B17A42A32006CC531 /* CoreGraphics.framework */,
@@ -183,6 +186,8 @@
 				DC0DB08F17A42DD1006CC531 /* MenuViewController.m */,
 				DC0DB08317A42D60006CC531 /* SplashViewController.h */,
 				DC0DB08417A42D60006CC531 /* SplashViewController.m */,
+				DC0DB09717A44084006CC531 /* ContentViewController.h */,
+				DC0DB09817A44084006CC531 /* ContentViewController.m */,
 				DC0DB04417A42A32006CC531 /* Images.xcassets */,
 				DC0DB03017A42A32006CC531 /* Supporting Files */,
 			);
@@ -353,6 +358,7 @@
 				DC0DB09017A42DD1006CC531 /* MenuViewController.m in Sources */,
 				DC0DB03A17A42A32006CC531 /* AppDelegate.m in Sources */,
 				DC0DB09317A42E0F006CC531 /* Reachability.m in Sources */,
+				DC0DB09917A44084006CC531 /* ContentViewController.m in Sources */,
 				DC0DB03617A42A32006CC531 /* main.m in Sources */,
 				DC0DB08A17A42DAF006CC531 /* JASidePanelController.m in Sources */,
 				DC0DB08517A42D60006CC531 /* SplashViewController.m in Sources */,
@@ -495,6 +501,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Hiddin/Hiddin-Prefix.pch";
 				INFOPLIST_FILE = "Hiddin/Hiddin-Info.plist";
+				OTHER_LDFLAGS = "-ObjC ";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -512,6 +519,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Hiddin/Hiddin-Prefix.pch";
 				INFOPLIST_FILE = "Hiddin/Hiddin-Info.plist";
+				OTHER_LDFLAGS = "-ObjC ";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -576,6 +584,7 @@
 				DC0DB05D17A42A32006CC531 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DC0DB05E17A42A32006CC531 /* Build configuration list for PBXNativeTarget "HiddinTests" */ = {
 			isa = XCConfigurationList;
@@ -584,6 +593,7 @@
 				DC0DB06017A42A32006CC531 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

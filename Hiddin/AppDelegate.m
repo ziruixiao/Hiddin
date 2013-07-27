@@ -13,6 +13,7 @@ NSString *const FBSessionStateChangedNotification =
 
 @implementation AppDelegate
 @synthesize MyPhotos,databasePath,dirPaths,docsDir;
+@synthesize loggedInUser;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -90,6 +91,20 @@ NSString *const FBSessionStateChangedNotification =
     NSLog(@"The local database has been closed.");
 }
 
+#pragma mark Facebook Commands
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    // attempt to extract a token from the url
+    return [FBAppCall handleOpenURL:url
+                  sourceApplication:sourceApplication
+                    fallbackHandler:^(FBAppCall *call) {
+                        NSLog(@"In fallback handler");
+                    }];
+}
+
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -109,12 +124,20 @@ NSString *const FBSessionStateChangedNotification =
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    // FBSample logic
+    // Call the 'activateApp' method to log an app event for use in analytics and advertising reporting.
+    [FBAppEvents activateApp];
+    
+    // FBSample logic
+    // We need to properly handle activation of the application with regards to SSO
+    //  (e.g., returning from iOS 6.0 authorization dialog or from fast app switching).
+    [FBAppCall handleDidBecomeActive];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [FBSession.activeSession close];
 }
 
 @end

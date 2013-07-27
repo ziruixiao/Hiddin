@@ -31,6 +31,8 @@ extern NSString *const FBSessionStateChangedNotification;
 
 @property (strong, nonatomic) UIWindow *window;
 
+@property (strong, nonatomic) id<FBGraphUser> loggedInUser;
+
 //SQLite database methods
 - (void)openDB;
 - (void)closeDB;

@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import <Social/Social.h>
 
+
 @interface MenuViewController : JASidePanelController <UIGestureRecognizerDelegate,UIAlertViewDelegate>
 
 @property (strong,nonatomic) AppDelegate *appDelegate;

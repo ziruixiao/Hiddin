@@ -13,8 +13,5 @@
 
 @property (strong,nonatomic) AppDelegate *appDelegate;
 
-- (IBAction)authButtonAction;
-- (void)showFBLogin;
-- (void)moveToDefault;
 
 @end

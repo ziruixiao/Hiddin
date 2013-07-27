@@ -7,6 +7,7 @@
 //
 
 #import "MenuViewController.h"
+#import "SplashViewController.h"
 
 @interface MenuViewController ()
 
@@ -50,7 +51,7 @@
     NetworkStatus netStatus = [reach currentReachabilityStatus];
     if (netStatus == NotReachable) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Internet Connection"
-                                                        message:@"AnyCloud requires an internet connection. Please connect and try again." delegate:nil cancelButtonTitle: @"Dismiss"
+                                                        message:@"Hiddin requires an internet connection. Please connect and try again." delegate:nil cancelButtonTitle: @"Dismiss"
                                               otherButtonTitles:nil];
         [alert show];
         
@@ -60,26 +61,8 @@
          */
         
     } else {
-        
-        if (![FBSession openActiveSessionWithAllowLoginUI:NO]) {
-
-        } else {
-
-        }
-    
-        //IF A FACEBOOK LOGIN EXISTS, GO TO THIS PAGE
-        if (!FBSession.activeSession.accessTokenData.accessToken) {
-            /*show not facebook login
-            ModalIntroViewController *modalIntroViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"modalIntroViewController"];
-            [self setCenterPanel:modalIntroViewController];
-             */
-        
-        } else {
-            /*show active viewcontroller
-            centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"defaultViewController"];
-            [self setCenterPanel:centerViewController];
-             */
-        }
+            SplashViewController *splashViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"splashViewController"];
+            [self setCenterPanel:splashViewController];
         
     }
 }
