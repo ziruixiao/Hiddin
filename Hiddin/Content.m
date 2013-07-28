@@ -15,7 +15,7 @@
     sqlite3 *MyContent;
 }
 
-@synthesize contentID,contentType,contentTimestamp,contentUserID,contentFromID,contentFromName,contentImageURL,contentActive,contentSorting,contentLink;
+@synthesize contentID,contentType,contentTimestamp,contentUserID,contentFromID,contentFromName,contentImageURL,contentActive,contentSorting,contentLink,contentDescription;
 
 - (void)insertContent:(Content*)newContent
 {
@@ -23,7 +23,7 @@
     MyContent = [appDelegate MyContent];
     
     sqlite3_stmt *statement;
-    NSString *querySQL = [NSString stringWithFormat:@"INSERT INTO local (id,type,timestamp,userID,fromID,fromName,imageURL,active,sorting,lastupdate,link) VALUES (\"%@\",\"%@\",%i,\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",%i,\"%@\")",newContent.contentID,newContent.contentType,newContent.contentTimestamp,newContent.contentUserID,newContent.contentFromID,newContent.contentFromName,newContent.contentImageURL,newContent.contentActive,newContent.contentSorting,newContent.contentTimestamp,newContent.contentLink];
+    NSString *querySQL = [NSString stringWithFormat:@"INSERT INTO local (id,type,timestamp,userID,fromID,fromName,imageURL,active,sorting,lastupdate,link,description) VALUES (\"%@\",\"%@\",%i,\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",%i,\"%@\",\"%@\")",newContent.contentID,newContent.contentType,newContent.contentTimestamp,newContent.contentUserID,newContent.contentFromID,newContent.contentFromName,newContent.contentImageURL,newContent.contentActive,newContent.contentSorting,newContent.contentTimestamp,newContent.contentLink,newContent.contentDescription];
     const char *query_stmt = [querySQL UTF8String];
     
     if (sqlite3_prepare_v2(MyContent,query_stmt,-1,&statement,NULL) == SQLITE_OK) {
@@ -95,6 +95,10 @@
             //field 10: currently: 'link'
             temp = [temp initWithUTF8String:(const char*) sqlite3_column_text(statement,10)];
             newContent.contentLink = temp;
+            
+            //field 11: currently: 'description'
+            temp = [temp initWithUTF8String:(const char*) sqlite3_column_text(statement,11)];
+            newContent.contentDescription = temp;
             
         } else {
             NSLog(@"%s SQL error '%s' (%1d)",query_stmt,sqlite3_errmsg(MyContent),sqlite3_errcode(MyContent));

@@ -21,6 +21,7 @@
 @property (strong,nonatomic) NSString* contentActive; //whether or not this content is actually shown
 @property (strong,nonatomic) NSString* contentSorting; //the field used to process this after it's sorted
 @property (strong,nonatomic) NSString* contentLink; //the link of the story, used for Facebook workaround
+@property (strong,nonatomic) NSString* contentDescription; //the description of the content
 
 //lastupdate field in the back
 

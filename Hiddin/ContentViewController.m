@@ -44,20 +44,20 @@
     [super viewDidLoad];
     self.appDelegate = [[UIApplication sharedApplication] delegate];
     
-    //[self getAllTaggedFacebookPhotos];
+    [self getAllTaggedFacebookPhotos];
     
-    self.toolContent = [[Content alloc] init];
-    self.content = [NSMutableArray array];
-    [toolContent getCurrentContent:self.content withType:@"photo_tagged"];
-    self.selectedIndex = 0;
+    //self.toolContent = [[Content alloc] init];
+    //self.content = [NSMutableArray array];
+    //[toolContent getCurrentContent:self.content withType:@"photo_tagged"];
+    //self.selectedIndex = 0;
     
-    [self reloadImageView];
+    //[self reloadImageView];
 	// Do any additional setup after loading the view.
     
-    [self addButtons];
+    //[self addButtons];
     
     
-    //[self getTimeLine];
+    [self getTimeLine];
      
 }
 
@@ -99,7 +99,7 @@
 // To really see the difference between "will show" and "did show" it is helpful
 // to set the animation transistion to a longer time.
 
-- (void) didShowMTPopupWindow:(MTPopupWindow*)sender {
+- (void)didShowMTPopupWindow:(MTPopupWindow*)sender {
     [[[UIAlertView alloc] initWithTitle:@"MTPopupWindow Delegate"
                                 message:@"MTPopupWindow Showed"
                                delegate:self
@@ -107,7 +107,7 @@
                       otherButtonTitles:nil] show];
 }
 
-- (void) didCloseMTPopupWindow:(MTPopupWindow*)sender {
+- (void)didCloseMTPopupWindow:(MTPopupWindow*)sender {
     [[[UIAlertView alloc] initWithTitle:@"MTPopupWindow Delegate"
                                 message:@"MTPopupWindow Closed"
                                delegate:self
@@ -115,15 +115,18 @@
                       otherButtonTitles:nil] show];
 }
 
-
-
 - (IBAction)deletePressed:(id)sender
 {
     //MTPopupWindow *popup = [[MTPopupWindow alloc] init];
     //popup.delegate = self;
     //[popup show];
     [self.view bringSubviewToFront:self.topView];
-    [MTPopupWindow showWindowWithHTMLFile:self.toolContent.contentLink insideView:self.topView];
+    //[MTPopupWindow showWindowWithHTMLFile:self.toolContent.contentLink insideView:self.topView];
+    
+    MTPopupWindow *popup = [[MTPopupWindow alloc] init];
+    popup.usesSafari = YES;
+    popup.fileName = self.toolContent.contentLink;
+    [popup showInView:self.topView];
     
     [self performPublishAction:^{
         NSLog(@"Access token is: %@",[FBSession activeSession].accessTokenData.accessToken);
@@ -172,8 +175,6 @@
     }];
 
 }
-
-
 
 - (IBAction)laterPressed:(id)sender
 {
@@ -287,7 +288,7 @@
 {
     //tagged photos
     [FBRequestConnection startWithGraphPath:@"me/photos?limit=10000"
-                                 parameters:[NSDictionary dictionaryWithObject:@"id,created_time,from,images,source,link" forKey:@"fields"]
+                                 parameters:[NSDictionary dictionaryWithObject:@"id,created_time,from,images,source,link,name" forKey:@"fields"]
                                  HTTPMethod:@"GET"
                           completionHandler:^(FBRequestConnection *connection, id result, NSError *error){
                               if (!error) {
@@ -323,6 +324,7 @@
                                       newContent.contentActive = @"yes";
                                       newContent.contentSorting = @"none";
                                       newContent.contentLink = [imageData objectForKey:@"link"];
+                                      newContent.contentDescription = [imageData objectForKey:@"name"];
                                       
                                       if (![newContent alreadyExists:newContent.contentID]) {
                                           [newContent insertContent:newContent];
@@ -358,8 +360,10 @@
                  
                  NSMutableDictionary *parameters =
                  [[NSMutableDictionary alloc] init];
-                 [parameters setObject:@"20" forKey:@"count"];
+                 [parameters setObject:@"200" forKey:@"count"];
                  [parameters setObject:@"1" forKey:@"include_entities"];
+                 [parameters setObject:@"true" forKey:@"include_rts"];
+                 [parameters setObject:@"false" forKey:@"trim_user"];
                  
                  SLRequest *postRequest = [SLRequest
                                            requestForServiceType:SLServiceTypeTwitter
@@ -376,7 +380,59 @@
                                          JSONObjectWithData:responseData
                                          options:NSJSONReadingMutableLeaves
                                          error:&error];
-                      NSLog(@"%@",twitterDictionary);
+                      //NSLog(@"%@",twitterDictionary);
+                      
+                      NSLog(@"count is %i",[twitterDictionary count]);
+                      for (NSDictionary *tweetData in twitterDictionary) {
+                          Content *newContent = [[Content alloc] init];
+                          if ([[tweetData objectForKey:@"entities"] objectForKey:@"media"]) { //there's media attached
+                              newContent.contentType = @"tweet_media";
+                              newContent.contentImageURL = [[[[tweetData objectForKey:@"entities"] objectForKey:@"media"] objectAtIndex:0] objectForKey:@"media_url"];
+                              
+                          } else {
+                              newContent.contentType = @"tweet_text";
+                              newContent.contentImageURL = @"none";
+                          }
+                          
+                          
+                          NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+                          NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+                          [dateFormatter setLocale:usLocale];
+                          [dateFormatter setDateStyle:NSDateFormatterLongStyle];
+                          [dateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
+                          
+                          [dateFormatter setDateFormat: @"EEE MMM dd HH:mm:ss Z yyyy"];
+                          
+                          NSDate *date = [dateFormatter dateFromString:[tweetData objectForKey:@"created_at"]];
+                          
+                          newContent.contentTimestamp = [date timeIntervalSince1970]/1;
+                          
+                          newContent.contentID = [tweetData objectForKey:@"id_str"];
+                          
+                          if ([tweetData objectForKey:@"retweeted_status"]) {
+                              newContent.contentFromID = [[tweetData objectForKey:@"retweeted_status"] objectForKey:@"id_str"];
+                              newContent.contentFromName = [[[tweetData objectForKey:@"retweeted_status"] objectForKey:@"user"] objectForKey:@"screen_name"];
+                              newContent.contentLink = [NSString stringWithFormat:@"http://twitter.com/%@/status/%@",newContent.contentFromName,newContent.contentFromID];
+                          } else {
+                              
+                              newContent.contentFromID = [[tweetData objectForKey:@"user"] objectForKey:@"id_str"];
+                              newContent.contentFromName = [[tweetData objectForKey:@"user"] objectForKey:@"screen_name"];
+                              newContent.contentLink = [NSString stringWithFormat:@"http://twitter.com/%@/status/%@",newContent.contentFromName,newContent.contentID];
+                          }
+                          
+                          newContent.contentDescription = [[tweetData objectForKey:@"text"] stringByReplacingOccurrencesOfString:@"\"" withString:@"*"];
+                          newContent.contentActive = @"yes";
+                          newContent.contentSorting = @"none";
+                          
+                          newContent.contentUserID = twitterAccount.identifier;
+                          
+                          if (![newContent alreadyExists:newContent.contentID]) {
+                              [newContent insertContent:newContent];
+                          }
+                          
+                      }
+                      
+                      
                       /*
                       if (self.dataSource.count != 0) {
                           dispatch_async(dispatch_get_main_queue(), ^{
