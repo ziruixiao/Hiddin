@@ -44,6 +44,11 @@
 		DC0DB09E17A455F2006CC531 /* MyContent.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = DC0DB09D17A455F2006CC531 /* MyContent.sqlite */; };
 		DC2530DC17A4D94C0048D5B4 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC2530DB17A4D94C0048D5B4 /* MessageUI.framework */; };
 		DC2530DF17A4DB390048D5B4 /* MTPopupWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2530DE17A4DB390048D5B4 /* MTPopupWindow.m */; };
+		DC2530E217A4FB760048D5B4 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2530E117A4FB760048D5B4 /* LeftViewController.m */; };
+		DC2530E617A4FEDD0048D5B4 /* hiddin_left_instagram@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC2530E317A4FEDD0048D5B4 /* hiddin_left_instagram@2x.png */; };
+		DC2530E717A4FEDD0048D5B4 /* hiddin_left_twitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC2530E417A4FEDD0048D5B4 /* hiddin_left_twitter@2x.png */; };
+		DC2530E817A4FEDD0048D5B4 /* hiddin_left_facebook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC2530E517A4FEDD0048D5B4 /* hiddin_left_facebook@2x.png */; };
+		DC2530EC17A503EB0048D5B4 /* hiddin_trash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC2530EB17A503EB0048D5B4 /* hiddin_trash@2x.png */; };
 		DC264B3717A47EB1008973D7 /* hiddin_later_A@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC264B3117A47EB1008973D7 /* hiddin_later_A@2x.png */; };
 		DC264B3817A47EB1008973D7 /* hiddin_later_B@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC264B3217A47EB1008973D7 /* hiddin_later_B@2x.png */; };
 		DC264B3917A47EB1008973D7 /* hiddin_delete_A@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC264B3317A47EB1008973D7 /* hiddin_delete_A@2x.png */; };
@@ -118,6 +123,12 @@
 		DC2530DB17A4D94C0048D5B4 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		DC2530DD17A4DB390048D5B4 /* MTPopupWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTPopupWindow.h; sourceTree = "<group>"; };
 		DC2530DE17A4DB390048D5B4 /* MTPopupWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTPopupWindow.m; sourceTree = "<group>"; };
+		DC2530E017A4FB760048D5B4 /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
+		DC2530E117A4FB760048D5B4 /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
+		DC2530E317A4FEDD0048D5B4 /* hiddin_left_instagram@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_left_instagram@2x.png"; sourceTree = "<group>"; };
+		DC2530E417A4FEDD0048D5B4 /* hiddin_left_twitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_left_twitter@2x.png"; sourceTree = "<group>"; };
+		DC2530E517A4FEDD0048D5B4 /* hiddin_left_facebook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_left_facebook@2x.png"; sourceTree = "<group>"; };
+		DC2530EB17A503EB0048D5B4 /* hiddin_trash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_trash@2x.png"; sourceTree = "<group>"; };
 		DC264B3117A47EB1008973D7 /* hiddin_later_A@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_later_A@2x.png"; sourceTree = "<group>"; };
 		DC264B3217A47EB1008973D7 /* hiddin_later_B@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_later_B@2x.png"; sourceTree = "<group>"; };
 		DC264B3317A47EB1008973D7 /* hiddin_delete_A@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_delete_A@2x.png"; sourceTree = "<group>"; };
@@ -223,6 +234,8 @@
 				DC0DB08F17A42DD1006CC531 /* MenuViewController.m */,
 				DC0DB08317A42D60006CC531 /* SplashViewController.h */,
 				DC0DB08417A42D60006CC531 /* SplashViewController.m */,
+				DC2530E017A4FB760048D5B4 /* LeftViewController.h */,
+				DC2530E117A4FB760048D5B4 /* LeftViewController.m */,
 				DC0DB09717A44084006CC531 /* ContentViewController.h */,
 				DC0DB09817A44084006CC531 /* ContentViewController.m */,
 				DC0DB09A17A44DEE006CC531 /* Content.h */,
@@ -299,6 +312,10 @@
 		DC264B3D17A47EB6008973D7 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DC2530EB17A503EB0048D5B4 /* hiddin_trash@2x.png */,
+				DC2530E317A4FEDD0048D5B4 /* hiddin_left_instagram@2x.png */,
+				DC2530E417A4FEDD0048D5B4 /* hiddin_left_twitter@2x.png */,
+				DC2530E517A4FEDD0048D5B4 /* hiddin_left_facebook@2x.png */,
 				DC264B3117A47EB1008973D7 /* hiddin_later_A@2x.png */,
 				DC264B3217A47EB1008973D7 /* hiddin_later_B@2x.png */,
 				DC264B3317A47EB1008973D7 /* hiddin_delete_A@2x.png */,
@@ -396,6 +413,8 @@
 				DC0DB07B17A42C4C006CC531 /* Main_iPhone.storyboard in Resources */,
 				DC264B3917A47EB1008973D7 /* hiddin_delete_A@2x.png in Resources */,
 				DC0DB07C17A42C4C006CC531 /* Main_iPad.storyboard in Resources */,
+				DC2530E617A4FEDD0048D5B4 /* hiddin_left_instagram@2x.png in Resources */,
+				DC2530E717A4FEDD0048D5B4 /* hiddin_left_twitter@2x.png in Resources */,
 				DC0DB04517A42A32006CC531 /* Images.xcassets in Resources */,
 				DC264B3C17A47EB1008973D7 /* hiddin_keep_B@2x.png in Resources */,
 				DC0DB06717A42BB6006CC531 /* FacebookSDKResources.bundle in Resources */,
@@ -406,7 +425,9 @@
 				DC264B3A17A47EB1008973D7 /* hiddin_delete_B@2x.png in Resources */,
 				DC264B3817A47EB1008973D7 /* hiddin_later_B@2x.png in Resources */,
 				DC264B3717A47EB1008973D7 /* hiddin_later_A@2x.png in Resources */,
+				DC2530EC17A503EB0048D5B4 /* hiddin_trash@2x.png in Resources */,
 				DC264B4717A481EF008973D7 /* hiddin_right_B@2x.png in Resources */,
+				DC2530E817A4FEDD0048D5B4 /* hiddin_left_facebook@2x.png in Resources */,
 				DC264B4917A481EF008973D7 /* hiddin_left_A@2x.png in Resources */,
 				DC0DB06817A42BB6006CC531 /* FBUserSettingsViewResources.bundle in Resources */,
 				DC0DB03417A42A32006CC531 /* InfoPlist.strings in Resources */,
@@ -437,6 +458,7 @@
 				DC0DB09917A44084006CC531 /* ContentViewController.m in Sources */,
 				DC0DB03617A42A32006CC531 /* main.m in Sources */,
 				DC0DB08A17A42DAF006CC531 /* JASidePanelController.m in Sources */,
+				DC2530E217A4FB760048D5B4 /* LeftViewController.m in Sources */,
 				DC0DB09C17A44DEE006CC531 /* Content.m in Sources */,
 				DC0DB08517A42D60006CC531 /* SplashViewController.m in Sources */,
 			);

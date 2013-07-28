@@ -415,6 +415,7 @@ static char ja_kvoContext;
         if (_rightPanel) {
             [self addChildViewController:_rightPanel];
             [_rightPanel didMoveToParentViewController:self];
+            [self _placeButtonForRightPanel];
         }
         if (self.state == JASidePanelRightVisible) {
             self.visiblePanel = _rightPanel;
@@ -435,6 +436,21 @@ static char ja_kvoContext;
         }
         if (!buttonController.navigationItem.leftBarButtonItem) {
             buttonController.navigationItem.leftBarButtonItem = [self leftButtonForCenterPanel];
+        }
+    }
+}
+
+- (void)_placeButtonForRightPanel {
+    if (self.rightPanel) {
+        UIViewController *buttonController = self.centerPanel;
+        if ([buttonController isKindOfClass:[UINavigationController class]]) {
+            UINavigationController *nav = (UINavigationController *)buttonController;
+            if ([nav.viewControllers count] > 0) {
+                buttonController = [nav.viewControllers objectAtIndex:0];
+            }
+        }
+        if (!buttonController.navigationItem.rightBarButtonItem) {
+            buttonController.navigationItem.rightBarButtonItem = [self rightButtonForCenterPanel];
         }
     }
 }
@@ -637,7 +653,7 @@ static char ja_kvoContext;
 
 - (void)_loadCenterPanelWithPreviousState:(JASidePanelState)previousState {
     [self _placeButtonForLeftPanel];
-    
+    [self _placeButtonForRightPanel];
     // for the multi-active style, it looks better if the new center starts out in it's fullsize and slides in
     if (self.style == JASidePanelMultipleActive) {
         switch (previousState) {
@@ -924,6 +940,7 @@ static char ja_kvoContext;
         } else if ([keyPath isEqualToString:@"viewControllers"] && object == self.centerPanel) {
             // view controllers have changed, need to replace the button
             [self _placeButtonForLeftPanel];
+            [self _placeButtonForRightPanel];
         }
     } else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
@@ -934,6 +951,10 @@ static char ja_kvoContext;
 
 - (UIBarButtonItem *)leftButtonForCenterPanel {
     return [[UIBarButtonItem alloc] initWithImage:[[self class] defaultImage] style:UIBarButtonItemStylePlain target:self action:@selector(toggleLeftPanel:)];
+}
+
+- (UIBarButtonItem *)rightButtonForCenterPanel {
+    return [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"hiddin_trash.png"] style:UIBarButtonItemStylePlain target:self action:@selector(toggleRightPanel:)];
 }
 
 - (void)showLeftPanel:(BOOL)animated {

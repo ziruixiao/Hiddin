@@ -28,7 +28,7 @@
 @implementation ContentViewController
 @synthesize appDelegate,imageView,content,selectedIndex;
 @synthesize topButton1,topButton2,topButton3,bottomButton1,bottomButton2,bottomButton3,topView;
-@synthesize toolContent;
+@synthesize toolContent,typeSelected;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,20 +44,18 @@
     [super viewDidLoad];
     self.appDelegate = [[UIApplication sharedApplication] delegate];
     
-    [self getAllTaggedFacebookPhotos];
+    //[self getAllTaggedFacebookPhotos];
+    //[self getTimeLine];
     
-    //self.toolContent = [[Content alloc] init];
-    //self.content = [NSMutableArray array];
-    //[toolContent getCurrentContent:self.content withType:@"photo_tagged"];
-    //self.selectedIndex = 0;
+    self.toolContent = [[Content alloc] init];
+    self.content = [NSMutableArray array];
+    self.typeSelected = @"tweet_media";
+    //self.typeSelected = @"photo_tagged";
     
-    //[self reloadImageView];
-	// Do any additional setup after loading the view.
-    
-    //[self addButtons];
-    
-    
-    [self getTimeLine];
+    [toolContent getCurrentContent:self.content withType:self.typeSelected];
+    self.selectedIndex = 0;
+    [self reloadImageView];
+    [self addButtons];
      
 }
 
@@ -95,10 +93,6 @@
 }
 
 #pragma mark - webview delegate methods
-
-// To really see the difference between "will show" and "did show" it is helpful
-// to set the animation transistion to a longer time.
-
 - (void)didShowMTPopupWindow:(MTPopupWindow*)sender {
     [[[UIAlertView alloc] initWithTitle:@"MTPopupWindow Delegate"
                                 message:@"MTPopupWindow Showed"
@@ -117,19 +111,24 @@
 
 - (IBAction)deletePressed:(id)sender
 {
-    //MTPopupWindow *popup = [[MTPopupWindow alloc] init];
-    //popup.delegate = self;
-    //[popup show];
-    [self.view bringSubviewToFront:self.topView];
-    //[MTPopupWindow showWindowWithHTMLFile:self.toolContent.contentLink insideView:self.topView];
+    if ([self.typeSelected isEqualToString:@"tweet_media"]) {
+        
+        [self deleteCurrentTweet];
+        
+    } else {
+        //MTPopupWindow *popup = [[MTPopupWindow alloc] init];
+        //popup.delegate = self;
+        //[popup show];
+        [self.view bringSubviewToFront:self.topView];
+        //[MTPopupWindow showWindowWithHTMLFile:self.toolContent.contentLink insideView:self.topView];
     
-    MTPopupWindow *popup = [[MTPopupWindow alloc] init];
-    popup.usesSafari = YES;
-    popup.fileName = self.toolContent.contentLink;
-    [popup showInView:self.topView];
+        MTPopupWindow *popup = [[MTPopupWindow alloc] init];
+        popup.usesSafari = YES;
+        popup.fileName = self.toolContent.contentLink;
+        [popup showInView:self.topView];
     
-    [self performPublishAction:^{
-        NSLog(@"Access token is: %@",[FBSession activeSession].accessTokenData.accessToken);
+        [self performPublishAction:^{
+            NSLog(@"Access token is: %@",[FBSession activeSession].accessTokenData.accessToken);
         /*//CODE TO DELETE A PHOTO, WORKS BUT FACEBOOK BUG, as noted on Facebook Bugs website.
          NSString *deletePath = [NSString stringWithFormat:@"%@?access_token=%@",self.toolContent.contentID,[FBSession activeSession].accessTokenData.accessToken];
          NSLog(@"%@",deletePath);
@@ -162,7 +161,7 @@
                                   NSLog(@"%@",error);
                               }
                               
-    }];
+         }];
          
          [self.toolContent updateContent:self.toolContent inField:@"sorting" toNew:@"untagged" ifInt:-1];
          */
@@ -170,10 +169,10 @@
         
         
     
-    //[self.content removeObjectAtIndex:0];
-    //[self reloadImageView];
-    }];
-
+            //[self.content removeObjectAtIndex:0];
+            //[self reloadImageView];
+        }];
+    }
 }
 
 - (IBAction)laterPressed:(id)sender
@@ -448,6 +447,59 @@
      }];
 }
 
+- (void)deleteCurrentTweet
+{
+    ACAccountStore *account = [[ACAccountStore alloc] init];
+    ACAccountType *accountType = [account
+                                  accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+    
+    [account requestAccessToAccountsWithType:accountType
+                                     options:nil completion:^(BOOL granted, NSError *error)
+     {
+         if (granted == YES)
+         {
+             NSArray *arrayOfAccounts = [account
+                                         accountsWithAccountType:accountType];
+             
+             if ([arrayOfAccounts count] > 0)
+             {
+                 ACAccount *twitterAccount = [arrayOfAccounts firstObject];
+                 
+                 NSURL *requestURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.twitter.com/1.1/statuses/destroy/%@.json",self.toolContent.contentID]];
+                 
+                 NSMutableDictionary *parameters =
+                 [[NSMutableDictionary alloc] init];
+                 [parameters setObject:self.toolContent.contentID forKey:@"id"];
+                 [parameters setObject:@"true" forKey:@"trim_user"];
+                 
+                 SLRequest *postRequest = [SLRequest
+                                           requestForServiceType:SLServiceTypeTwitter
+                                           requestMethod:SLRequestMethodPOST
+                                           URL:requestURL parameters:parameters];
+                 
+                 postRequest.account = twitterAccount;
+                 
+                 [postRequest performRequestWithHandler:
+                  ^(NSData *responseData, NSHTTPURLResponse
+                    *urlResponse, NSError *error)
+                  {
+                      NSDictionary* dictionary = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
+                      NSLog(@"%@",dictionary);
+                      
+                      if ([dictionary objectForKey:@"id_str"]) { //tweet was returned, this means that it was deleted
+                          [self.toolContent updateContent:self.toolContent inField:@"sorting" toNew:@"tweet_media_deleted" ifInt:-1];
+                          [self.content removeObjectAtIndex:0];
+                          [self reloadImageView];
+                      }
+                      
+                  }];
+             }
+         } else {
+             // Handle failure to get account access
+         }
+     }];
+
+}
 
 - (void)didReceiveMemoryWarning
 {

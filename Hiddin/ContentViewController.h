@@ -27,6 +27,8 @@
 
 @property (strong,nonatomic) Content *toolContent;
 
+@property (strong,nonatomic) NSString *typeSelected;
+
 - (void)getAllTaggedFacebookPhotos;
 - (void)getAllComments;
 
