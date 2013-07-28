@@ -11,6 +11,8 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import <CommonCrypto/CommonDigest.h>
 #import "Reachability.h"
+#import <Accounts/Accounts.h>
+#import <Social/Social.h>
 
 extern NSString *const FBSessionStateChangedNotification;
 

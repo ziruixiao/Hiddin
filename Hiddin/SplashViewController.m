@@ -44,7 +44,7 @@
     FBLoginView *loginview = [[FBLoginView alloc] init];
     
     //customize this later on
-    loginview.readPermissions = @[@"user_photos"];
+    loginview.readPermissions = @[@"user_photos",@"user_likes",@"user_checkins",@"user_groups",@"read_stream"];
     loginview.frame = CGRectOffset(loginview.frame, 5, 5);
     loginview.delegate = self;
     

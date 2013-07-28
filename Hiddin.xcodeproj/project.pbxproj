@@ -37,11 +37,13 @@
 		DC0DB08A17A42DAF006CC531 /* JASidePanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0DB08717A42DAF006CC531 /* JASidePanelController.m */; };
 		DC0DB08B17A42DAF006CC531 /* UIViewController+JASidePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0DB08917A42DAF006CC531 /* UIViewController+JASidePanel.m */; };
 		DC0DB09017A42DD1006CC531 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0DB08F17A42DD1006CC531 /* MenuViewController.m */; };
-		DC0DB09317A42E0F006CC531 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0DB09217A42E0F006CC531 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DC0DB09317A42E0F006CC531 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0DB09217A42E0F006CC531 /* Reachability.m */; };
 		DC0DB09617A4373A006CC531 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0DB09517A4373A006CC531 /* FacebookSDK.framework */; };
 		DC0DB09917A44084006CC531 /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0DB09817A44084006CC531 /* ContentViewController.m */; };
 		DC0DB09C17A44DEE006CC531 /* Content.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0DB09B17A44DEE006CC531 /* Content.m */; };
 		DC0DB09E17A455F2006CC531 /* MyContent.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = DC0DB09D17A455F2006CC531 /* MyContent.sqlite */; };
+		DC2530DC17A4D94C0048D5B4 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC2530DB17A4D94C0048D5B4 /* MessageUI.framework */; };
+		DC2530DF17A4DB390048D5B4 /* MTPopupWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2530DE17A4DB390048D5B4 /* MTPopupWindow.m */; };
 		DC264B3717A47EB1008973D7 /* hiddin_later_A@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC264B3117A47EB1008973D7 /* hiddin_later_A@2x.png */; };
 		DC264B3817A47EB1008973D7 /* hiddin_later_B@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC264B3217A47EB1008973D7 /* hiddin_later_B@2x.png */; };
 		DC264B3917A47EB1008973D7 /* hiddin_delete_A@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC264B3317A47EB1008973D7 /* hiddin_delete_A@2x.png */; };
@@ -113,6 +115,9 @@
 		DC0DB09A17A44DEE006CC531 /* Content.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Content.h; sourceTree = "<group>"; };
 		DC0DB09B17A44DEE006CC531 /* Content.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Content.m; sourceTree = "<group>"; };
 		DC0DB09D17A455F2006CC531 /* MyContent.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = MyContent.sqlite; sourceTree = "<group>"; };
+		DC2530DB17A4D94C0048D5B4 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		DC2530DD17A4DB390048D5B4 /* MTPopupWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTPopupWindow.h; sourceTree = "<group>"; };
+		DC2530DE17A4DB390048D5B4 /* MTPopupWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTPopupWindow.m; sourceTree = "<group>"; };
 		DC264B3117A47EB1008973D7 /* hiddin_later_A@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_later_A@2x.png"; sourceTree = "<group>"; };
 		DC264B3217A47EB1008973D7 /* hiddin_later_B@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_later_B@2x.png"; sourceTree = "<group>"; };
 		DC264B3317A47EB1008973D7 /* hiddin_delete_A@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_delete_A@2x.png"; sourceTree = "<group>"; };
@@ -136,16 +141,17 @@
 				DC0DB06E17A42BDF006CC531 /* AdSupport.framework in Frameworks */,
 				DC0DB07017A42BE4006CC531 /* CFNetwork.framework in Frameworks */,
 				DC0DB02C17A42A32006CC531 /* CoreGraphics.framework in Frameworks */,
+				DC0DB09617A4373A006CC531 /* FacebookSDK.framework in Frameworks */,
 				DC0DB02A17A42A32006CC531 /* Foundation.framework in Frameworks */,
 				DC0DB06217A42B67006CC531 /* libsqlite3.dylib in Frameworks */,
 				DC0DB07217A42BEC006CC531 /* libz.dylib in Frameworks */,
+				DC2530DC17A4D94C0048D5B4 /* MessageUI.framework in Frameworks */,
 				DC0DB07417A42BF5006CC531 /* MobileCoreServices.framework in Frameworks */,
 				DC0DB07817A42C03006CC531 /* QuartzCore.framework in Frameworks */,
 				DC0DB07617A42BFD006CC531 /* Security.framework in Frameworks */,
 				DC0DB06C17A42BD4006CC531 /* Social.framework in Frameworks */,
 				DC0DB07A17A42C36006CC531 /* SystemConfiguration.framework in Frameworks */,
 				DC0DB02E17A42A32006CC531 /* UIKit.framework in Frameworks */,
-				DC0DB09617A4373A006CC531 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +192,7 @@
 		DC0DB02817A42A32006CC531 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DC2530DB17A4D94C0048D5B4 /* MessageUI.framework */,
 				DC0DB09517A4373A006CC531 /* FacebookSDK.framework */,
 				DC0DB07917A42C36006CC531 /* SystemConfiguration.framework */,
 				DC0DB07717A42C03006CC531 /* QuartzCore.framework */,
@@ -272,6 +279,8 @@
 		DC0DB08D17A42DBA006CC531 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				DC2530DD17A4DB390048D5B4 /* MTPopupWindow.h */,
+				DC2530DE17A4DB390048D5B4 /* MTPopupWindow.m */,
 				DC0DB08C17A42DB3006CC531 /* JASidePanels */,
 				DC0DB09417A42E12006CC531 /* Reachability */,
 			);
@@ -421,6 +430,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC0DB08B17A42DAF006CC531 /* UIViewController+JASidePanel.m in Sources */,
+				DC2530DF17A4DB390048D5B4 /* MTPopupWindow.m in Sources */,
 				DC0DB09017A42DD1006CC531 /* MenuViewController.m in Sources */,
 				DC0DB03A17A42A32006CC531 /* AppDelegate.m in Sources */,
 				DC0DB09317A42E0F006CC531 /* Reachability.m in Sources */,

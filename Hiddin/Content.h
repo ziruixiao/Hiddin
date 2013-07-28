@@ -20,6 +20,7 @@
 @property (strong,nonatomic) NSString* contentImageURL; //the url of the image associated with this content
 @property (strong,nonatomic) NSString* contentActive; //whether or not this content is actually shown
 @property (strong,nonatomic) NSString* contentSorting; //the field used to process this after it's sorted
+@property (strong,nonatomic) NSString* contentLink; //the link of the story, used for Facebook workaround
 
 //lastupdate field in the back
 

@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 #import "Content.h"
+#import "MTPopupWindow.h"
 
-@interface ContentViewController : UIViewController
+@interface ContentViewController : UIViewController <MTPopupWindowDelegate>
 
 @property (strong,nonatomic) AppDelegate *appDelegate;
 @property (strong,nonatomic) IBOutlet UIImageView *imageView;
@@ -22,10 +23,13 @@
 @property (strong,nonatomic) IBOutlet UIButton *bottomButton1;
 @property (strong,nonatomic) IBOutlet UIButton *bottomButton2;
 @property (strong,nonatomic) IBOutlet UIButton *bottomButton3;
+@property (strong,nonatomic) IBOutlet UIView *topView;
 
 @property (strong,nonatomic) Content *toolContent;
 
 - (void)getAllTaggedFacebookPhotos;
+- (void)getAllComments;
+
 - (void)reloadImageView;
 
 - (IBAction)deletePressed:(id)sender;
