@@ -72,8 +72,9 @@
 {
     //update the number which should be shown somewhere
     
-    NSString *newContentID = (((Content*)[self.content objectAtIndex:selectedIndex]).contentImageURL);
-    NSData *data = [NSData dataWithContentsOfURL: [NSURL URLWithString:newContentID]];
+    NSString *newContentURL = (((Content*)[self.content objectAtIndex:selectedIndex]).contentImageURL);
+    NSString *newContentID = (((Content*)[self.content objectAtIndex:selectedIndex]).contentID);
+    NSData *data = [NSData dataWithContentsOfURL: [NSURL URLWithString:newContentURL]];
     self.toolContent.contentID = newContentID;
     self.imageView.image = [UIImage imageWithData: data];
 }
@@ -81,6 +82,46 @@
 - (IBAction)deletePressed:(id)sender
 {
     
+    [self performPublishAction:^{
+        
+        /*//CODE TO DELETE A PHOTO, WORKS BUT FACEBOOK BUG, as noted on Facebook Bugs website.
+         NSString *deletePath = [NSString stringWithFormat:@"%@?access_token=%@",self.toolContent.contentID,[FBSession activeSession].accessTokenData.accessToken];
+         NSLog(@"%@",deletePath);
+         [FBRequestConnection startWithGraphPath:deletePath
+                                      parameters:nil
+                                      HTTPMethod:@"DELETE"
+                               completionHandler:^(FBRequestConnection *connection, id result, NSError *error){
+                                        if (!error) {
+                                            NSLog(@"Results: %@", result);
+         
+                                        } else {
+                                            NSLog(@"%@",error);
+                                        }
+         }];*/
+        
+        /*//CODE TO DELETE A TAG, WORKS BUT FACEBOOK BUG, as noted on StackOverflow
+    NSString *deletePath = [NSString stringWithFormat:@"%@/tags/%@?access_token=%@",self.toolContent.contentID,self.appDelegate.loggedInUser.id,[FBSession activeSession].accessTokenData.accessToken];
+        NSLog(@"%@",deletePath);
+        [FBRequestConnection startWithGraphPath:deletePath
+                                 parameters:nil
+                                 HTTPMethod:@"DELETE"
+                          completionHandler:^(FBRequestConnection *connection, id result, NSError *error){
+                              if (!error) {
+                                  NSLog(@"Results: %@", result);
+                                  
+                              } else {
+                                  NSLog(@"%@",error);
+                              }
+                              
+    }];*/
+        
+        
+        
+    [self.toolContent updateContent:self.toolContent inField:@"sorting" toNew:@"untagged" ifInt:-1];
+    [self.content removeObjectAtIndex:0];
+    [self reloadImageView];
+    }];
+
 }
 
 - (IBAction)laterPressed:(id)sender
@@ -116,6 +157,25 @@
         selectedIndex++;
     }
     [self reloadImageView];
+}
+
+- (void) performPublishAction:(void (^)(void)) action {
+    // we defer request for permission to post to the moment of post, then we check for the permission
+    if ([FBSession.activeSession.permissions indexOfObject:@"publish_stream"] == NSNotFound ||
+        [FBSession.activeSession.permissions indexOfObject:@"publish_actions"] == NSNotFound) {
+        // if we don't already have the permission, then we request it now
+        [FBSession.activeSession requestNewPublishPermissions:@[@"publish_stream",@"publish_actions"]
+                                              defaultAudience:FBSessionDefaultAudienceFriends
+                                            completionHandler:^(FBSession *session, NSError *error) {
+                                                if (!error) {
+                                                    action();
+                                                }
+                                                //For this example, ignore errors (such as if user cancels).
+                                            }];
+    } else {
+        action();
+    }
+    
 }
 
 - (void)getAllTaggedFacebookPhotos
