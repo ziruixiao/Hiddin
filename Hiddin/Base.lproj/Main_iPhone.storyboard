@@ -37,10 +37,10 @@
             </objects>
             <point key="canvasLocation" x="-71" y="711"/>
         </scene>
-        <!--Table View Controller - Root View Controller-->
+        <!--Content Table View Controller - Root View Controller-->
         <scene sceneID="aDW-u7-poY">
             <objects>
-                <tableViewController storyboardIdentifier="contentTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kjS-lV-Mmz" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="contentTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kjS-lV-Mmz" customClass="ContentTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="RNu-Wv-1Vp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

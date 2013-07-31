@@ -61,8 +61,9 @@
     
     //[self getAllTaggedFacebookPhotos];
     //[self getTimeLine];
-    //[self getAllPosts];
+    [self getAllPosts];
     
+    /*
     self.toolContent = [[Content alloc] init];
     self.content = [NSMutableArray array];
     //self.typeSelected = @"photo_tagged";
@@ -71,7 +72,7 @@
     self.selectedIndex = 0;
     [self reloadImageView];
     [self addButtons];
-    
+    */
 }
 
 - (void)addButtons
@@ -306,13 +307,13 @@
 - (void)getAllPosts
 {
     //user posts that are applicable
-    [FBRequestConnection startWithGraphPath:@"me/posts?limit=10000"
+    [FBRequestConnection startWithGraphPath:@"me/posts?limit=100"
                                  parameters:nil
                                  HTTPMethod:@"GET"
                           completionHandler:^(FBRequestConnection *connection, id result, NSError *error){
                               if (!error) {
                                   NSArray* postArray = [result objectForKey:@"data"]; //array of dictionaries
-                                  
+                                  NSLog(@"%@",result);
                                   NSLog(@"count is %i",[postArray count]);
                                   for (NSDictionary *postData in postArray) {
                                       if (!(([[postData objectForKey:@"status_type"] isEqualToString:@"wall_post"] ||
@@ -322,7 +323,7 @@
                                           [[postData objectForKey:@"status_type"] isEqualToString:@"published_story"]) || [postData objectForKey:@"message"])) {
                                           continue; //ignore these types of stories
                                       }
-                                      NSLog(@"%@",[postData objectForKey:@"story"]);
+                                      //NSLog(@"%@",[postData objectForKey:@"story"]);
                                       /*
                                       Content *newContent = [[Content alloc] init];
                                       newContent.contentUserID = self.appDelegate.loggedInUser.id;
@@ -347,6 +348,19 @@
                                   /*=
                                    
                                    for each dictionary in this array
+                                        PAGE LIKES
+                                            objectForKey:application => objectForKey:name == "Pages"
+                                        APPROVED FRIEND
+                                            objectForKey:status_type == "approved_friend"
+                                        STATUS LIKES
+                                            objectForKey:story contains "likes a status."
+                                        WALL POSTS
+                                            objectForKey:status_type == "wall_post"
+                                        NEW PHOTOS
+                                            objectForKey:status_type == "added_photos"
+                                        NEW FRIEND
+                                            objectForKey:status_type == "approved_friend"
+                                   
                                         objectForKey:id is the post ID, comes in the form of userid_postid. separate by _?
 
                                         objectForKey:type is almost always "status"? it is for changing phone numbers, status_type just isn't shown for these
@@ -384,7 +398,7 @@
 {
     //tagged photos
     [FBRequestConnection startWithGraphPath:@"me/photos?limit=10000"
-                                 parameters:[NSDictionary dictionaryWithObject:@"id,created_time,from,images,source,link,name" forKey:@"fields"]
+                                 parameters:[NSDictionary dictionaryWithObject:@"id,created_time,from,images,source,link,name,picture" forKey:@"fields"]
                                  HTTPMethod:@"GET"
                           completionHandler:^(FBRequestConnection *connection, id result, NSError *error){
                               if (!error) {
@@ -421,7 +435,7 @@
                                       newContent.contentSorting = @"none";
                                       newContent.contentLink = [imageData objectForKey:@"link"];
                                       newContent.contentDescription = [imageData objectForKey:@"name"];
-                                      
+                                      newContent.contentThumbnailURL = [imageData objectForKey:@"picture"];
                                       if (![newContent alreadyExists:newContent.contentID]) {
                                           [newContent insertContent:newContent];
                                       }
