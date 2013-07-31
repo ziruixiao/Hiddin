@@ -67,6 +67,10 @@
 		DC264B4917A481EF008973D7 /* hiddin_left_A@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC264B4317A481EF008973D7 /* hiddin_left_A@2x.png */; };
 		DCF9E12A17A9725C00377705 /* JZSwipeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF9E12917A9725C00377705 /* JZSwipeCell.m */; };
 		DCF9E12D17A9729200377705 /* ExampleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF9E12C17A9729200377705 /* ExampleCell.m */; };
+		DCF9E13217A9C1CE00377705 /* hiddin_keep_C@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCF9E12F17A9C1CE00377705 /* hiddin_keep_C@2x.png */; };
+		DCF9E13317A9C1CE00377705 /* hiddin_delete_C@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCF9E13017A9C1CE00377705 /* hiddin_delete_C@2x.png */; };
+		DCF9E13417A9C1CE00377705 /* hiddin_later_C@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCF9E13117A9C1CE00377705 /* hiddin_later_C@2x.png */; };
+		DCF9E13817A9CBC100377705 /* hiddin_left_reload@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCF9E13717A9CBC100377705 /* hiddin_left_reload@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -158,6 +162,10 @@
 		DCF9E12917A9725C00377705 /* JZSwipeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZSwipeCell.m; sourceTree = "<group>"; };
 		DCF9E12B17A9729200377705 /* ExampleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleCell.h; sourceTree = "<group>"; };
 		DCF9E12C17A9729200377705 /* ExampleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleCell.m; sourceTree = "<group>"; };
+		DCF9E12F17A9C1CE00377705 /* hiddin_keep_C@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_keep_C@2x.png"; sourceTree = "<group>"; };
+		DCF9E13017A9C1CE00377705 /* hiddin_delete_C@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_delete_C@2x.png"; sourceTree = "<group>"; };
+		DCF9E13117A9C1CE00377705 /* hiddin_later_C@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_later_C@2x.png"; sourceTree = "<group>"; };
+		DCF9E13717A9CBC100377705 /* hiddin_left_reload@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_left_reload@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -339,6 +347,10 @@
 		DC264B3D17A47EB6008973D7 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DCF9E13717A9CBC100377705 /* hiddin_left_reload@2x.png */,
+				DCF9E12F17A9C1CE00377705 /* hiddin_keep_C@2x.png */,
+				DCF9E13017A9C1CE00377705 /* hiddin_delete_C@2x.png */,
+				DCF9E13117A9C1CE00377705 /* hiddin_later_C@2x.png */,
 				DC19A08F17A5C11500BC784C /* hiddin_nav@2x.png */,
 				DC2530EB17A503EB0048D5B4 /* hiddin_trash@2x.png */,
 				DC2530E317A4FEDD0048D5B4 /* hiddin_left_instagram@2x.png */,
@@ -438,6 +450,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC264B4517A481EF008973D7 /* hiddin_all_A@2x.png in Resources */,
+				DCF9E13317A9C1CE00377705 /* hiddin_delete_C@2x.png in Resources */,
 				DC0DB07B17A42C4C006CC531 /* Main_iPhone.storyboard in Resources */,
 				DC264B3917A47EB1008973D7 /* hiddin_delete_A@2x.png in Resources */,
 				DC0DB07C17A42C4C006CC531 /* Main_iPad.storyboard in Resources */,
@@ -457,9 +470,12 @@
 				DC2530EC17A503EB0048D5B4 /* hiddin_trash@2x.png in Resources */,
 				DC264B4717A481EF008973D7 /* hiddin_right_B@2x.png in Resources */,
 				DC2530E817A4FEDD0048D5B4 /* hiddin_left_facebook@2x.png in Resources */,
+				DCF9E13217A9C1CE00377705 /* hiddin_keep_C@2x.png in Resources */,
+				DCF9E13817A9CBC100377705 /* hiddin_left_reload@2x.png in Resources */,
 				DC264B4917A481EF008973D7 /* hiddin_left_A@2x.png in Resources */,
 				DC0DB06817A42BB6006CC531 /* FBUserSettingsViewResources.bundle in Resources */,
 				DC0DB03417A42A32006CC531 /* InfoPlist.strings in Resources */,
+				DCF9E13417A9C1CE00377705 /* hiddin_later_C@2x.png in Resources */,
 				DC264B4617A481EF008973D7 /* hiddin_right_A@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

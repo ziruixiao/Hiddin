@@ -34,8 +34,7 @@
 
 @property (strong, nonatomic) IBOutlet UIView *activeView;
 
-- (void)getAllTaggedFacebookPhotos;
-- (void)getAllPosts;
+
 
 - (void)reloadImageView;
 

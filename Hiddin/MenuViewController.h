@@ -15,4 +15,7 @@
 
 @property (strong,nonatomic) AppDelegate *appDelegate;
 
+- (void)getAllTaggedFacebookPhotos;
+- (void)getAllPosts;
+- (void)getTimeLine;
 @end

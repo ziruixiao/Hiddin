@@ -159,7 +159,7 @@
     MyContent = [appDelegate MyContent];
     sqlite3_stmt *statement;
     
-    NSString *querySQL = [NSString stringWithFormat: @"SELECT * FROM local WHERE type=\"%@\" ORDER BY lastupdate DESC",selectedType];
+    NSString *querySQL = [NSString stringWithFormat: @"SELECT * FROM local WHERE type=\"%@\" AND sorting='none' ORDER BY lastupdate DESC",selectedType];
     
     const char *query_stmt = [querySQL UTF8String];
     

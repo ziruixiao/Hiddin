@@ -17,8 +17,9 @@
 
 @property (strong,nonatomic) AppDelegate *appDelegate;
 @property (strong,nonatomic) NSMutableArray *content;
-@property int selectedIndex;
 @property (strong,nonatomic) Content *toolContent;
 @property (strong,nonatomic) NSString *typeSelected;
+
+@property (strong,nonatomic) NSString *action;
 
 @end

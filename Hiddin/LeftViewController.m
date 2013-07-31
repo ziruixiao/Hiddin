@@ -48,7 +48,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -61,6 +61,9 @@
             return 2;
             break;
         case 2:
+            return 2;
+            break;
+        case 3:
             return 2;
             break;
         default:
@@ -80,6 +83,9 @@
             break;
         case 2:
             return @"Words";
+            break;
+        case 3:
+            return @"Load Content";
             break;
         default:
             return @"";
@@ -112,10 +118,6 @@
                     cell.imageView.image = [UIImage imageNamed:@"hiddin_left_facebook.png"];
                     cell.textLabel.text = @"Tagged Photos";
                     break; }
-                 /*case 2: {
-                    cell.imageView.image = [UIImage imageNamed:@"hiddin_left_instagram.png"];
-                    cell.textLabel.text = @"My Photos";
-                    break; }*/
             }
             break; }
         case 2: {
@@ -123,15 +125,25 @@
                 case 0: {
                     cell.imageView.image = [UIImage imageNamed:@"hiddin_left_twitter.png"];
                     cell.textLabel.text = @"Tweets";
+                    
                     break; }
                 case 1: {
                     cell.imageView.image = [UIImage imageNamed:@"hiddin_left_facebook.png"];
                     cell.textLabel.text = @"Posts";
                     break; }
-                /*case 2: {
-                    cell.imageView.image = [UIImage imageNamed:@"hiddin_left_instagram.png"];
-                    cell.textLabel.text = @"Comments";
-                    break; }*/
+            }
+            break; }
+        case 3: {
+            switch (indexPath.row) {
+                case 0: {
+                    cell.imageView.image = [UIImage imageNamed:@"hiddin_left_reload.png"];
+                    cell.textLabel.text = @"Load Twitter";
+                    
+                    break; }
+                case 1: {
+                    cell.imageView.image = [UIImage imageNamed:@"hiddin_left_reload.png"];
+                    cell.textLabel.text = @"Load Facebook";
+                    break; }
             }
             break; }
         default:
@@ -158,7 +170,7 @@
         [self.sidePanelController showCenterPanelAnimated:YES];
         
     } else if (indexPath.section == 2) {
-        UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"contentTableNavigationController"];
+        UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"contentTextNavigationController"];
         
         ContentTableViewController *tempContentVC = (ContentTableViewController*)[tempContentNC.viewControllers objectAtIndex:0];
         
@@ -170,6 +182,12 @@
         [self.sidePanelController setCenterPanel:tempContentNC];
         
         [self.sidePanelController showCenterPanelAnimated:YES];
+    } else if (indexPath.section == 3) {
+        if (indexPath.row == 0) {
+            [((MenuViewController*)self.sidePanelController) getTimeLine];
+        } else if (indexPath.row == 1) {
+            [((MenuViewController*)self.sidePanelController) getAllTaggedFacebookPhotos];
+        }
     }
 }
 

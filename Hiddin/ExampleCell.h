@@ -12,4 +12,7 @@
 
 + (NSString*)cellID;
 
+@property (strong,nonatomic) NSString *cellContentID;
+
+
 @end

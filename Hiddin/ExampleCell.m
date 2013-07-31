@@ -10,13 +10,15 @@
 
 @implementation ExampleCell
 
+@synthesize cellContentID;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
 	self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
 		// set the 4 icons for the 4 swipe types
-		self.imageSet = SwipeCellImageSetMake([UIImage imageNamed:@"hiddin_keep_A"], [UIImage imageNamed:@"blinky"], [UIImage imageNamed:@"hiddin_delete_A"], [UIImage imageNamed:@"balloons"]);
-		self.colorSet = SwipeCellColorSetMake([UIColor greenColor], [UIColor redColor], [UIColor brownColor], [UIColor orangeColor]);
+		self.imageSet = SwipeCellImageSetMake([UIImage imageNamed:@"hiddin_keep_C"], [UIImage imageNamed:@"hiddin_keep_C"], [UIImage imageNamed:@"hiddin_delete_C"], [UIImage imageNamed:@"hiddin_later_C"]);
+		self.colorSet = SwipeCellColorSetMake([UIColor greenColor], [UIColor greenColor], [UIColor redColor], [UIColor yellowColor]);
     }
     return self;
 }

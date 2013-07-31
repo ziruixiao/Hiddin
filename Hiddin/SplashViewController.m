@@ -84,9 +84,16 @@
     //self.profilePic.profileID = user.id;
     self.appDelegate.loggedInUser = user;
     
+    
     UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"contentTextNavigationController"];
     
     ContentTableViewController *tempContentVC = (ContentTableViewController*)[tempContentNC.viewControllers objectAtIndex:0];
+    
+    /*
+    UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"contentNavigationController"];
+    
+    ContentViewController *tempContentVC = (ContentViewController*)[tempContentNC.viewControllers objectAtIndex:0];
+    */
     tempContentVC.typeSelected = @"tweet_text";
     [self.sidePanelController setCenterPanel:tempContentNC];
     
