@@ -26,9 +26,9 @@
 @end
 
 @implementation ContentViewController
-@synthesize appDelegate,imageView,content,selectedIndex;
+@synthesize appDelegate,content,selectedIndex;
 @synthesize topButton1,topButton2,topButton3,bottomButton1,bottomButton2,bottomButton3,topView;
-@synthesize toolContent,typeSelected;
+@synthesize toolContent,typeSelected,imageDownloadQueue,images,activeView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,19 +44,34 @@
     [super viewDidLoad];
     self.appDelegate = [[UIApplication sharedApplication] delegate];
     
-    //[self getAllTaggedFacebookPhotos];
-    //[self getTimeLine];
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"hiddin_nav.png"]];
     
+    self.imageDownloadQueue = [[NSOperationQueue alloc] init];
+    self.imageDownloadQueue.maxConcurrentOperationCount = 5;
+    
+    self.images = [NSMutableDictionary dictionary];
+    
+    AsynchImageView *currentImage = [[AsynchImageView alloc] initWithFrame:self.activeView.frame];
+    currentImage.tag = 123;
+    currentImage.contentMode = UIViewContentModeScaleAspectFit;
+    
+    [self.activeView addSubview:currentImage];
+    
+    //[self getAllTaggedFacebookPhotos];
+    
+    
+    //[self getTimeLine];
+    //[self getAllPosts];
     self.toolContent = [[Content alloc] init];
     self.content = [NSMutableArray array];
-    self.typeSelected = @"tweet_media";
+    self.typeSelected = @"photo_tagged";
     //self.typeSelected = @"photo_tagged";
     
     [toolContent getCurrentContent:self.content withType:self.typeSelected];
     self.selectedIndex = 0;
     [self reloadImageView];
     [self addButtons];
-     
+    
 }
 
 - (void)addButtons
@@ -83,13 +98,56 @@
 - (void)reloadImageView
 {
     //update the number which should be shown somewhere
-    
     NSString *newContentURL = (((Content*)[self.content objectAtIndex:selectedIndex]).contentImageURL);
     NSString *newContentID = (((Content*)[self.content objectAtIndex:selectedIndex]).contentID);
-    NSData *data = [NSData dataWithContentsOfURL: [NSURL URLWithString:newContentURL]];
     self.toolContent.contentID = newContentID;
     self.toolContent.contentLink = (((Content*)[self.content objectAtIndex:selectedIndex]).contentLink);
-    self.imageView.image = [UIImage imageWithData: data];
+    
+    //////////////////START QUEUE STUFF/////////////////
+    //Part 1) Populate the URLs that I need.
+    NSMutableArray *neededURLs = [NSMutableArray arrayWithCapacity:5];
+    for (int x = selectedIndex; x <= (selectedIndex+2); x++) {
+        if ((x >=0) && (x < self.content.count)) {
+            [neededURLs addObject:(((Content*)[self.content objectAtIndex:x]).contentImageURL)];
+        }
+    }
+    for (int x1 = selectedIndex-1; x1 <= (selectedIndex-2); x1--) {
+        if ((x1 >=0) && (x1 < self.content.count)) {
+            [neededURLs addObject:(((Content*)[self.content objectAtIndex:x1]).contentImageURL)];
+        }
+    }
+    
+    //Part 2) Get rid of the dictionary items that don't conform to these URLs
+    NSArray *currentImagesKeys = [self.images allKeys];
+    for (int y = 0; y < currentImagesKeys.count; y++) {
+        if (![neededURLs containsObject:[currentImagesKeys objectAtIndex:y]]) { //if the url is not in the ones that we need
+            [self.images removeObjectForKey:[currentImagesKeys objectAtIndex:y]];
+        }
+    }
+    
+    //Part 4) Check the rest of the necessary, in order of the current, then next ones first
+    for (int z = 0; z < neededURLs.count; z++) {
+        NSString *tempURL = [neededURLs objectAtIndex:z];
+        if ([tempURL isEqualToString:newContentURL]) {
+            AsynchImageView *currentImage = (AsynchImageView*)[self.view viewWithTag:123];
+            currentImage.urlString = tempURL;
+
+            [self.images setObject:currentImage forKey:tempURL];
+            [currentImage loadImageFromNetwork:self.imageDownloadQueue];
+        } else {
+            if (![self.images objectForKey:tempURL]) {
+                [self.images setObject:[[AsynchImageView alloc] initWithURLString:tempURL andFrame:self.activeView.frame] forKey:tempURL];
+                [[self.images objectForKey:tempURL] loadImageFromNetwork:self.imageDownloadQueue];
+            }
+        }
+    }
+    
+
+    ////////////////////////////////////////////////////
+    
+    //self.activeImageView = [self.images objectForKey:newContentURL];
+
+    
 }
 
 #pragma mark - webview delegate methods
@@ -116,15 +174,30 @@
         [self deleteCurrentTweet];
         
     } else {
+        /*
+        NSURL *fanPageURL = [NSURL URLWithString:@"fb://profile/210227459693"];
+        
+        if (![[UIApplication sharedApplication] openURL: fanPageURL]) {
+            //fanPageURL failed to open.  Open the website in Safari instead
+            NSURL *webURL = [NSURL URLWithString:@"http://www.facebook.com/pages/Blackout-Labs/210227459693"];
+            [[UIApplication sharedApplication] openURL: webURL];
+        }
+        */
+
+        
         //MTPopupWindow *popup = [[MTPopupWindow alloc] init];
         //popup.delegate = self;
         //[popup show];
+        
+        
+        //THIS WAY WORKS, THE USER MUST FIRST SIGN IN USING UIWEBVIEW M.FACEBOOK.COM, THEN EVERYTHING WILL WORK AFTER
         [self.view bringSubviewToFront:self.topView];
         //[MTPopupWindow showWindowWithHTMLFile:self.toolContent.contentLink insideView:self.topView];
     
         MTPopupWindow *popup = [[MTPopupWindow alloc] init];
         popup.usesSafari = YES;
         popup.fileName = self.toolContent.contentLink;
+        //popup.fileName = @"http://m.facebook.com";
         [popup showInView:self.topView];
     
         [self performPublishAction:^{
@@ -230,50 +303,74 @@
     
 }
 
-- (void)getAllComments
+- (void)getAllPosts
 {
-    //tagged photos
-    [FBRequestConnection startWithGraphPath:@"me/photos?limit=10000"
-                                 parameters:[NSDictionary dictionaryWithObject:@"id,created_time,from,images,source" forKey:@"fields"]
+    //user posts that are applicable
+    [FBRequestConnection startWithGraphPath:@"me/posts?limit=10000"
+                                 parameters:nil
                                  HTTPMethod:@"GET"
                           completionHandler:^(FBRequestConnection *connection, id result, NSError *error){
                               if (!error) {
-                                  //NSLog(@"Results: %@", result);
+                                  NSArray* postArray = [result objectForKey:@"data"]; //array of dictionaries
                                   
-                                  NSArray* imageArray = [result objectForKey:@"data"]; //array of dictionaries
-                                  
-                                  NSLog(@"count is %i",[imageArray count]);
-                                  for (NSDictionary *imageData in imageArray) {
+                                  NSLog(@"count is %i",[postArray count]);
+                                  for (NSDictionary *postData in postArray) {
+                                      if (!(([[postData objectForKey:@"status_type"] isEqualToString:@"wall_post"] ||
+                                          [[postData objectForKey:@"status_type"] isEqualToString:@"mobile_status_update"] ||
+                                          [[postData objectForKey:@"status_type"] isEqualToString:@"added_photos"] ||
+                                          [[postData objectForKey:@"status_type"] isEqualToString:@"shared_story"] ||
+                                          [[postData objectForKey:@"status_type"] isEqualToString:@"published_story"]) || [postData objectForKey:@"message"])) {
+                                          continue; //ignore these types of stories
+                                      }
+                                      NSLog(@"%@",[postData objectForKey:@"story"]);
+                                      /*
                                       Content *newContent = [[Content alloc] init];
+                                      newContent.contentUserID = self.appDelegate.loggedInUser.id;
+                                      newContent.contentFromID = [[postData objectForKey:@"from"] objectForKey:@"id"];
+                                      newContent.contentFromName = [[postData objectForKey:@"from"] objectForKey:@"name"];
                                       
-                                      newContent.contentID = [imageData objectForKey:@"id"];
-                                      newContent.contentType = @"photo_tagged";
+                                      if ([postData objectForKey:@"message"]) { //rare case, probably an actual status
+                                          newContent.contentDescription = [[postData objectForKey:@"message"] stringByReplacingOccurrencesOfString:@"\"" withString:@"*"];
+                                      } else {
+                                          newContent.contentDescription = [[postData objectForKey:@"story"] stringByReplacingOccurrencesOfString:@"\"" withString:@"*"];
+                                      }
+                                      
                                       NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
                                       [dateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH:mm:ssZ"];
-                                      NSDate* date = [dateFormatter dateFromString:[imageData objectForKey:@"created_time"]];
+                                      NSDate* date = [dateFormatter dateFromString:[postData objectForKey:@"created_time"]];
                                       newContent.contentTimestamp = [date timeIntervalSince1970]/1;
-                                      newContent.contentUserID = self.appDelegate.loggedInUser.id;
-                                      newContent.contentFromID = [[imageData objectForKey:@"from"] objectForKey:@"id"];
-                                      newContent.contentFromName = [[imageData objectForKey:@"from"] objectForKey:@"name"];
+                                      */
                                       
-                                      NSArray *arrayOfURLs = [imageData objectForKey:@"images"];
-                                      for (NSDictionary *urlData in arrayOfURLs) {
-                                          if ([[urlData objectForKey:@"width"] integerValue] == 720) {
-                                              newContent.contentImageURL = [urlData objectForKey:@"source"];
-                                              break;
-                                          }
-                                      }
-                                      if (!newContent.contentImageURL) {
-                                          newContent.contentImageURL = [imageData objectForKey:@"source"];
-                                      }
-                                      
-                                      newContent.contentActive = @"yes";
-                                      newContent.contentSorting = @"none";
-                                      
-                                      if (![newContent alreadyExists:newContent.contentID]) {
-                                          [newContent insertContent:newContent];
-                                      }
                                   }
+                                  
+                                  
+                                  /*=
+                                   
+                                   for each dictionary in this array
+                                        objectForKey:id is the post ID, comes in the form of userid_postid. separate by _?
+
+                                        objectForKey:type is almost always "status"? it is for changing phone numbers, status_type just isn't shown for these
+                                        objectForKey:story shows what's seen byeveryone else
+                                        objectForKey:status_type is "wall_post" when I post happy birthday on people's walls
+                                                     status_type is "added_photos" for pictures that I post
+                                                     status_type is "approved_friend" for friend requests
+                                   
+                                        objectForKey:link will take you to the Facebook photo viewer or the link attached.
+                                        objectForKey:picture means that it's actually a picture
+                                        objectForKey:object_id check to make sure that this doesn't already exist in the datbabse
+                                   
+                                        objectForKey:comments is a dictionary, objectForKey:data is an array
+                                                for each dictionary in this array, it's a comment
+                                                objectForKey:id is the comment id, which is POST_COMMENTID
+                                                objectForKey:created_time is the FB time
+                                                objectForKey:can_remove is true or false, this might be important?
+                                                objectForKey:from => objectForKey:name is  the user's name
+                                                objectForKey:from => objectForKey:id is that user's id. check to see if this is me.
+                                   
+                                   facebook.com/USERID/posts/POSTID takes you to the story
+                                   */
+                                  
+                                  
                                   
                               } else {
                                   NSLog(@"%@",error);
@@ -499,6 +596,12 @@
          }
      }];
 
+}
+
+- (void)dealloc
+{
+    self.images = nil;
+    self.imageDownloadQueue = nil;
 }
 
 - (void)didReceiveMemoryWarning

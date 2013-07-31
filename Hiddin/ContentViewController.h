@@ -10,11 +10,11 @@
 #import "AppDelegate.h"
 #import "Content.h"
 #import "MTPopupWindow.h"
+#import "AsynchImageView.h"
 
 @interface ContentViewController : UIViewController <MTPopupWindowDelegate>
 
 @property (strong,nonatomic) AppDelegate *appDelegate;
-@property (strong,nonatomic) IBOutlet UIImageView *imageView;
 @property (strong,nonatomic) NSMutableArray *content;
 @property int selectedIndex;
 @property (strong,nonatomic) IBOutlet UIButton *topButton1;
@@ -29,8 +29,13 @@
 
 @property (strong,nonatomic) NSString *typeSelected;
 
+@property (strong,nonatomic) NSOperationQueue *imageDownloadQueue;
+@property (strong,nonatomic) NSMutableDictionary *images;
+
+@property (strong, nonatomic) IBOutlet UIView *activeView;
+
 - (void)getAllTaggedFacebookPhotos;
-- (void)getAllComments;
+- (void)getAllPosts;
 
 - (void)reloadImageView;
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC07689617A876AD0000344D /* AsynchImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC07689217A876AD0000344D /* AsynchImageView.m */; };
+		DC07689717A876AD0000344D /* GetImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DC07689417A876AD0000344D /* GetImageOperation.m */; };
 		DC0DB02A17A42A32006CC531 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0DB02917A42A32006CC531 /* Foundation.framework */; };
 		DC0DB02C17A42A32006CC531 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0DB02B17A42A32006CC531 /* CoreGraphics.framework */; };
 		DC0DB02E17A42A32006CC531 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0DB02D17A42A32006CC531 /* UIKit.framework */; };
@@ -42,6 +44,7 @@
 		DC0DB09917A44084006CC531 /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0DB09817A44084006CC531 /* ContentViewController.m */; };
 		DC0DB09C17A44DEE006CC531 /* Content.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0DB09B17A44DEE006CC531 /* Content.m */; };
 		DC0DB09E17A455F2006CC531 /* MyContent.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = DC0DB09D17A455F2006CC531 /* MyContent.sqlite */; };
+		DC19A09017A5C11500BC784C /* hiddin_nav@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC19A08F17A5C11500BC784C /* hiddin_nav@2x.png */; };
 		DC2530DC17A4D94C0048D5B4 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC2530DB17A4D94C0048D5B4 /* MessageUI.framework */; };
 		DC2530DF17A4DB390048D5B4 /* MTPopupWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2530DE17A4DB390048D5B4 /* MTPopupWindow.m */; };
 		DC2530E217A4FB760048D5B4 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2530E117A4FB760048D5B4 /* LeftViewController.m */; };
@@ -74,6 +77,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DC07689117A876AD0000344D /* AsynchImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsynchImageView.h; sourceTree = "<group>"; };
+		DC07689217A876AD0000344D /* AsynchImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsynchImageView.m; sourceTree = "<group>"; };
+		DC07689317A876AD0000344D /* GetImageOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetImageOperation.h; sourceTree = "<group>"; };
+		DC07689417A876AD0000344D /* GetImageOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetImageOperation.m; sourceTree = "<group>"; };
 		DC0DB02617A42A32006CC531 /* Hiddin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hiddin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC0DB02917A42A32006CC531 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DC0DB02B17A42A32006CC531 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -120,6 +127,7 @@
 		DC0DB09A17A44DEE006CC531 /* Content.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Content.h; sourceTree = "<group>"; };
 		DC0DB09B17A44DEE006CC531 /* Content.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Content.m; sourceTree = "<group>"; };
 		DC0DB09D17A455F2006CC531 /* MyContent.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = MyContent.sqlite; sourceTree = "<group>"; };
+		DC19A08F17A5C11500BC784C /* hiddin_nav@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_nav@2x.png"; sourceTree = "<group>"; };
 		DC2530DB17A4D94C0048D5B4 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		DC2530DD17A4DB390048D5B4 /* MTPopupWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTPopupWindow.h; sourceTree = "<group>"; };
 		DC2530DE17A4DB390048D5B4 /* MTPopupWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTPopupWindow.m; sourceTree = "<group>"; };
@@ -238,6 +246,10 @@
 				DC2530E117A4FB760048D5B4 /* LeftViewController.m */,
 				DC0DB09717A44084006CC531 /* ContentViewController.h */,
 				DC0DB09817A44084006CC531 /* ContentViewController.m */,
+				DC07689117A876AD0000344D /* AsynchImageView.h */,
+				DC07689217A876AD0000344D /* AsynchImageView.m */,
+				DC07689317A876AD0000344D /* GetImageOperation.h */,
+				DC07689417A876AD0000344D /* GetImageOperation.m */,
 				DC0DB09A17A44DEE006CC531 /* Content.h */,
 				DC0DB09B17A44DEE006CC531 /* Content.m */,
 				DC0DB04417A42A32006CC531 /* Images.xcassets */,
@@ -312,6 +324,7 @@
 		DC264B3D17A47EB6008973D7 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DC19A08F17A5C11500BC784C /* hiddin_nav@2x.png */,
 				DC2530EB17A503EB0048D5B4 /* hiddin_trash@2x.png */,
 				DC2530E317A4FEDD0048D5B4 /* hiddin_left_instagram@2x.png */,
 				DC2530E417A4FEDD0048D5B4 /* hiddin_left_twitter@2x.png */,
@@ -419,6 +432,7 @@
 				DC264B3C17A47EB1008973D7 /* hiddin_keep_B@2x.png in Resources */,
 				DC0DB06717A42BB6006CC531 /* FacebookSDKResources.bundle in Resources */,
 				DC264B3B17A47EB1008973D7 /* hiddin_keep_A@2x.png in Resources */,
+				DC19A09017A5C11500BC784C /* hiddin_nav@2x.png in Resources */,
 				DC264B4817A481EF008973D7 /* hiddin_left_B@2x.png in Resources */,
 				DC264B4417A481EF008973D7 /* hiddin_all_B@2x.png in Resources */,
 				DC0DB09E17A455F2006CC531 /* MyContent.sqlite in Resources */,
@@ -451,6 +465,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC0DB08B17A42DAF006CC531 /* UIViewController+JASidePanel.m in Sources */,
+				DC07689617A876AD0000344D /* AsynchImageView.m in Sources */,
+				DC07689717A876AD0000344D /* GetImageOperation.m in Sources */,
 				DC2530DF17A4DB390048D5B4 /* MTPopupWindow.m in Sources */,
 				DC0DB09017A42DD1006CC531 /* MenuViewController.m in Sources */,
 				DC0DB03A17A42A32006CC531 /* AppDelegate.m in Sources */,
