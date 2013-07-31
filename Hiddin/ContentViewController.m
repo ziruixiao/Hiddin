@@ -57,14 +57,14 @@
     
     [self.activeView addSubview:currentImage];
     
+    NSLog(@"The user has selected to see this type of content: %@",self.typeSelected);
+    
     //[self getAllTaggedFacebookPhotos];
-    
-    
     //[self getTimeLine];
     //[self getAllPosts];
+    
     self.toolContent = [[Content alloc] init];
     self.content = [NSMutableArray array];
-    self.typeSelected = @"photo_tagged";
     //self.typeSelected = @"photo_tagged";
     
     [toolContent getCurrentContent:self.content withType:self.typeSelected];

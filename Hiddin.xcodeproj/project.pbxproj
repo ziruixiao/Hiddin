@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DC07689617A876AD0000344D /* AsynchImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC07689217A876AD0000344D /* AsynchImageView.m */; };
 		DC07689717A876AD0000344D /* GetImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DC07689417A876AD0000344D /* GetImageOperation.m */; };
+		DC07689A17A8A1EF0000344D /* ContentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC07689917A8A1EF0000344D /* ContentTableViewController.m */; };
 		DC0DB02A17A42A32006CC531 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0DB02917A42A32006CC531 /* Foundation.framework */; };
 		DC0DB02C17A42A32006CC531 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0DB02B17A42A32006CC531 /* CoreGraphics.framework */; };
 		DC0DB02E17A42A32006CC531 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0DB02D17A42A32006CC531 /* UIKit.framework */; };
@@ -81,6 +82,8 @@
 		DC07689217A876AD0000344D /* AsynchImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsynchImageView.m; sourceTree = "<group>"; };
 		DC07689317A876AD0000344D /* GetImageOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetImageOperation.h; sourceTree = "<group>"; };
 		DC07689417A876AD0000344D /* GetImageOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetImageOperation.m; sourceTree = "<group>"; };
+		DC07689817A8A1EF0000344D /* ContentTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentTableViewController.h; sourceTree = "<group>"; };
+		DC07689917A8A1EF0000344D /* ContentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentTableViewController.m; sourceTree = "<group>"; };
 		DC0DB02617A42A32006CC531 /* Hiddin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hiddin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC0DB02917A42A32006CC531 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DC0DB02B17A42A32006CC531 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -246,6 +249,8 @@
 				DC2530E117A4FB760048D5B4 /* LeftViewController.m */,
 				DC0DB09717A44084006CC531 /* ContentViewController.h */,
 				DC0DB09817A44084006CC531 /* ContentViewController.m */,
+				DC07689817A8A1EF0000344D /* ContentTableViewController.h */,
+				DC07689917A8A1EF0000344D /* ContentTableViewController.m */,
 				DC07689117A876AD0000344D /* AsynchImageView.h */,
 				DC07689217A876AD0000344D /* AsynchImageView.m */,
 				DC07689317A876AD0000344D /* GetImageOperation.h */,
@@ -465,6 +470,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC0DB08B17A42DAF006CC531 /* UIViewController+JASidePanel.m in Sources */,
+				DC07689A17A8A1EF0000344D /* ContentTableViewController.m in Sources */,
 				DC07689617A876AD0000344D /* AsynchImageView.m in Sources */,
 				DC07689717A876AD0000344D /* GetImageOperation.m in Sources */,
 				DC2530DF17A4DB390048D5B4 /* MTPopupWindow.m in Sources */,

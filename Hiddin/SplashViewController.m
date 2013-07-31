@@ -9,6 +9,7 @@
 #import "SplashViewController.h"
 #import "UIViewController+JASidePanel.h"
 #import "MenuViewController.h"
+#import "ContentViewController.h"
 
 @interface SplashViewController () <FBLoginViewDelegate>
 
@@ -82,7 +83,13 @@
     //self.profilePic.profileID = user.id;
     self.appDelegate.loggedInUser = user;
     
-    [self.sidePanelController setCenterPanel:[self.storyboard instantiateViewControllerWithIdentifier:@"contentNavigationController"]];
+    UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"contentNavigationController"];
+    
+    ContentViewController *tempContentVC = (ContentViewController*)[tempContentNC.viewControllers objectAtIndex:0];
+    tempContentVC.typeSelected = @"photo_tagged";
+    [self.sidePanelController setCenterPanel:tempContentNC];
+    
+    [self.sidePanelController showCenterPanelAnimated:YES];
     
     
     

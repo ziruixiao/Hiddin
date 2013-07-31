@@ -7,6 +7,10 @@
 //
 
 #import "LeftViewController.h"
+#import "MenuViewController.h"
+#import "UIViewController+JASidePanel.h"
+#import "ContentViewController.h"
+#import "ContentTableViewController.h"
 
 @interface LeftViewController ()
 
@@ -26,7 +30,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -55,10 +58,10 @@
             return 1;
             break;
         case 1:
-            return 3;
+            return 2;
             break;
         case 2:
-            return 3;
+            return 2;
             break;
         default:
             break;
@@ -91,44 +94,44 @@
     
     // Configure the cell...
     switch (indexPath.section) {
-        { case 0:
+         case 0: {
             switch (indexPath.row) {
-                { case 0:
+                 case 0: {
                     //CREATE CELL HERE
                     
                     break; }
             }
             break; }
-        { case 1:
+        case 1: {
             switch (indexPath.row) {
-                { case 0:
+                 case 0: {
                     cell.imageView.image = [UIImage imageNamed:@"hiddin_left_twitter.png"];
                     cell.textLabel.text = @"Tweeted Photos";
                     break; }
-                { case 1:
+                 case 1: {
                     cell.imageView.image = [UIImage imageNamed:@"hiddin_left_facebook.png"];
                     cell.textLabel.text = @"Tagged Photos";
                     break; }
-                { case 2:
+                 /*case 2: {
                     cell.imageView.image = [UIImage imageNamed:@"hiddin_left_instagram.png"];
                     cell.textLabel.text = @"My Photos";
-                    break; }
+                    break; }*/
             }
             break; }
-        { case 2:
+        case 2: {
             switch (indexPath.row) {
-                { case 0:
+                case 0: {
                     cell.imageView.image = [UIImage imageNamed:@"hiddin_left_twitter.png"];
                     cell.textLabel.text = @"Tweets";
                     break; }
-                { case 1:
+                case 1: {
                     cell.imageView.image = [UIImage imageNamed:@"hiddin_left_facebook.png"];
                     cell.textLabel.text = @"Posts";
                     break; }
-                { case 2:
+                /*case 2: {
                     cell.imageView.image = [UIImage imageNamed:@"hiddin_left_instagram.png"];
                     cell.textLabel.text = @"Comments";
-                    break; }
+                    break; }*/
             }
             break; }
         default:
@@ -138,53 +141,36 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    switch (indexPath.section) {
-        { case 0:
-            switch (indexPath.row) {
-                { case 0:
-                    //CREATE CELL HERE
-                    
-                    break; }
-            }
-            break; }
-        { case 1:
-            switch (indexPath.row) {
-                { case 0:
-                    //CREATE CELL HERE
-                    
-                    break; }
-                { case 1:
-                    //CREATE CELL HERE
-                    
-                    break; }
-                { case 2:
-                    //CREATE CELL HERE
-                    
-                    break; }
-            }
-            break; }
-        { case 2:
-            switch (indexPath.row) {
-                { case 0:
-                    //CREATE CELL HERE
-                    
-                    break; }
-                { case 1:
-                    //CREATE CELL HERE
-                    
-                    break; }
-                { case 2:
-                    //CREATE CELL HERE
-                    
-                    break; }
-            }
-            break; }
-        default:
-            break;
+    if (indexPath.section == 1) {
+        UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"contentNavigationController"];
+        
+        ContentViewController *tempContentVC = (ContentViewController*)[tempContentNC.viewControllers objectAtIndex:0];
+        
+        if (indexPath.row == 0) {
+            tempContentVC.typeSelected = @"tweet_media";
+        } else if (indexPath.row == 1) {
+            tempContentVC.typeSelected = @"photo_tagged";
+        }
+        [self.sidePanelController setCenterPanel:tempContentNC];
+        
+        [self.sidePanelController showCenterPanelAnimated:YES];
+        
+    } else if (indexPath.section == 2) {
+        UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"contentTableNavigationController"];
+        
+        ContentTableViewController *tempContentVC = (ContentTableViewController*)[tempContentNC.viewControllers objectAtIndex:0];
+        
+        if (indexPath.row == 0) {
+            tempContentVC.typeSelected = @"tweet_text";
+        } else if (indexPath.row == 1) {
+            tempContentVC.typeSelected = @"post_text";
+        }
+        [self.sidePanelController setCenterPanel:tempContentNC];
+        
+        [self.sidePanelController showCenterPanelAnimated:YES];
     }
-
 }
 
 /*
