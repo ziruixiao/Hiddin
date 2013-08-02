@@ -98,9 +98,38 @@
     [cell.textLabel sizeToFit];
     
     if (tableView == self.searchDisplayController.searchResultsTableView) {
-        cell.textLabel.text = ((Content*)[searchResults objectAtIndex:indexPath.row]).contentDescription;
+        
+        //attributedtext here
+        //self.searchDisplayController.searchBar.text;
+        NSString *contentText = ((Content*)[searchResults objectAtIndex:indexPath.row]).contentDescription;
+        NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] initWithString:contentText];
+        
+        UIColor *bananaColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:102/255.0 alpha:0.7];
+        NSArray *searchTerms = [self.searchDisplayController.searchBar.text componentsSeparatedByString:@" "];
+        
+        for (NSString *keyword in searchTerms) {
+            if (!([keyword isEqualToString:@" "]||[keyword isEqualToString:@""])) {
+                NSLog(@"%i",[contentText rangeOfString:keyword options:NSCaseInsensitiveSearch].location);
+                
+                NSRange range = NSMakeRange(0,contentText.length);
+                while(range.location != NSNotFound)
+                {
+                    range = [contentText rangeOfString:keyword options:NSCaseInsensitiveSearch range:range];
+                    if(range.location != NSNotFound)
+                    {
+                        [attString addAttribute:NSBackgroundColorAttributeName value:bananaColor range:NSMakeRange(range.location, keyword.length)];
+                        range = NSMakeRange(range.location + range.length, contentText.length - (range.location + range.length));
+                    }
+                }
+            }
+        }
+        
+        //[attString addAttribute:NSBackgroundColorAttributeName value:bananaColor range:NSMakeRange(0, contentText.length)];
+        
+        cell.textLabel.attributedText = attString;
         cell.cellContentID = ((Content*)[searchResults objectAtIndex:indexPath.row]).contentID;
     } else {
+        
         cell.textLabel.text = ((Content*)[self.content objectAtIndex:indexPath.row]).contentDescription;
         cell.cellContentID = ((Content*)[self.content objectAtIndex:indexPath.row]).contentID;
     }

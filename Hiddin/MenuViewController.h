@@ -18,4 +18,7 @@
 - (void)getAllTaggedFacebookPhotos;
 - (void)getAllPosts;
 - (void)getTimeLine;
+- (void)getTwitterFollowers;
+- (void)lookUpFollowersWithArray:(NSMutableArray*)arrayOfFollowers;
+
 @end

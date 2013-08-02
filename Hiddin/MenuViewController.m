@@ -68,7 +68,6 @@
     }
 }
 
-
 - (void)getAllPosts
 {
     //user posts that are applicable
@@ -324,6 +323,108 @@
      }];
 }
 
+- (void)getTwitterFollowers
+{
+    ACAccountStore *account = [[ACAccountStore alloc] init];
+    ACAccountType *accountType = [account
+                                  accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+    
+    [account requestAccessToAccountsWithType:accountType
+                                     options:nil completion:^(BOOL granted, NSError *error)
+     {
+         if (granted == YES)
+         {
+             NSArray *arrayOfAccounts = [account
+                                         accountsWithAccountType:accountType];
+             
+             if ([arrayOfAccounts count] > 0)
+             {
+                 ACAccount *twitterAccount = [arrayOfAccounts firstObject];
+                 
+                 NSURL *requestURL = [NSURL URLWithString:@"https://api.twitter.com/1.1/followers/ids.json?cursor=-1&count=5000"];
+                 
+                 NSMutableDictionary *parameters =
+                 [[NSMutableDictionary alloc] init];
+                 
+                 SLRequest *postRequest = [SLRequest
+                                           requestForServiceType:SLServiceTypeTwitter
+                                           requestMethod:SLRequestMethodGET
+                                           URL:requestURL parameters:parameters];
+                 
+                 postRequest.account = twitterAccount;
+                 __block NSMutableArray *arrayOfFollowers = [NSMutableArray array];
+                 [postRequest performRequestWithHandler:
+                  ^(NSData *responseData, NSHTTPURLResponse
+                    *urlResponse, NSError *error)
+                  {
+                      NSDictionary *twitterDictionary = [NSJSONSerialization
+                                                         JSONObjectWithData:responseData
+                                                         options:NSJSONReadingMutableLeaves
+                                                         error:&error];
+                      NSLog(@"%@",twitterDictionary);
+                      
+                      NSLog(@"count is %i",[[twitterDictionary objectForKey:@"ids"] count]);
+                      arrayOfFollowers = [twitterDictionary objectForKey:@"ids"];
+                      [self lookUpFollowersWithArray:arrayOfFollowers];
+                }];
+             }
+         } else {
+             // Handle failure to get account access
+         }
+     }];
+
+}
+
+- (void)lookUpFollowersWithArray:(NSMutableArray*)arrayOfFollowers
+{
+    ACAccountStore *account = [[ACAccountStore alloc] init];
+    ACAccountType *accountType = [account
+                                  accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+    
+    [account requestAccessToAccountsWithType:accountType
+                                     options:nil completion:^(BOOL granted, NSError *error)
+     {
+         if (granted == YES)
+         {
+             NSArray *arrayOfAccounts = [account
+                                         accountsWithAccountType:accountType];
+             
+             if ([arrayOfAccounts count] > 0)
+             {
+                 ACAccount *twitterAccount = [arrayOfAccounts firstObject];
+                 
+                 
+                 NSURL *requestURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.twitter.com/1.1/users/lookup.json?include_entities=false?user_id=%@",[arrayOfFollowers componentsJoinedByString:@","]]];
+                 
+                 
+                 
+                 NSMutableDictionary *parameters =
+                 [[NSMutableDictionary alloc] init];
+                 
+                 SLRequest *postRequest = [SLRequest
+                                           requestForServiceType:SLServiceTypeTwitter
+                                           requestMethod:SLRequestMethodPOST
+                                           URL:requestURL parameters:parameters];
+                 
+                 postRequest.account = twitterAccount;
+                 [postRequest performRequestWithHandler:
+                  ^(NSData *responseData, NSHTTPURLResponse
+                    *urlResponse, NSError *error)
+                  {
+                      NSDictionary *twitterDictionary = [NSJSONSerialization
+                                                         JSONObjectWithData:responseData
+                                                         options:NSJSONReadingMutableLeaves
+                                                         error:&error];
+                      NSLog(@"%@",twitterDictionary);
+
+                  }];
+             }
+         } else {
+             // Handle failure to get account access
+         }
+     }];
+
+}
 
 - (void)didReceiveMemoryWarning
 {

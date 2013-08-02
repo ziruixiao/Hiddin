@@ -20,6 +20,7 @@
 #import "ContentViewController.h"
 #import "MenuViewController.h"
 #import "UIViewController+JASidePanel.h"
+#import "SVProgressHUD.h"
 
 @interface ContentViewController ()
 
@@ -273,7 +274,9 @@
 
 - (IBAction)allPressed:(id)sender
 {
-    
+    //save to camera roll
+    UIImageView *currentImageView = (UIImageView*)[self.view viewWithTag:123];
+    UIImageWriteToSavedPhotosAlbum(currentImageView.image,self,@selector(thisImage:hasBeenSavedInPhotoAlbumWithError:usingContextInfo:),NULL);
 }
 
 - (IBAction)rightPressed:(id)sender
@@ -282,6 +285,17 @@
         selectedIndex++;
     }
     [self reloadImageView];
+}
+
+- (void)thisImage:(UIImage *)image hasBeenSavedInPhotoAlbumWithError:(NSError *)error usingContextInfo:(void*)ctxInfo
+{
+    if (error) {
+        //show alert that says that they need to go and enable the settings
+        [SVProgressHUD showErrorWithStatus:@"Error Saving Photo"];
+    } else {
+        //show quick notification that the image has been saved.
+        [SVProgressHUD showSuccessWithStatus:@"Photo Saved"];
+    }
 }
 
 - (void)performPublishAction:(void (^)(void)) action
@@ -344,6 +358,7 @@
                       NSLog(@"%@",dictionary);
                       
                       if ([dictionary objectForKey:@"id_str"]) { //tweet was returned, this means that it was deleted
+                          [SVProgressHUD showSuccessWithStatus:@"Photo Deleted"];
                           [self.toolContent updateContent:self.toolContent inField:@"sorting" toNew:@"tweet_media_deleted" ifInt:-1];
                           [self.content removeObjectAtIndex:self.selectedIndex];
                           [self reloadImageView];
