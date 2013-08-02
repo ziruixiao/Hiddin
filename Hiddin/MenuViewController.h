@@ -9,7 +9,7 @@
 #import "JASidePanelController.h"
 #import "AppDelegate.h"
 #import <Social/Social.h>
-
+#import "SVProgressHUD.h"
 
 @interface MenuViewController : JASidePanelController <UIGestureRecognizerDelegate,UIAlertViewDelegate>
 

@@ -11,6 +11,7 @@
 #import "MenuViewController.h"
 #import "ContentViewController.h"
 #import "ContentTableViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface SplashViewController () <FBLoginViewDelegate>
 
@@ -18,7 +19,7 @@
 
 @implementation SplashViewController
 
-@synthesize appDelegate;
+@synthesize appDelegate,buttonsContainer,fbConnectButton,twitterConnectButton;
 
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil
 {
@@ -35,6 +36,9 @@
 	// Do any additional setup after loading the view.
     appDelegate = [[UIApplication sharedApplication] delegate];
     
+    self.buttonsContainer.layer.cornerRadius = 8;
+    self.buttonsContainer.layer.masksToBounds = YES;
+    
     Reachability *reach = [Reachability reachabilityForInternetConnection];
     NetworkStatus netStatus = [reach currentReachabilityStatus];
     if (netStatus == NotReachable) {
@@ -47,16 +51,67 @@
     
     //customize this later on
     loginview.readPermissions = @[@"user_photos",@"user_likes",@"user_checkins",@"user_groups",@"read_stream"];
-    loginview.frame = CGRectOffset(loginview.frame, 5, 5);
+    loginview.frame = CGRectMake(0,0,240,60);
     loginview.delegate = self;
     
-    [self.view addSubview:loginview];
+    for (id obj in loginview.subviews)
+    {
+        if ([obj isKindOfClass:[UIButton class]])
+        {
+            UIButton * loginButton =  obj;
+            UIImage *loginImage = [UIImage imageNamed:@"hiddin_facebook_login.png"];
+            [loginButton setBackgroundImage:loginImage forState:UIControlStateNormal];
+            [loginButton setBackgroundImage:nil forState:UIControlStateSelected];
+            [loginButton setBackgroundImage:nil forState:UIControlStateHighlighted];
+            [loginButton sizeToFit];
+        }
+        if ([obj isKindOfClass:[UILabel class]])
+        {
+            UILabel * loginLabel =  obj;
+            loginLabel.text = @"";
+            loginLabel.textAlignment = NSTextAlignmentCenter;
+            loginLabel.frame = CGRectMake(0, 0, 271, 37);
+        }
+    }
+    loginview.delegate = self;
     
-    [loginview sizeToFit];
-
+    
+    
+    
+    [self.fbConnectButton addSubview:loginview];
+    
+    //[self twitterAccessGranted];
     
 }
 
+- (void)twitterAccessGranted
+{
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]){
+        UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"contentNavigationController"];
+        
+        ContentViewController *tempContentVC = (ContentViewController*)[tempContentNC.viewControllers objectAtIndex:0];
+        
+        tempContentVC.typeSelected = @"photo_tagged";
+        
+        
+        [self.sidePanelController setCenterPanel:tempContentNC];
+        
+        [self.sidePanelController showCenterPanelAnimated:YES];
+        
+    }
+    /*ACAccountStore *account = [[ACAccountStore alloc] init];
+    ACAccountType *accountType = [account
+                                  accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+    
+    [account requestAccessToAccountsWithType:accountType
+                                     options:nil completion:^(BOOL granted, NSError *error)
+     {
+         if (granted == YES)
+         {
+             [self triggerTwitterConnect:nil];
+         }
+     }];*/
+}
 
 #pragma mark - FBLoginViewDelegate
 - (void)loginViewShowingLoggedInUser:(FBLoginView*)loginView
@@ -84,17 +139,19 @@
     //self.profilePic.profileID = user.id;
     self.appDelegate.loggedInUser = user;
     
-    
+    /*
     UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"contentTextNavigationController"];
     
     ContentTableViewController *tempContentVC = (ContentTableViewController*)[tempContentNC.viewControllers objectAtIndex:0];
+    */
     
-    /*
     UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"contentNavigationController"];
     
     ContentViewController *tempContentVC = (ContentViewController*)[tempContentNC.viewControllers objectAtIndex:0];
-    */
-    tempContentVC.typeSelected = @"tweet_text";
+    
+    tempContentVC.typeSelected = @"photo_tagged";
+    
+    
     [self.sidePanelController setCenterPanel:tempContentNC];
     
     [self.sidePanelController showCenterPanelAnimated:YES];
@@ -135,6 +192,27 @@
     NSLog(@"FBLoginView encountered an error=%@", error);
 }
 
+- (IBAction)triggerTwitterConnect
+{
+    
+    UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"contentTextNavigationController"];
+    
+    ContentTableViewController *tempContentVC = (ContentTableViewController*)[tempContentNC.viewControllers objectAtIndex:0];
+    
+    /*
+     UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"contentNavigationController"];
+     
+     ContentViewController *tempContentVC = (ContentViewController*)[tempContentNC.viewControllers objectAtIndex:0];
+    */
+    tempContentVC.typeSelected = @"tweet_text";
+    
+    [((MenuViewController*)self.sidePanelController) getTimeLine];
+    
+    [self.sidePanelController setCenterPanel:tempContentNC];
+    
+    [self.sidePanelController showCenterPanelAnimated:YES];
+
+}
 
 - (void)didReceiveMemoryWarning
 {

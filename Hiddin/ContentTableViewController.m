@@ -44,9 +44,8 @@
      self.toolContent = [[Content alloc] init];
      self.content = [NSMutableArray array];
      //self.typeSelected = @"photo_tagged";
-     
+    
      [toolContent getCurrentContent:self.content withType:self.typeSelected];
-
 }
 
 - (void)didReceiveMemoryWarning

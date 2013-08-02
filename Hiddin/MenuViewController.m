@@ -9,6 +9,8 @@
 #import "MenuViewController.h"
 #import "SplashViewController.h"
 #import "Content.h"
+#import "ContentViewController.h"
+#import "ContentTableViewController.h"
 
 @interface MenuViewController ()
 
@@ -62,9 +64,23 @@
          */
         
     } else {
+        if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]){
+            UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"contentTextNavigationController"];
+            
+            ContentTableViewController *tempContentVC = (ContentTableViewController*)[tempContentNC.viewControllers objectAtIndex:0];
+            
+            tempContentVC.typeSelected = @"tweet_text";
+            
+            
+            [self setCenterPanel:tempContentNC];
+            
+            [self showCenterPanelAnimated:YES];
+            
+        }
+        else {
             SplashViewController *splashViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"splashViewController"];
             [self setCenterPanel:splashViewController];
-        
+        }
     }
 }
 
@@ -243,8 +259,9 @@
                                            requestForServiceType:SLServiceTypeTwitter
                                            requestMethod:SLRequestMethodGET
                                            URL:requestURL parameters:parameters];
-                 
                  postRequest.account = twitterAccount;
+                 
+                 
                  
                  [postRequest performRequestWithHandler:
                   ^(NSData *responseData, NSHTTPURLResponse

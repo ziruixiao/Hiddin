@@ -12,6 +12,10 @@
 @interface SplashViewController : UIViewController
 
 @property (strong,nonatomic) AppDelegate *appDelegate;
+@property (strong, nonatomic) IBOutlet UIView *buttonsContainer;
+@property (strong, nonatomic) IBOutlet UIButton *twitterConnectButton;
+@property (strong, nonatomic) IBOutlet UIView *fbConnectButton;
 
+- (IBAction)triggerTwitterConnect;
 
 @end

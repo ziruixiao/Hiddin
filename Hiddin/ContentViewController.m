@@ -64,15 +64,14 @@
     self.toolContent = [[Content alloc] init];
     self.content = [NSMutableArray array];
     //self.typeSelected = @"photo_tagged";
-    
-    [toolContent getCurrentContent:self.content withType:self.typeSelected];
-    if (self.content.count>0) {
-        self.selectedIndex = 0;
-        [self reloadImageView];
-        [self addButtons];
-    } else {
-        NSLog(@"There's nothing here!");
-    }
+        [toolContent getCurrentContent:self.content withType:self.typeSelected];
+        if (self.content.count>0) {
+            self.selectedIndex = 0;
+            [self reloadImageView];
+            [self addButtons];
+        } else {
+            NSLog(@"There's nothing here!");
+        }
     
 }
 
