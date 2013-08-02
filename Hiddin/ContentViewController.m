@@ -21,8 +21,10 @@
 #import "MenuViewController.h"
 #import "UIViewController+JASidePanel.h"
 #import "SVProgressHUD.h"
+#import "UIViewController+MJPopupViewController.h"
+#import "IntroPhotoViewController.h"
 
-@interface ContentViewController ()
+@interface ContentViewController () <MJSecondPopupDelegate>
 
 @end
 
@@ -64,6 +66,15 @@
     
     NSLog(@"The user has selected to see this type of content: %@",self.typeSelected);
     
+    if (!self.appDelegate.showIntroPhoto) {
+        
+        IntroPhotoViewController *introPhotoViewController = (IntroPhotoViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"introPhotoViewController"];
+        introPhotoViewController.delegate = self;
+        
+        [self presentPopupViewController:introPhotoViewController animationType:MJPopupViewAnimationFade];
+        
+        self.appDelegate.showIntroPhoto = NO;
+    }
     
     self.toolContent = [[Content alloc] init];
     self.content = [NSMutableArray array];
@@ -77,6 +88,9 @@
         } else {
             NSLog(@"There's nothing here!");
         }
+    
+    
+    
     
 }
 
@@ -390,6 +404,11 @@
          }
      }];
 
+}
+
+- (void)cancelButtonClicked:(IntroPhotoViewController*)introPhotoViewController
+{
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
 }
 
 - (void)dealloc

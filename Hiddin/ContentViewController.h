@@ -35,7 +35,6 @@
 @property (strong, nonatomic) IBOutlet UIView *activeView;
 
 
-
 - (void)reloadImageView;
 
 - (IBAction)deletePressed:(id)sender;

@@ -13,7 +13,7 @@ NSString *const FBSessionStateChangedNotification =
 
 @implementation AppDelegate
 @synthesize MyContent,databasePath,dirPaths,docsDir;
-@synthesize loggedInUser;
+@synthesize loggedInUser,showIntroPhoto,showIntroText;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

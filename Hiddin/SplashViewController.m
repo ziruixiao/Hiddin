@@ -178,6 +178,8 @@
     
     [((MenuViewController*)self.sidePanelController) getTimeLine];
     
+    self.appDelegate.showIntroText = YES;
+    self.appDelegate.showIntroPhoto = YES;
     [self.sidePanelController setCenterPanel:tempContentNC];
     
     [self.sidePanelController showCenterPanelAnimated:YES];

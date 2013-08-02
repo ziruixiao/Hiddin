@@ -10,11 +10,13 @@
 #import "MenuViewController.h"
 #import "UIViewController+JASidePanel.h"
 #import "Content.h"
+#import "IntroTextViewController.h"
+#import "UIViewController+MJPopupViewController.h"
 
 #define kCellTextKey @"kCellTextKey"
 #define kCellTagKey @"kCellTagKey"
 
-@interface ContentTableViewController ()
+@interface ContentTableViewController () <MJSecondPopupDelegate>
 
 @end
 
@@ -49,7 +51,18 @@
      self.content = [NSMutableArray array];
      //self.typeSelected = @"photo_tagged";
 
-        [toolContent getCurrentContent:self.content withType:self.typeSelected];
+    [toolContent getCurrentContent:self.content withType:self.typeSelected];
+    
+    if (!self.appDelegate.showIntroText) {
+        
+        IntroTextViewController *introTextViewController = (IntroTextViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"introTextViewController"];
+        introTextViewController.delegate = self;
+        
+        [self presentPopupViewController:introTextViewController animationType:MJPopupViewAnimationFade];
+        
+        self.appDelegate.showIntroPhoto = NO;
+    }
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -336,5 +349,8 @@ shouldReloadTableForSearchString:(NSString *)searchString
     
 }
 
-
+- (void)cancelButtonClicked:(IntroTextViewController*)introTextViewController
+{
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+}
 @end
