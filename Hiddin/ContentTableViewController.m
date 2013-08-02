@@ -38,14 +38,18 @@
     [super viewDidLoad];
     self.appDelegate = [[UIApplication sharedApplication] delegate];
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"hiddin_nav.png"]];
+    UIBarButtonItem *refreshItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"hiddin_nav_refresh.png"]
+                                                                    style:UIBarButtonItemStylePlain
+                                                                   target:self action:@selector(refreshData)];
+    self.navigationItem.rightBarButtonItem = refreshItem;
     
     NSLog(@"The user has selected to see this type of content: %@",self.typeSelected);
 
      self.toolContent = [[Content alloc] init];
      self.content = [NSMutableArray array];
      //self.typeSelected = @"photo_tagged";
-    
-     [toolContent getCurrentContent:self.content withType:self.typeSelected];
+
+        [toolContent getCurrentContent:self.content withType:self.typeSelected];
 }
 
 - (void)didReceiveMemoryWarning
@@ -53,6 +57,18 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)refreshData
+{
+    [SVProgressHUD showWithStatus:@"Reloading tweets..."];
+    [((MenuViewController*)self.sidePanelController) getTimeLine];
+    [SVProgressHUD dismiss];
+    self.toolContent = [[Content alloc] init];
+    self.content = [NSMutableArray array];
+
+    [toolContent getCurrentContent:self.content withType:self.typeSelected];
+}
+
 
 #pragma mark - Table view data source
 
@@ -198,7 +214,8 @@
                         }
                     }
                 } else {
-                    
+                    [self.content removeObjectAtIndex:indexPath.row];
+                    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
                 }
                 
             } else if ([self.action isEqualToString:@"delete"]) {

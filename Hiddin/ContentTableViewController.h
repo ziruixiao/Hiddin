@@ -22,4 +22,6 @@
 
 @property (strong,nonatomic) NSString *action;
 
+- (void)refreshData;
+
 @end

@@ -47,6 +47,10 @@
     
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"hiddin_nav.png"]];
     
+    UIBarButtonItem *refreshItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"hiddin_nav_refresh.png"]
+                                                             style:UIBarButtonItemStylePlain
+                                                            target:self action:@selector(refreshData)];
+    self.navigationItem.rightBarButtonItem = refreshItem;
     self.imageDownloadQueue = [[NSOperationQueue alloc] init];
     self.imageDownloadQueue.maxConcurrentOperationCount = 5;
     
@@ -65,7 +69,8 @@
     self.content = [NSMutableArray array];
     //self.typeSelected = @"photo_tagged";
         [toolContent getCurrentContent:self.content withType:self.typeSelected];
-        if (self.content.count>0) {
+    
+    if (self.content.count>0) {
             self.selectedIndex = 0;
             [self reloadImageView];
             [self addButtons];
@@ -149,6 +154,21 @@
     //self.activeImageView = [self.images objectForKey:newContentURL];
 
     
+}
+
+- (void)refreshData
+{
+    [SVProgressHUD showWithStatus:@"Reloading tweets..."];
+    [((MenuViewController*)self.sidePanelController) getTimeLine];
+    [SVProgressHUD dismiss];
+    self.toolContent = [[Content alloc] init];
+    self.content = [NSMutableArray array];
+    [toolContent getCurrentContent:self.content withType:self.typeSelected];
+    if (self.content.count>0) {
+        self.selectedIndex = 0;
+        [self reloadImageView];
+        [self addButtons];
+    }
 }
 
 #pragma mark - webview delegate methods

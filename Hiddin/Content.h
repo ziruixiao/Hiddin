@@ -30,5 +30,6 @@
 - (BOOL)updateContent:(Content*)myContent inField:(NSString*)field toNew:(NSString*)newValue ifInt:(int)integer;
 - (void)getCurrentContent:(NSMutableArray*)array withType:(NSString*)selectedType;
 - (BOOL)alreadyExists:(NSString*)myContentID;
+- (void)getMenuCounts:(int[])array;
 
 @end

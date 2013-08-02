@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Content.h"
 
 @interface LeftViewController : UITableViewController
+
+@property (strong,nonatomic) Content *toolContent;
 
 @end

@@ -449,9 +449,11 @@ static char ja_kvoContext;
                 buttonController = [nav.viewControllers objectAtIndex:0];
             }
         }
+        /*UNCOMMENT FOR A RIGHT BUTTON
         if (!buttonController.navigationItem.rightBarButtonItem) {
             buttonController.navigationItem.rightBarButtonItem = [self rightButtonForCenterPanel];
         }
+         */
     }
 }
 
@@ -683,7 +685,7 @@ static char ja_kvoContext;
 - (void)_loadLeftPanel {
     self.rightPanelContainer.hidden = YES;
     if (self.leftPanelContainer.hidden && self.leftPanel) {
-        
+        [((UITableViewController*)self.leftPanel).tableView reloadData];
         if (!_leftPanel.view.superview) {
             [self _layoutSidePanels];
             _leftPanel.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;

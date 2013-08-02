@@ -46,7 +46,7 @@
     } else {
         
     }
-    
+    /*
     FBLoginView *loginview = [[FBLoginView alloc] init];
     
     //customize this later on
@@ -79,38 +79,8 @@
     
     
     [self.fbConnectButton addSubview:loginview];
+    */
     
-    //[self twitterAccessGranted];
-    
-}
-
-- (void)twitterAccessGranted
-{
-    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]){
-        UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"contentNavigationController"];
-        
-        ContentViewController *tempContentVC = (ContentViewController*)[tempContentNC.viewControllers objectAtIndex:0];
-        
-        tempContentVC.typeSelected = @"photo_tagged";
-        
-        
-        [self.sidePanelController setCenterPanel:tempContentNC];
-        
-        [self.sidePanelController showCenterPanelAnimated:YES];
-        
-    }
-    /*ACAccountStore *account = [[ACAccountStore alloc] init];
-    ACAccountType *accountType = [account
-                                  accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-    
-    [account requestAccessToAccountsWithType:accountType
-                                     options:nil completion:^(BOOL granted, NSError *error)
-     {
-         if (granted == YES)
-         {
-             [self triggerTwitterConnect:nil];
-         }
-     }];*/
 }
 
 #pragma mark - FBLoginViewDelegate

@@ -11,6 +11,7 @@
 #import "Content.h"
 #import "ContentViewController.h"
 #import "ContentTableViewController.h"
+#import "LeftViewController.h"
 
 @interface MenuViewController ()
 
@@ -46,7 +47,7 @@
     appDelegate = [[UIApplication sharedApplication] delegate];
     [self setLeftPanel:[self.storyboard instantiateViewControllerWithIdentifier:@"leftViewController"]];
     
-    [self setRightPanel:[self.storyboard instantiateViewControllerWithIdentifier:@"rightViewController"]];
+    //[self setRightPanel:[self.storyboard instantiateViewControllerWithIdentifier:@"rightViewController"]];
 	// Do any additional setup after loading the view.
     
     

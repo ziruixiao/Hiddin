@@ -159,8 +159,24 @@
     MyContent = [appDelegate MyContent];
     sqlite3_stmt *statement;
     
-    NSString *querySQL = [NSString stringWithFormat: @"SELECT * FROM local WHERE type=\"%@\" AND sorting='none' ORDER BY lastupdate DESC",selectedType];
     
+    NSString *querySQL;
+    
+    if ([selectedType isEqualToString:@"tweet_media_later"]) {
+        selectedType = @"tweet_media";
+        querySQL = [NSString stringWithFormat: @"SELECT * FROM local WHERE type=\"%@\" AND sorting='later' ORDER BY lastupdate DESC",selectedType];
+    } else if ([selectedType isEqualToString:@"tweet_media_done"]) {
+        selectedType = @"tweet_media";
+        querySQL = [NSString stringWithFormat: @"SELECT * FROM local WHERE type=\"%@\" AND sorting='keep' ORDER BY lastupdate DESC",selectedType];
+    } else if ([selectedType isEqualToString:@"tweet_text_later"]) {
+        selectedType = @"tweet_text";
+        querySQL = [NSString stringWithFormat: @"SELECT * FROM local WHERE type=\"%@\" AND sorting='later' ORDER BY lastupdate DESC",selectedType];
+    } else if ([selectedType isEqualToString:@"tweet_text_done"]) {
+        selectedType = @"tweet_text";
+        querySQL = [NSString stringWithFormat: @"SELECT * FROM local WHERE type=\"%@\" AND sorting='keep' ORDER BY lastupdate DESC",selectedType];
+    } else {
+        querySQL = [NSString stringWithFormat: @"SELECT * FROM local WHERE type=\"%@\" AND sorting='none' ORDER BY lastupdate DESC",selectedType];
+    }
     const char *query_stmt = [querySQL UTF8String];
     
     if (sqlite3_prepare_v2(MyContent,query_stmt,-1,&statement,NULL) == SQLITE_OK) {
@@ -172,6 +188,57 @@
             temp = [[NSString alloc] initWithUTF8String:(const char*) sqlite3_column_text(statement,0)];
             [tempContent createContent:tempContent withContentID:temp];
             [array addObject:tempContent];
+            
+            
+        }
+        sqlite3_finalize(statement);
+        
+    } else {
+        NSLog(@"%s SQL error '%s' (%1d)",query_stmt,sqlite3_errmsg(MyContent),sqlite3_errcode(MyContent));
+    }
+}
+
+- (void)getMenuCounts:(int[])array
+{
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    MyContent = [appDelegate MyContent];
+    sqlite3_stmt *statement;
+    
+    NSString *querySQL = [NSString stringWithFormat:@"SELECT * FROM local WHERE type='tweet_media' OR type='tweet_text'"];
+    
+    const char *query_stmt = [querySQL UTF8String];
+    
+    if (sqlite3_prepare_v2(MyContent,query_stmt,-1,&statement,NULL) == SQLITE_OK) {
+        
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            NSString *temp;
+            NSString *temp2;
+            
+            //field 1: currently: 'type'
+            temp = [[NSString alloc] initWithUTF8String:(const char*) sqlite3_column_text(statement,1)];
+            
+            //field 8: currently: 'sorting'
+            temp2 = [[NSString alloc] initWithUTF8String:(const char*) sqlite3_column_text(statement,8)];
+            
+            
+            if ([temp isEqualToString:@"tweet_media"]) {
+                if ([temp2 isEqualToString:@"none"]) {
+                    array[0]++;
+                } else if ([temp2 isEqualToString:@"later"]) {
+                    array[1]++;
+                } else if ([temp2 isEqualToString:@"keep"]) {
+                    array[2]++;
+                }
+                
+            } else if ([temp isEqualToString:@"tweet_text"]) {
+                if ([temp2 isEqualToString:@"none"]) {
+                    array[3]++;
+                } else if ([temp2 isEqualToString:@"later"]) {
+                    array[4]++;
+                } else if ([temp2 isEqualToString:@"keep"]) {
+                    array[5]++;
+                }
+            }
             
             
         }

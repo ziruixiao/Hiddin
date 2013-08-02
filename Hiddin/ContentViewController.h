@@ -46,4 +46,5 @@
 - (IBAction)allPressed:(id)sender;
 - (IBAction)rightPressed:(id)sender;
 
+- (void)refreshData;
 @end
