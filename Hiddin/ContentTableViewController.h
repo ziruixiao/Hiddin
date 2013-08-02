@@ -13,7 +13,7 @@
 #import "AsynchImageView.h"
 #import "ExampleCell.h"
 
-@interface ContentTableViewController : UITableViewController <MTPopupWindowDelegate,JZSwipeCellDelegate>
+@interface ContentTableViewController : UITableViewController <MTPopupWindowDelegate,JZSwipeCellDelegate,UISearchBarDelegate,UISearchDisplayDelegate>
 
 @property (strong,nonatomic) AppDelegate *appDelegate;
 @property (strong,nonatomic) NSMutableArray *content;

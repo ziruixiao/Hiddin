@@ -18,7 +18,9 @@
 
 @end
 
-@implementation ContentTableViewController
+@implementation ContentTableViewController {
+    NSMutableArray *searchResults;
+}
 
 @synthesize appDelegate,typeSelected,toolContent,content,action;
 
@@ -68,8 +70,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return self.content.count;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [searchResults count];
+        
+    } else {
+        return [self.content count];
+        
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -90,8 +97,15 @@
     
     [cell.textLabel sizeToFit];
     
-    cell.textLabel.text = ((Content*)[self.content objectAtIndex:indexPath.row]).contentDescription;
-    cell.cellContentID = ((Content*)[self.content objectAtIndex:indexPath.row]).contentID;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        cell.textLabel.text = ((Content*)[searchResults objectAtIndex:indexPath.row]).contentDescription;
+        cell.cellContentID = ((Content*)[searchResults objectAtIndex:indexPath.row]).contentID;
+    } else {
+        cell.textLabel.text = ((Content*)[self.content objectAtIndex:indexPath.row]).contentDescription;
+        cell.cellContentID = ((Content*)[self.content objectAtIndex:indexPath.row]).contentID;
+    }
+    
+    
 	cell.delegate = self;
 	
 	return cell;
@@ -111,9 +125,15 @@
 {
 	if (swipeType != JZSwipeTypeNone)
 	{
+        
 		NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        if ([self.searchDisplayController isActive]) {
+            indexPath = [self.searchDisplayController.searchResultsTableView indexPathForCell:cell];
+        }
+        
         NSString *selectedContentID = ((ExampleCell*)cell).cellContentID;
         
+        NSLog(@"the selected ID is %@",selectedContentID);
         self.toolContent.contentID = selectedContentID;
         
 		if (indexPath && selectedContentID)
@@ -121,25 +141,86 @@
             if ([self.action isEqualToString:@"keep"]) {
                 //UPDATE DATABASE
                 [self.toolContent updateContent:self.toolContent inField:@"sorting" toNew:@"keep" ifInt:-1];
-                [self.content removeObjectAtIndex:indexPath.row]; //change this to the indexpath
-                [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                if ([self.searchDisplayController isActive]) {
+                    [searchResults removeObjectAtIndex:indexPath.row];
+                    [self.searchDisplayController.searchResultsTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                    for (int x = 0; x < self.content.count; x++) {
+                        if ([((Content*)[self.content objectAtIndex:x]).contentID isEqualToString:selectedContentID]) {
+                            [self.content removeObjectAtIndex:x];
+                            break;
+                        }
+                    }
+                } else {
+                    [self.content removeObjectAtIndex:indexPath.row];
+                    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                }
+                
+                
                 
             } else if ([self.action isEqualToString:@"later"]) {
                 //UPDATE DATABASE
                 [self.toolContent updateContent:self.toolContent inField:@"sorting" toNew:@"later" ifInt:-1];
-                [self.content removeObjectAtIndex:indexPath.row];
-                [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                if ([self.searchDisplayController isActive]) {
+                    [searchResults removeObjectAtIndex:indexPath.row];
+                    [self.searchDisplayController.searchResultsTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                    for (int x = 0; x < self.content.count; x++) {
+                        if ([((Content*)[self.content objectAtIndex:x]).contentID isEqualToString:selectedContentID]) {
+                            [self.content removeObjectAtIndex:x];
+                            break;
+                        }
+                    }
+                } else {
+                    
+                }
                 
             } else if ([self.action isEqualToString:@"delete"]) {
                 [self.toolContent updateContent:self.toolContent inField:@"sorting" toNew:@"tweet_media_deleted" ifInt:-1];
-                [self.content removeObjectAtIndex:indexPath.row]; //change this to the indexpath
-                [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                if ([self.searchDisplayController isActive]) {
+                    [searchResults removeObjectAtIndex:indexPath.row];
+                    [self.searchDisplayController.searchResultsTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                    for (int x = 0; x < self.content.count; x++) {
+                        if ([((Content*)[self.content objectAtIndex:x]).contentID isEqualToString:selectedContentID]) {
+                            [self.content removeObjectAtIndex:x];
+                            break;
+                        }
+                    }
+
+                } else {
+                    [self.content removeObjectAtIndex:indexPath.row];
+                    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                }
+               
                 [self deleteTweetWithID:selectedContentID];
             }
             
 		}
 	}
 	
+}
+
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    NSPredicate *resultPredicate = [NSPredicate
+                                    predicateWithFormat:@"SELF.contentDescription contains[cd] %@",
+                                    searchText];
+    
+    searchResults = [[self.content filteredArrayUsingPredicate:resultPredicate] mutableCopy];
+}
+
+#pragma mark - UISearchDisplayController delegate methods
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller
+shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterContentForSearchText:searchString
+                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+                                      objectAtIndex:[self.searchDisplayController.searchBar
+                                                     selectedScopeButtonIndex]]];
+    
+    return YES;
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *) aSearchBar {
+	[self.tableView reloadData];
 }
 
 - (void)deleteTweetWithID:(NSString*)tweetID
