@@ -61,18 +61,14 @@
 		DC2530DC17A4D94C0048D5B4 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC2530DB17A4D94C0048D5B4 /* MessageUI.framework */; };
 		DC2530DF17A4DB390048D5B4 /* MTPopupWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2530DE17A4DB390048D5B4 /* MTPopupWindow.m */; };
 		DC2530E217A4FB760048D5B4 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2530E117A4FB760048D5B4 /* LeftViewController.m */; };
-		DC2530E617A4FEDD0048D5B4 /* hiddin_left_instagram@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC2530E317A4FEDD0048D5B4 /* hiddin_left_instagram@2x.png */; };
 		DC2530E717A4FEDD0048D5B4 /* hiddin_left_twitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC2530E417A4FEDD0048D5B4 /* hiddin_left_twitter@2x.png */; };
 		DC2530E817A4FEDD0048D5B4 /* hiddin_left_facebook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC2530E517A4FEDD0048D5B4 /* hiddin_left_facebook@2x.png */; };
-		DC2530EC17A503EB0048D5B4 /* hiddin_trash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC2530EB17A503EB0048D5B4 /* hiddin_trash@2x.png */; };
 		DC264B3717A47EB1008973D7 /* hiddin_later_A@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC264B3117A47EB1008973D7 /* hiddin_later_A@2x.png */; };
 		DC264B3817A47EB1008973D7 /* hiddin_later_B@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC264B3217A47EB1008973D7 /* hiddin_later_B@2x.png */; };
 		DC264B3917A47EB1008973D7 /* hiddin_delete_A@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC264B3317A47EB1008973D7 /* hiddin_delete_A@2x.png */; };
 		DC264B3A17A47EB1008973D7 /* hiddin_delete_B@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC264B3417A47EB1008973D7 /* hiddin_delete_B@2x.png */; };
 		DC264B3B17A47EB1008973D7 /* hiddin_keep_A@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC264B3517A47EB1008973D7 /* hiddin_keep_A@2x.png */; };
 		DC264B3C17A47EB1008973D7 /* hiddin_keep_B@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC264B3617A47EB1008973D7 /* hiddin_keep_B@2x.png */; };
-		DC264B4417A481EF008973D7 /* hiddin_all_B@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC264B3E17A481EF008973D7 /* hiddin_all_B@2x.png */; };
-		DC264B4517A481EF008973D7 /* hiddin_all_A@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC264B3F17A481EF008973D7 /* hiddin_all_A@2x.png */; };
 		DC264B4617A481EF008973D7 /* hiddin_right_A@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC264B4017A481EF008973D7 /* hiddin_right_A@2x.png */; };
 		DC264B4717A481EF008973D7 /* hiddin_right_B@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC264B4117A481EF008973D7 /* hiddin_right_B@2x.png */; };
 		DC264B4817A481EF008973D7 /* hiddin_left_B@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC264B4217A481EF008973D7 /* hiddin_left_B@2x.png */; };
@@ -175,18 +171,14 @@
 		DC2530DE17A4DB390048D5B4 /* MTPopupWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTPopupWindow.m; sourceTree = "<group>"; };
 		DC2530E017A4FB760048D5B4 /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
 		DC2530E117A4FB760048D5B4 /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
-		DC2530E317A4FEDD0048D5B4 /* hiddin_left_instagram@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_left_instagram@2x.png"; sourceTree = "<group>"; };
 		DC2530E417A4FEDD0048D5B4 /* hiddin_left_twitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_left_twitter@2x.png"; sourceTree = "<group>"; };
 		DC2530E517A4FEDD0048D5B4 /* hiddin_left_facebook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_left_facebook@2x.png"; sourceTree = "<group>"; };
-		DC2530EB17A503EB0048D5B4 /* hiddin_trash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_trash@2x.png"; sourceTree = "<group>"; };
 		DC264B3117A47EB1008973D7 /* hiddin_later_A@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_later_A@2x.png"; sourceTree = "<group>"; };
 		DC264B3217A47EB1008973D7 /* hiddin_later_B@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_later_B@2x.png"; sourceTree = "<group>"; };
 		DC264B3317A47EB1008973D7 /* hiddin_delete_A@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_delete_A@2x.png"; sourceTree = "<group>"; };
 		DC264B3417A47EB1008973D7 /* hiddin_delete_B@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_delete_B@2x.png"; sourceTree = "<group>"; };
 		DC264B3517A47EB1008973D7 /* hiddin_keep_A@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_keep_A@2x.png"; sourceTree = "<group>"; };
 		DC264B3617A47EB1008973D7 /* hiddin_keep_B@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_keep_B@2x.png"; sourceTree = "<group>"; };
-		DC264B3E17A481EF008973D7 /* hiddin_all_B@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_all_B@2x.png"; sourceTree = "<group>"; };
-		DC264B3F17A481EF008973D7 /* hiddin_all_A@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_all_A@2x.png"; sourceTree = "<group>"; };
 		DC264B4017A481EF008973D7 /* hiddin_right_A@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_right_A@2x.png"; sourceTree = "<group>"; };
 		DC264B4117A481EF008973D7 /* hiddin_right_B@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_right_B@2x.png"; sourceTree = "<group>"; };
 		DC264B4217A481EF008973D7 /* hiddin_left_B@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_left_B@2x.png"; sourceTree = "<group>"; };
@@ -369,16 +361,12 @@
 		DC0DB08D17A42DBA006CC531 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				DC1C9E0617AC71D90067F63D /* MJPopup */,
-				DC1C9DEE17AC62800067F63D /* TDBadgedCell.h */,
-				DC1C9DEF17AC62800067F63D /* TDBadgedCell.m */,
-				DC3872DB17AB47E200C9C01B /* SVProgressHUD */,
-				DCF9E12817A9725C00377705 /* JZSwipeCell.h */,
-				DCF9E12917A9725C00377705 /* JZSwipeCell.m */,
-				DC2530DD17A4DB390048D5B4 /* MTPopupWindow.h */,
-				DC2530DE17A4DB390048D5B4 /* MTPopupWindow.m */,
 				DC0DB08C17A42DB3006CC531 /* JASidePanels */,
+				DC1C9E0617AC71D90067F63D /* MJPopup */,
+				DC1C9E1A17AC88B60067F63D /* MTPopupWindow */,
 				DC0DB09417A42E12006CC531 /* Reachability */,
+				DC3872DB17AB47E200C9C01B /* SVProgressHUD */,
+				DC1C9E1917AC88AA0067F63D /* TableViewCell */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -403,38 +391,86 @@
 			name = MJPopup;
 			sourceTree = "<group>";
 		};
-		DC264B3D17A47EB6008973D7 /* Images */ = {
+		DC1C9E1917AC88AA0067F63D /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				DC1C9DF517AC6B450067F63D /* hiddin_nav_refresh@2x.png */,
-				DC1C9DF117AC66380067F63D /* hiddin_left_keep@2x.png */,
-				DC1C9DF217AC66380067F63D /* hiddin_left_later@2x.png */,
-				DC1C9DE817AC48EB0067F63D /* hiddin_facebook_login@2x.png */,
-				DC1C9DE917AC48EB0067F63D /* hiddin_twitter_login@2x.png */,
-				DC1C9DE617AC34D30067F63D /* hiddin_text_horizontal@2x.png */,
-				DC3872D217AB44AD00C9C01B /* hiddin_save_A@2x.png */,
-				DC3872D317AB44AD00C9C01B /* hiddin_save_B@2x.png */,
-				DCF9E13717A9CBC100377705 /* hiddin_left_reload@2x.png */,
+				DC1C9DEE17AC62800067F63D /* TDBadgedCell.h */,
+				DC1C9DEF17AC62800067F63D /* TDBadgedCell.m */,
+				DCF9E12817A9725C00377705 /* JZSwipeCell.h */,
+				DCF9E12917A9725C00377705 /* JZSwipeCell.m */,
+			);
+			name = TableViewCell;
+			sourceTree = "<group>";
+		};
+		DC1C9E1A17AC88B60067F63D /* MTPopupWindow */ = {
+			isa = PBXGroup;
+			children = (
+				DC2530DD17A4DB390048D5B4 /* MTPopupWindow.h */,
+				DC2530DE17A4DB390048D5B4 /* MTPopupWindow.m */,
+			);
+			name = MTPopupWindow;
+			sourceTree = "<group>";
+		};
+		DC1C9E1B17AC88E70067F63D /* Content Action Icons */ = {
+			isa = PBXGroup;
+			children = (
 				DCF9E12F17A9C1CE00377705 /* hiddin_keep_C@2x.png */,
 				DCF9E13017A9C1CE00377705 /* hiddin_delete_C@2x.png */,
 				DCF9E13117A9C1CE00377705 /* hiddin_later_C@2x.png */,
-				DC19A08F17A5C11500BC784C /* hiddin_nav@2x.png */,
-				DC2530EB17A503EB0048D5B4 /* hiddin_trash@2x.png */,
-				DC2530E317A4FEDD0048D5B4 /* hiddin_left_instagram@2x.png */,
-				DC2530E417A4FEDD0048D5B4 /* hiddin_left_twitter@2x.png */,
-				DC2530E517A4FEDD0048D5B4 /* hiddin_left_facebook@2x.png */,
-				DC264B3117A47EB1008973D7 /* hiddin_later_A@2x.png */,
-				DC264B3217A47EB1008973D7 /* hiddin_later_B@2x.png */,
 				DC264B3317A47EB1008973D7 /* hiddin_delete_A@2x.png */,
 				DC264B3417A47EB1008973D7 /* hiddin_delete_B@2x.png */,
+				DC264B3117A47EB1008973D7 /* hiddin_later_A@2x.png */,
+				DC264B3217A47EB1008973D7 /* hiddin_later_B@2x.png */,
 				DC264B3517A47EB1008973D7 /* hiddin_keep_A@2x.png */,
 				DC264B3617A47EB1008973D7 /* hiddin_keep_B@2x.png */,
-				DC264B3E17A481EF008973D7 /* hiddin_all_B@2x.png */,
-				DC264B3F17A481EF008973D7 /* hiddin_all_A@2x.png */,
+				DC264B4317A481EF008973D7 /* hiddin_left_A@2x.png */,
+				DC264B4217A481EF008973D7 /* hiddin_left_B@2x.png */,
+				DC3872D217AB44AD00C9C01B /* hiddin_save_A@2x.png */,
+				DC3872D317AB44AD00C9C01B /* hiddin_save_B@2x.png */,
 				DC264B4017A481EF008973D7 /* hiddin_right_A@2x.png */,
 				DC264B4117A481EF008973D7 /* hiddin_right_B@2x.png */,
-				DC264B4217A481EF008973D7 /* hiddin_left_B@2x.png */,
-				DC264B4317A481EF008973D7 /* hiddin_left_A@2x.png */,
+			);
+			name = "Content Action Icons";
+			sourceTree = "<group>";
+		};
+		DC1C9E1C17AC89090067F63D /* Left Menu Icons */ = {
+			isa = PBXGroup;
+			children = (
+				DC1C9DF117AC66380067F63D /* hiddin_left_keep@2x.png */,
+				DC1C9DF217AC66380067F63D /* hiddin_left_later@2x.png */,
+				DCF9E13717A9CBC100377705 /* hiddin_left_reload@2x.png */,
+				DC2530E417A4FEDD0048D5B4 /* hiddin_left_twitter@2x.png */,
+				DC2530E517A4FEDD0048D5B4 /* hiddin_left_facebook@2x.png */,
+			);
+			name = "Left Menu Icons";
+			sourceTree = "<group>";
+		};
+		DC1C9E1D17AC89580067F63D /* Navigation Bar Icons */ = {
+			isa = PBXGroup;
+			children = (
+				DC1C9DF517AC6B450067F63D /* hiddin_nav_refresh@2x.png */,
+				DC19A08F17A5C11500BC784C /* hiddin_nav@2x.png */,
+			);
+			name = "Navigation Bar Icons";
+			sourceTree = "<group>";
+		};
+		DC1C9E1E17AC896C0067F63D /* Splash Screen Icons */ = {
+			isa = PBXGroup;
+			children = (
+				DC1C9DE617AC34D30067F63D /* hiddin_text_horizontal@2x.png */,
+				DC1C9DE817AC48EB0067F63D /* hiddin_facebook_login@2x.png */,
+				DC1C9DE917AC48EB0067F63D /* hiddin_twitter_login@2x.png */,
+			);
+			name = "Splash Screen Icons";
+			sourceTree = "<group>";
+		};
+		DC264B3D17A47EB6008973D7 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				DC1C9E1B17AC88E70067F63D /* Content Action Icons */,
+				DC1C9E1C17AC89090067F63D /* Left Menu Icons */,
+				DC1C9E1D17AC89580067F63D /* Navigation Bar Icons */,
+				DC1C9E1E17AC896C0067F63D /* Splash Screen Icons */,
 			);
 			name = Images;
 			path = Hiddin;
@@ -526,12 +562,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC264B4517A481EF008973D7 /* hiddin_all_A@2x.png in Resources */,
 				DCF9E13317A9C1CE00377705 /* hiddin_delete_C@2x.png in Resources */,
 				DC0DB07B17A42C4C006CC531 /* Main_iPhone.storyboard in Resources */,
 				DC264B3917A47EB1008973D7 /* hiddin_delete_A@2x.png in Resources */,
 				DC0DB07C17A42C4C006CC531 /* Main_iPad.storyboard in Resources */,
-				DC2530E617A4FEDD0048D5B4 /* hiddin_left_instagram@2x.png in Resources */,
 				DC1C9DEA17AC48EB0067F63D /* hiddin_facebook_login@2x.png in Resources */,
 				DC2530E717A4FEDD0048D5B4 /* hiddin_left_twitter@2x.png in Resources */,
 				DC0DB04517A42A32006CC531 /* Images.xcassets in Resources */,
@@ -542,14 +576,12 @@
 				DC1C9DF317AC66380067F63D /* hiddin_left_keep@2x.png in Resources */,
 				DC1C9DF417AC66380067F63D /* hiddin_left_later@2x.png in Resources */,
 				DC264B4817A481EF008973D7 /* hiddin_left_B@2x.png in Resources */,
-				DC264B4417A481EF008973D7 /* hiddin_all_B@2x.png in Resources */,
 				DC0DB09E17A455F2006CC531 /* MyContent.sqlite in Resources */,
 				DC264B3A17A47EB1008973D7 /* hiddin_delete_B@2x.png in Resources */,
 				DC264B3817A47EB1008973D7 /* hiddin_later_B@2x.png in Resources */,
 				DC264B3717A47EB1008973D7 /* hiddin_later_A@2x.png in Resources */,
 				DC3872DA17AB47D900C9C01B /* SVProgressHUD.bundle in Resources */,
 				DC1C9DF617AC6B450067F63D /* hiddin_nav_refresh@2x.png in Resources */,
-				DC2530EC17A503EB0048D5B4 /* hiddin_trash@2x.png in Resources */,
 				DC264B4717A481EF008973D7 /* hiddin_right_B@2x.png in Resources */,
 				DC3872D517AB44AD00C9C01B /* hiddin_save_B@2x.png in Resources */,
 				DC2530E817A4FEDD0048D5B4 /* hiddin_left_facebook@2x.png in Resources */,
