@@ -31,7 +31,7 @@
 @implementation ContentViewController
 @synthesize appDelegate,content,selectedIndex;
 @synthesize topButton1,topButton2,topButton3,bottomButton1,bottomButton2,bottomButton3,topView;
-@synthesize toolContent,typeSelected,imageDownloadQueue,images,activeView;
+@synthesize toolContent,typeSelected,imageDownloadQueue,images,activeView,disableGestures;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -70,7 +70,7 @@
         
         IntroPhotoViewController *introPhotoViewController = (IntroPhotoViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"introPhotoViewController"];
         introPhotoViewController.delegate = self;
-        
+        self.disableGestures = YES;
         [self presentPopupViewController:introPhotoViewController animationType:MJPopupViewAnimationFade];
         
         self.appDelegate.showIntroPhoto = NO;
@@ -98,7 +98,7 @@
 
 - (IBAction)showOrRemove:(UITapGestureRecognizer*)recognizer
 {
-    if ((recognizer.numberOfTapsRequired == 1)) {
+    if (self.disableGestures != YES) {
         if (self.topButton1.userInteractionEnabled == YES) {
             [UIView animateWithDuration:0.25 animations:^{
                 self.topButton1.alpha = 0.0;
@@ -462,6 +462,7 @@
 - (void)cancelButtonClicked:(IntroPhotoViewController*)introPhotoViewController
 {
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+    self.disableGestures = NO;
 }
 
 - (void)dealloc

@@ -33,7 +33,7 @@
 @property (strong,nonatomic) NSMutableDictionary *images;
 
 @property (strong, nonatomic) IBOutlet UIView *activeView;
-
+@property BOOL disableGestures;
 
 - (void)reloadImageView;
 
