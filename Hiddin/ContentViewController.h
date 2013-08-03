@@ -12,7 +12,7 @@
 #import "MTPopupWindow.h"
 #import "AsynchImageView.h"
 
-@interface ContentViewController : UIViewController <MTPopupWindowDelegate>
+@interface ContentViewController : UIViewController <MTPopupWindowDelegate,UIGestureRecognizerDelegate>
 
 @property (strong,nonatomic) AppDelegate *appDelegate;
 @property (strong,nonatomic) NSMutableArray *content;

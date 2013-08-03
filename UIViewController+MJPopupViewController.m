@@ -101,6 +101,9 @@ static void * const keypath = (void*)&keypath;
 - (void)presentPopupView:(UIView*)popupView animationType:(MJPopupViewAnimation)animationType dismissed:(void(^)(void))dismissed
 {
     UIView *sourceView = [self topView];
+    if ([self isKindOfClass:[UITableViewController class]]) {
+        sourceView = ((UITableViewController*)self).tableView;
+    }
     sourceView.tag = kMJSourceViewTag;
     popupView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin |UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin;
     popupView.tag = kMJPopupViewTag;
@@ -111,14 +114,17 @@ static void * const keypath = (void*)&keypath;
     // customize popupView
     popupView.layer.shadowPath = [UIBezierPath bezierPathWithRect:popupView.bounds].CGPath;
     popupView.layer.masksToBounds = NO;
-    popupView.layer.shadowOffset = CGSizeMake(5, 5);
-    popupView.layer.shadowRadius = 5;
-    popupView.layer.shadowOpacity = 0.5;
+
+        popupView.layer.shadowOffset = CGSizeMake(0,0);
+        popupView.layer.shadowRadius = 0;
+        popupView.layer.shadowOpacity = 0.5;
+    
     popupView.layer.shouldRasterize = YES;
     popupView.layer.rasterizationScale = [[UIScreen mainScreen] scale];
     
     // Add semi overlay
     UIView *overlayView = [[UIView alloc] initWithFrame:sourceView.bounds];
+    
     overlayView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     overlayView.tag = kMJOverlayViewTag;
     overlayView.backgroundColor = [UIColor clearColor];

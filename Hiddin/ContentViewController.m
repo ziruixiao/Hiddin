@@ -89,13 +89,66 @@
             NSLog(@"There's nothing here!");
         }
     
-    
+    UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showOrRemove:)];
+    [tap setNumberOfTapsRequired:1];
+    [self.view addGestureRecognizer:tap];
     
     
 }
 
+- (IBAction)showOrRemove:(UITapGestureRecognizer*)recognizer
+{
+    if ((recognizer.numberOfTapsRequired == 1)) {
+        if (self.topButton1.userInteractionEnabled == YES) {
+            [UIView animateWithDuration:0.25 animations:^{
+                self.topButton1.alpha = 0.0;
+                self.topButton1.userInteractionEnabled = NO;
+                
+                self.topButton2.alpha = 0.0;
+                self.topButton2.userInteractionEnabled = NO;
+                
+                self.topButton3.alpha = 0.0;
+                self.topButton3.userInteractionEnabled = NO;
+                
+                self.bottomButton1.alpha = 0.0;
+                self.bottomButton1.userInteractionEnabled = NO;
+                
+                self.bottomButton2.alpha = 0.0;
+                self.bottomButton2.userInteractionEnabled = NO;
+                
+                self.bottomButton3.alpha = 0.0;
+                self.bottomButton3.userInteractionEnabled = NO;
+            }];
+            
+        } else {
+            [UIView animateWithDuration:0.25 animations:^{
+                self.topButton1.alpha = 1.0;
+                self.topButton1.userInteractionEnabled = YES;
+                
+                self.topButton2.alpha = 1.0;
+                self.topButton2.userInteractionEnabled = YES;
+                
+                self.topButton3.alpha = 1.0;
+                self.topButton3.userInteractionEnabled = YES;
+                
+                self.bottomButton1.alpha = 1.0;
+                self.bottomButton1.userInteractionEnabled = YES;
+                
+                self.bottomButton2.alpha = 1.0;
+                self.bottomButton2.userInteractionEnabled = YES;
+                
+                self.bottomButton3.alpha = 1.0;
+                self.bottomButton3.userInteractionEnabled = YES;
+            }];
+        }
+    }
+    
+}
+
+
 - (void)addButtons
 {
+
     [self.topButton1 setImage:[UIImage imageNamed:@"hiddin_delete_B.png"] forState:UIControlStateHighlighted];
     [self.topButton1 setImage:[UIImage imageNamed:@"hiddin_delete_B.png"] forState:UIControlStateSelected];
     
