@@ -51,13 +51,13 @@
 
     [toolContent getCurrentContent:self.content withType:self.typeSelected];
     
-    if (!self.appDelegate.showIntroText) {
+    if (!self.appDelegate.showIntroPhoto) {
         
         IntroViewController *introTextViewController = (IntroViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"introViewController"];
         
         [self presentViewController:introTextViewController animated:NO completion:nil];
         
-        self.appDelegate.showIntroText = NO;
+        self.appDelegate.showIntroPhoto = NO;
     }
 
 }

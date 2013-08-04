@@ -173,11 +173,15 @@
     [cell.textLabel sizeToFit];
     
     switch (indexPath.row) {
-        case 0:
+        case 0: {
             cell.textLabel.text = @"This is the most recent tweet on your timeline. Swipe right to keep this tweet. Nothing will be modified.";
             cell.special = @"keep";
+            UIImageView *greenArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"hiddin_arrow_green.png"]];
+            greenArrow.frame = CGRectMake(0,9,253,67);
+            greenArrow.alpha = 0.4;
+            [cell addSubview:greenArrow];
             cell.tag = 500;
-            break;
+            break; }
         case 1:
             cell.tag = 501;
             cell.textLabel.text = @"A tweet that you swipe right on won't be shown again. You can still view them via 'Done' in the left menu.";
@@ -185,14 +189,14 @@
             cell.textLabel.enabled = NO;
             cell.detailTextLabel.enabled = NO;
             break;
-        case 2:
+        case 2: {
             cell.tag = 502;
             cell.textLabel.text = @"This is an tweet that might damage your reputation. Swipe short left to delete this tweet. It will be removed from your timeline.";
             cell.special = @"delete";
             cell.userInteractionEnabled = NO;
             cell.textLabel.enabled = NO;
             cell.detailTextLabel.enabled = NO;
-            break;
+            break; }
         case 3:
             cell.tag = 503;
             cell.textLabel.text = @"Did you know that 56% of employers check social network accounts before making hiring decisions?";
@@ -200,14 +204,14 @@
             cell.textLabel.enabled = NO;
             cell.detailTextLabel.enabled = NO;
             break;
-        case 4:
+        case 4: {
             cell.tag = 504;
             cell.textLabel.text = @"You're not sure what to do with this tweet. Swipe long left to mark this tweet so you can decide later.";
             cell.special = @"later";
             cell.userInteractionEnabled = NO;
             cell.textLabel.enabled = NO;
             cell.detailTextLabel.enabled = NO;
-            break;
+            break; }
         case 5:
             cell.tag = 505;
             cell.textLabel.text = @"To load new tweets, tap the refresh button in the top right corner of the screen.";
@@ -301,6 +305,12 @@
                 ((ExampleCell*)[self.view2 viewWithTag:502]).textLabel.enabled = YES;
                 ((ExampleCell*)[self.view2 viewWithTag:502]).detailTextLabel.enabled = YES;
                 
+                UIImageView *redArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"hiddin_arrow_red.png"]];
+                redArrow.frame = CGRectMake(0,9,253,67);
+                redArrow.alpha = 0.4;
+                [((ExampleCell*)[self.view2 viewWithTag:502]) addSubview:redArrow];
+
+                
                 
             } else if (indexPath.row == 1) {
                 ((ExampleCell*)[self.view2 viewWithTag:503]).userInteractionEnabled = NO;
@@ -311,7 +321,11 @@
                 ((ExampleCell*)[self.view2 viewWithTag:504]).textLabel.enabled = YES;
                 ((ExampleCell*)[self.view2 viewWithTag:504]).detailTextLabel.enabled = YES;
                 
-
+                UIImageView *yellowArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"hiddin_arrow_yellow.png"]];
+                yellowArrow.frame = CGRectMake(0,9,253,67);
+                yellowArrow.alpha = 0.5;
+                [((ExampleCell*)[self.view2 viewWithTag:504]) addSubview:yellowArrow];
+                
             } else if (indexPath.row == 2) {
                 //TODO: Go to the next part of the tutorial.
                 [SVProgressHUD showSuccessWithStatus:@"Great job!"];

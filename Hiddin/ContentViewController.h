@@ -32,6 +32,8 @@
 @property (strong,nonatomic) NSOperationQueue *imageDownloadQueue;
 @property (strong,nonatomic) NSMutableDictionary *images;
 
+@property (strong,nonatomic) UILabel *caption;
+
 @property (strong, nonatomic) IBOutlet UIView *activeView;
 @property BOOL disableGestures;
 

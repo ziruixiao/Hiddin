@@ -23,6 +23,7 @@
 #import "SVProgressHUD.h"
 #import "UIViewController+MJPopupViewController.h"
 #import "IntroViewController.h"
+#import "UIView+Badge.h"
 
 @interface ContentViewController ()
 
@@ -31,7 +32,7 @@
 @implementation ContentViewController
 @synthesize appDelegate,content,selectedIndex;
 @synthesize topButton1,topButton2,topButton3,bottomButton1,bottomButton2,bottomButton3,topView;
-@synthesize toolContent,typeSelected,imageDownloadQueue,images,activeView,disableGestures;
+@synthesize toolContent,typeSelected,imageDownloadQueue,images,activeView,disableGestures,caption;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -64,9 +65,18 @@
     
     [self.activeView addSubview:currentImage];
     
+    self.caption = [[UILabel alloc] initWithFrame:CGRectMake(0,0,200,100)];
+    self.caption.center = currentImage.center;
+    self.caption.numberOfLines = 0;
+    self.caption.font = [UIFont systemFontOfSize:14.0];
+    self.caption.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.5];
+    self.caption.textColor = [UIColor whiteColor];
+    self.caption.tag = 707;
+    //[self.activeView addSubview:caption];
+    
     NSLog(@"The user has selected to see this type of content: %@",self.typeSelected);
     
-    if (!self.appDelegate.showIntroPhoto) {
+    if (self.appDelegate.showIntroPhoto) {
         
         IntroViewController *introPhotoViewController = (IntroViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"introViewController"];
         
@@ -173,6 +183,7 @@
     NSString *newContentID = (((Content*)[self.content objectAtIndex:selectedIndex]).contentID);
     self.toolContent.contentID = newContentID;
     self.toolContent.contentLink = (((Content*)[self.content objectAtIndex:selectedIndex]).contentLink);
+    self.caption.text = (((Content*)[self.content objectAtIndex:selectedIndex]).contentDescription);
     
     //////////////////START QUEUE STUFF/////////////////
     //Part 1) Populate the URLs that I need.
@@ -217,8 +228,17 @@
     ////////////////////////////////////////////////////
     
     //self.activeImageView = [self.images objectForKey:newContentURL];
-
+    [self.activeView bringSubviewToFront:[self.view viewWithTag:707]];
     
+    self.bottomButton1.badge.outlineWidth = 2.0;
+    self.bottomButton1.badge.badgeColor = [UIColor redColor];
+    self.bottomButton1.badge.placement = kBadgePlacementUpperLeft;
+    self.bottomButton1.badge.badgeValue = self.selectedIndex;
+    
+    self.bottomButton3.badge.outlineWidth = 2.0;
+    self.bottomButton3.badge.badgeColor = [UIColor redColor];
+    self.bottomButton3.badge.placement = kBadgePlacementUpperLeft;
+    self.bottomButton3.badge.badgeValue = self.content.count - self.selectedIndex - 1;
 }
 
 - (void)refreshData

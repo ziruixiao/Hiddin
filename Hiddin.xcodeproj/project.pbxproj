@@ -85,6 +85,10 @@
 		DC37FF5517AE4ABC00A6C056 /* hiddin_photo_5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC37FF5417AE4ABC00A6C056 /* hiddin_photo_5@2x.png */; };
 		DC37FF5717AE4C7C00A6C056 /* hiddin_continue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC37FF5617AE4C7C00A6C056 /* hiddin_continue@2x.png */; };
 		DC37FF5917AE4F0700A6C056 /* hiddin_left_help@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC37FF5817AE4F0700A6C056 /* hiddin_left_help@2x.png */; };
+		DC37FF5D17AEC44000A6C056 /* hiddin_arrow_yellow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC37FF5A17AEC44000A6C056 /* hiddin_arrow_yellow@2x.png */; };
+		DC37FF5E17AEC44000A6C056 /* hiddin_arrow_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC37FF5B17AEC44000A6C056 /* hiddin_arrow_red@2x.png */; };
+		DC37FF5F17AEC44000A6C056 /* hiddin_arrow_green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC37FF5C17AEC44000A6C056 /* hiddin_arrow_green@2x.png */; };
+		DC37FF6217AEC82300A6C056 /* UIView+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = DC37FF6117AEC82300A6C056 /* UIView+Badge.m */; };
 		DC3872D417AB44AD00C9C01B /* hiddin_save_A@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC3872D217AB44AD00C9C01B /* hiddin_save_A@2x.png */; };
 		DC3872D517AB44AD00C9C01B /* hiddin_save_B@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC3872D317AB44AD00C9C01B /* hiddin_save_B@2x.png */; };
 		DC3872D917AB47D900C9C01B /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3872D717AB47D900C9C01B /* SVProgressHUD.m */; };
@@ -206,6 +210,11 @@
 		DC37FF5417AE4ABC00A6C056 /* hiddin_photo_5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_photo_5@2x.png"; sourceTree = "<group>"; };
 		DC37FF5617AE4C7C00A6C056 /* hiddin_continue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_continue@2x.png"; sourceTree = "<group>"; };
 		DC37FF5817AE4F0700A6C056 /* hiddin_left_help@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_left_help@2x.png"; sourceTree = "<group>"; };
+		DC37FF5A17AEC44000A6C056 /* hiddin_arrow_yellow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_arrow_yellow@2x.png"; sourceTree = "<group>"; };
+		DC37FF5B17AEC44000A6C056 /* hiddin_arrow_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_arrow_red@2x.png"; sourceTree = "<group>"; };
+		DC37FF5C17AEC44000A6C056 /* hiddin_arrow_green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_arrow_green@2x.png"; sourceTree = "<group>"; };
+		DC37FF6017AEC82300A6C056 /* UIView+Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Badge.h"; sourceTree = "<group>"; };
+		DC37FF6117AEC82300A6C056 /* UIView+Badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Badge.m"; sourceTree = "<group>"; };
 		DC3872D217AB44AD00C9C01B /* hiddin_save_A@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_save_A@2x.png"; sourceTree = "<group>"; };
 		DC3872D317AB44AD00C9C01B /* hiddin_save_B@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_save_B@2x.png"; sourceTree = "<group>"; };
 		DC3872D617AB47D900C9C01B /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
@@ -382,6 +391,8 @@
 		DC0DB08D17A42DBA006CC531 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				DC37FF6017AEC82300A6C056 /* UIView+Badge.h */,
+				DC37FF6117AEC82300A6C056 /* UIView+Badge.m */,
 				DC0DB08C17A42DB3006CC531 /* JASidePanels */,
 				DC1C9E0617AC71D90067F63D /* MJPopup */,
 				DC1C9E1A17AC88B60067F63D /* MTPopupWindow */,
@@ -488,6 +499,9 @@
 		DC264B3D17A47EB6008973D7 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DC37FF5A17AEC44000A6C056 /* hiddin_arrow_yellow@2x.png */,
+				DC37FF5B17AEC44000A6C056 /* hiddin_arrow_red@2x.png */,
+				DC37FF5C17AEC44000A6C056 /* hiddin_arrow_green@2x.png */,
 				DC37FF5817AE4F0700A6C056 /* hiddin_left_help@2x.png */,
 				DC37FF5617AE4C7C00A6C056 /* hiddin_continue@2x.png */,
 				DC37FF5417AE4ABC00A6C056 /* hiddin_photo_5@2x.png */,
@@ -604,6 +618,7 @@
 				DC2530E717A4FEDD0048D5B4 /* hiddin_left_twitter@2x.png in Resources */,
 				DC0DB04517A42A32006CC531 /* Images.xcassets in Resources */,
 				DC264B3C17A47EB1008973D7 /* hiddin_keep_B@2x.png in Resources */,
+				DC37FF5E17AEC44000A6C056 /* hiddin_arrow_red@2x.png in Resources */,
 				DC0DB06717A42BB6006CC531 /* FacebookSDKResources.bundle in Resources */,
 				DC264B3B17A47EB1008973D7 /* hiddin_keep_A@2x.png in Resources */,
 				DC19A09017A5C11500BC784C /* hiddin_nav@2x.png in Resources */,
@@ -624,6 +639,7 @@
 				DC3872D517AB44AD00C9C01B /* hiddin_save_B@2x.png in Resources */,
 				DC2530E817A4FEDD0048D5B4 /* hiddin_left_facebook@2x.png in Resources */,
 				DC37FF5517AE4ABC00A6C056 /* hiddin_photo_5@2x.png in Resources */,
+				DC37FF5F17AEC44000A6C056 /* hiddin_arrow_green@2x.png in Resources */,
 				DC1C9DEB17AC48EB0067F63D /* hiddin_twitter_login@2x.png in Resources */,
 				DC1C9DE717AC34D30067F63D /* hiddin_text_horizontal@2x.png in Resources */,
 				DCF9E13217A9C1CE00377705 /* hiddin_keep_C@2x.png in Resources */,
@@ -633,6 +649,7 @@
 				DC0DB06817A42BB6006CC531 /* FBUserSettingsViewResources.bundle in Resources */,
 				DC37FF5717AE4C7C00A6C056 /* hiddin_continue@2x.png in Resources */,
 				DC0DB03417A42A32006CC531 /* InfoPlist.strings in Resources */,
+				DC37FF5D17AEC44000A6C056 /* hiddin_arrow_yellow@2x.png in Resources */,
 				DC37FF4E17AE431F00A6C056 /* hiddin_photo_1@2x.png in Resources */,
 				DC37FF5917AE4F0700A6C056 /* hiddin_left_help@2x.png in Resources */,
 				DCF9E13417A9C1CE00377705 /* hiddin_later_C@2x.png in Resources */,
@@ -660,6 +677,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC37FF6217AEC82300A6C056 /* UIView+Badge.m in Sources */,
 				DC1C9E0417AC71D20067F63D /* MJPopupBackgroundView.m in Sources */,
 				DC1C9E0517AC71D20067F63D /* UIViewController+MJPopupViewController.m in Sources */,
 				DC1C9DF017AC62800067F63D /* TDBadgedCell.m in Sources */,
