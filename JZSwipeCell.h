@@ -119,6 +119,7 @@ typedef enum {
  */
 @property (nonatomic, strong) IBOutlet UIView *contentView;
 
+@property (nonatomic,strong) NSString *special;
 /**
  The image view in which the icons are displayed.
  @discussion Default size is 40x40 which is changable via it's frame.size property. The frame.origin is irrelevant as the icon will vertically center automatically.

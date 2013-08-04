@@ -10,13 +10,11 @@
 #import "MenuViewController.h"
 #import "UIViewController+JASidePanel.h"
 #import "Content.h"
-#import "IntroTextViewController.h"
-#import "UIViewController+MJPopupViewController.h"
-
 #define kCellTextKey @"kCellTextKey"
 #define kCellTagKey @"kCellTagKey"
+#import "IntroViewController.h"
 
-@interface ContentTableViewController () <MJSecondPopupDelegate>
+@interface ContentTableViewController ()
 
 @end
 
@@ -55,12 +53,11 @@
     
     if (!self.appDelegate.showIntroText) {
         
-        IntroTextViewController *introTextViewController = (IntroTextViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"introTextViewController"];
-        introTextViewController.delegate = self;
+        IntroViewController *introTextViewController = (IntroViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"introViewController"];
         
-        [self presentPopupViewController:introTextViewController animationType:MJPopupViewAnimationFade];
+        [self presentViewController:introTextViewController animated:NO completion:nil];
         
-        self.appDelegate.showIntroPhoto = NO;
+        self.appDelegate.showIntroText = NO;
     }
 
 }
@@ -349,8 +346,4 @@ shouldReloadTableForSearchString:(NSString *)searchString
     
 }
 
-- (void)cancelButtonClicked:(IntroTextViewController*)introTextViewController
-{
-    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
-}
 @end

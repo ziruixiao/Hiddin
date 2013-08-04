@@ -42,6 +42,7 @@ static CGFloat const kMaxBounceAmount = 8;
 @end
 
 @implementation JZSwipeCell
+@synthesize special;
 
 - (id)init
 {
@@ -91,18 +92,30 @@ static CGFloat const kMaxBounceAmount = 8;
 	switch (type)
 	{
 		case JZSwipeTypeShortRight:
+            if ([self.special isEqualToString:@"later"] || [self.special isEqualToString:@"delete"]) {
+                return;
+            }
 			self.backgroundView.backgroundColor = self.colorSet.shortRightSwipeColor;
 			self.icon.image = self.imageSet.shortRightSwipeImage;
 			break;
 		case JZSwipeTypeLongRight:
+            if ([self.special isEqualToString:@"later"] || [self.special isEqualToString:@"delete"]) {
+                return;
+            }
 			self.backgroundView.backgroundColor = self.colorSet.longRightSwipeColor;
 			self.icon.image = self.imageSet.longRightSwipeImage;
 			break;
 		case JZSwipeTypeShortLeft:
+            if ([self.special isEqualToString:@"keep"]) {
+                return;
+            }
 			self.backgroundView.backgroundColor = self.colorSet.shortLeftSwipeColor;
 			self.icon.image = self.imageSet.shortLeftSwipeImage;
 			break;
 		case JZSwipeTypeLongLeft:
+            if ([self.special isEqualToString:@"keep"] || [self.special isEqualToString:@"delete"]) {
+                return;
+            }
 			self.backgroundView.backgroundColor = self.colorSet.longLeftSwipeColor;
 			self.icon.image = self.imageSet.longLeftSwipeImage;
 			break;
@@ -139,7 +152,7 @@ static CGFloat const kMaxBounceAmount = 8;
 	self.gesture.delegate = self;
 	[self.contentView addGestureRecognizer:self.gesture];
 	
-	self.shortSwipeLength = self.contentView.frame.size.width * 0.66;
+	self.shortSwipeLength = self.contentView.frame.size.width * 0.55;
 	
 	self.colorSet = [self defaultColorSet];
 	self.defaultBackgroundColor = [UIColor lightGrayColor];
@@ -171,12 +184,21 @@ static CGFloat const kMaxBounceAmount = 8;
 			self.dragStart = sender.view.center.x;
 			break;
 		case UIGestureRecognizerStateChanged:
+            
+            if ([special isEqualToString:@"keep"] && translatedPoint.x < 0) {
+                return;
+            }
+            
+            if (([special isEqualToString:@"delete"] || [special isEqualToString:@"later"]) && translatedPoint.x > 0) {
+                return;
+            }
+            
 			self.contentView.center = CGPointMake(self.dragStart + translatedPoint.x, self.contentView.center.y);
 			CGFloat diff = translatedPoint.x;
 			
 			JZSwipeType originalSwipe = self.currentSwipe;
 			
-			if (diff > 0)
+			if (diff > 0 && ![special isEqualToString:@"later"] && ![special isEqualToString:@"delete"])
 			{
 				// in short right swipe area
 				if (diff <= self.icon.frame.size.width + (kIconHorizontalPadding * 2))
@@ -223,7 +245,7 @@ static CGFloat const kMaxBounceAmount = 8;
 				else
 				{
 					// hang icon to side of content view
-					if (diff > -self.shortSwipeLength)
+					if (diff > -self.shortSwipeLength && ![special isEqualToString:@"keep"])
 					{
 						self.icon.image = self.imageSet.shortLeftSwipeImage;
 						self.backgroundView.backgroundColor = self.colorSet.shortLeftSwipeColor;
@@ -231,9 +253,11 @@ static CGFloat const kMaxBounceAmount = 8;
 					}
 					else
 					{
-						self.icon.image = self.imageSet.longLeftSwipeImage;
-						self.backgroundView.backgroundColor = self.colorSet.longLeftSwipeColor;
-						self.currentSwipe = JZSwipeTypeLongLeft;
+                        if (![special isEqualToString:@"keep"] && ![special isEqualToString:@"delete"]) {
+                            self.icon.image = self.imageSet.longLeftSwipeImage;
+                            self.backgroundView.backgroundColor = self.colorSet.longLeftSwipeColor;
+                            self.currentSwipe = JZSwipeTypeLongLeft;
+                        }
 					}
 					
 					self.icon.center = CGPointMake((self.contentView.frame.origin.x + self.contentView.frame.size.width) + ((self.icon.frame.size.width / 2) + kIconHorizontalPadding), self.contentView.frame.size.height / 2);
@@ -249,8 +273,15 @@ static CGFloat const kMaxBounceAmount = 8;
 			
 			break;
 		case UIGestureRecognizerStateEnded:
-			if (self.currentSwipe != JZSwipeTypeNone)
-				[self runSwipeAnimationForType:self.currentSwipe];
+			if (self.currentSwipe != JZSwipeTypeNone) {
+                if ([self.special isEqualToString:@"later"] && self.currentSwipe == JZSwipeTypeShortLeft) {
+                    [self runBounceAnimationFromPoint:translatedPoint];
+                } else if ([self.special isEqualToString:@"delete"] && self.currentSwipe == JZSwipeTypeLongLeft) {
+                    [self runBounceAnimationFromPoint:translatedPoint];
+                } else {
+                    [self runSwipeAnimationForType:self.currentSwipe];
+                }
+            }
 			else
 				[self runBounceAnimationFromPoint:translatedPoint];
 			break;

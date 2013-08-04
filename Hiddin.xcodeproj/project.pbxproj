@@ -56,8 +56,6 @@
 		DC1C9DF617AC6B450067F63D /* hiddin_nav_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC1C9DF517AC6B450067F63D /* hiddin_nav_refresh@2x.png */; };
 		DC1C9E0417AC71D20067F63D /* MJPopupBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1C9E0117AC71D20067F63D /* MJPopupBackgroundView.m */; };
 		DC1C9E0517AC71D20067F63D /* UIViewController+MJPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1C9E0317AC71D20067F63D /* UIViewController+MJPopupViewController.m */; };
-		DC1C9E0F17AC75DD0067F63D /* IntroPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1C9E0E17AC75DD0067F63D /* IntroPhotoViewController.m */; };
-		DC1C9E1217AC7AF90067F63D /* IntroTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1C9E1117AC7AF90067F63D /* IntroTextViewController.m */; };
 		DC2530DC17A4D94C0048D5B4 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC2530DB17A4D94C0048D5B4 /* MessageUI.framework */; };
 		DC2530DF17A4DB390048D5B4 /* MTPopupWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2530DE17A4DB390048D5B4 /* MTPopupWindow.m */; };
 		DC2530E217A4FB760048D5B4 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2530E117A4FB760048D5B4 /* LeftViewController.m */; };
@@ -73,6 +71,12 @@
 		DC264B4717A481EF008973D7 /* hiddin_right_B@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC264B4117A481EF008973D7 /* hiddin_right_B@2x.png */; };
 		DC264B4817A481EF008973D7 /* hiddin_left_B@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC264B4217A481EF008973D7 /* hiddin_left_B@2x.png */; };
 		DC264B4917A481EF008973D7 /* hiddin_left_A@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC264B4317A481EF008973D7 /* hiddin_left_A@2x.png */; };
+		DC37FF3C17ADD3A400A6C056 /* hiddin_splash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC37FF3B17ADD3A400A6C056 /* hiddin_splash@2x.png */; };
+		DC37FF3F17ADD66F00A6C056 /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC37FF3E17ADD66F00A6C056 /* IntroViewController.m */; };
+		DC37FF4117ADDAA700A6C056 /* hiddin_getstarted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC37FF4017ADDAA700A6C056 /* hiddin_getstarted@2x.png */; };
+		DC37FF4417ADDCF600A6C056 /* hiddin_tweets@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC37FF4217ADDCF500A6C056 /* hiddin_tweets@2x.png */; };
+		DC37FF4517ADDCF600A6C056 /* hiddin_photos@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC37FF4317ADDCF500A6C056 /* hiddin_photos@2x.png */; };
+		DC37FF4717ADE8F300A6C056 /* hiddin_wireframe@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC37FF4617ADE8F300A6C056 /* hiddin_wireframe@2x.png */; };
 		DC3872D417AB44AD00C9C01B /* hiddin_save_A@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC3872D217AB44AD00C9C01B /* hiddin_save_A@2x.png */; };
 		DC3872D517AB44AD00C9C01B /* hiddin_save_B@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC3872D317AB44AD00C9C01B /* hiddin_save_B@2x.png */; };
 		DC3872D917AB47D900C9C01B /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3872D717AB47D900C9C01B /* SVProgressHUD.m */; };
@@ -162,10 +166,6 @@
 		DC1C9E0117AC71D20067F63D /* MJPopupBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPopupBackgroundView.m; sourceTree = "<group>"; };
 		DC1C9E0217AC71D20067F63D /* UIViewController+MJPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MJPopupViewController.h"; sourceTree = "<group>"; };
 		DC1C9E0317AC71D20067F63D /* UIViewController+MJPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MJPopupViewController.m"; sourceTree = "<group>"; };
-		DC1C9E0D17AC75DD0067F63D /* IntroPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroPhotoViewController.h; sourceTree = "<group>"; };
-		DC1C9E0E17AC75DD0067F63D /* IntroPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroPhotoViewController.m; sourceTree = "<group>"; };
-		DC1C9E1017AC7AF90067F63D /* IntroTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroTextViewController.h; sourceTree = "<group>"; };
-		DC1C9E1117AC7AF90067F63D /* IntroTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroTextViewController.m; sourceTree = "<group>"; };
 		DC2530DB17A4D94C0048D5B4 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		DC2530DD17A4DB390048D5B4 /* MTPopupWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTPopupWindow.h; sourceTree = "<group>"; };
 		DC2530DE17A4DB390048D5B4 /* MTPopupWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTPopupWindow.m; sourceTree = "<group>"; };
@@ -183,6 +183,13 @@
 		DC264B4117A481EF008973D7 /* hiddin_right_B@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_right_B@2x.png"; sourceTree = "<group>"; };
 		DC264B4217A481EF008973D7 /* hiddin_left_B@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_left_B@2x.png"; sourceTree = "<group>"; };
 		DC264B4317A481EF008973D7 /* hiddin_left_A@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_left_A@2x.png"; sourceTree = "<group>"; };
+		DC37FF3B17ADD3A400A6C056 /* hiddin_splash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_splash@2x.png"; sourceTree = "<group>"; };
+		DC37FF3D17ADD66F00A6C056 /* IntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IntroViewController.h; path = ../IntroViewController.h; sourceTree = "<group>"; };
+		DC37FF3E17ADD66F00A6C056 /* IntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IntroViewController.m; path = ../IntroViewController.m; sourceTree = "<group>"; };
+		DC37FF4017ADDAA700A6C056 /* hiddin_getstarted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_getstarted@2x.png"; sourceTree = "<group>"; };
+		DC37FF4217ADDCF500A6C056 /* hiddin_tweets@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_tweets@2x.png"; sourceTree = "<group>"; };
+		DC37FF4317ADDCF500A6C056 /* hiddin_photos@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_photos@2x.png"; sourceTree = "<group>"; };
+		DC37FF4617ADE8F300A6C056 /* hiddin_wireframe@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_wireframe@2x.png"; sourceTree = "<group>"; };
 		DC3872D217AB44AD00C9C01B /* hiddin_save_A@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_save_A@2x.png"; sourceTree = "<group>"; };
 		DC3872D317AB44AD00C9C01B /* hiddin_save_B@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_save_B@2x.png"; sourceTree = "<group>"; };
 		DC3872D617AB47D900C9C01B /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
@@ -291,10 +298,8 @@
 				DC0DB08F17A42DD1006CC531 /* MenuViewController.m */,
 				DC0DB08317A42D60006CC531 /* SplashViewController.h */,
 				DC0DB08417A42D60006CC531 /* SplashViewController.m */,
-				DC1C9E0D17AC75DD0067F63D /* IntroPhotoViewController.h */,
-				DC1C9E0E17AC75DD0067F63D /* IntroPhotoViewController.m */,
-				DC1C9E1017AC7AF90067F63D /* IntroTextViewController.h */,
-				DC1C9E1117AC7AF90067F63D /* IntroTextViewController.m */,
+				DC37FF3D17ADD66F00A6C056 /* IntroViewController.h */,
+				DC37FF3E17ADD66F00A6C056 /* IntroViewController.m */,
 				DC2530E017A4FB760048D5B4 /* LeftViewController.h */,
 				DC2530E117A4FB760048D5B4 /* LeftViewController.m */,
 				DC0DB09717A44084006CC531 /* ContentViewController.h */,
@@ -467,6 +472,11 @@
 		DC264B3D17A47EB6008973D7 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DC37FF4617ADE8F300A6C056 /* hiddin_wireframe@2x.png */,
+				DC37FF4217ADDCF500A6C056 /* hiddin_tweets@2x.png */,
+				DC37FF4317ADDCF500A6C056 /* hiddin_photos@2x.png */,
+				DC37FF4017ADDAA700A6C056 /* hiddin_getstarted@2x.png */,
+				DC37FF3B17ADD3A400A6C056 /* hiddin_splash@2x.png */,
 				DC1C9E1B17AC88E70067F63D /* Content Action Icons */,
 				DC1C9E1C17AC89090067F63D /* Left Menu Icons */,
 				DC1C9E1D17AC89580067F63D /* Navigation Bar Icons */,
@@ -573,12 +583,15 @@
 				DC0DB06717A42BB6006CC531 /* FacebookSDKResources.bundle in Resources */,
 				DC264B3B17A47EB1008973D7 /* hiddin_keep_A@2x.png in Resources */,
 				DC19A09017A5C11500BC784C /* hiddin_nav@2x.png in Resources */,
+				DC37FF3C17ADD3A400A6C056 /* hiddin_splash@2x.png in Resources */,
+				DC37FF4417ADDCF600A6C056 /* hiddin_tweets@2x.png in Resources */,
 				DC1C9DF317AC66380067F63D /* hiddin_left_keep@2x.png in Resources */,
 				DC1C9DF417AC66380067F63D /* hiddin_left_later@2x.png in Resources */,
 				DC264B4817A481EF008973D7 /* hiddin_left_B@2x.png in Resources */,
 				DC0DB09E17A455F2006CC531 /* MyContent.sqlite in Resources */,
 				DC264B3A17A47EB1008973D7 /* hiddin_delete_B@2x.png in Resources */,
 				DC264B3817A47EB1008973D7 /* hiddin_later_B@2x.png in Resources */,
+				DC37FF4517ADDCF600A6C056 /* hiddin_photos@2x.png in Resources */,
 				DC264B3717A47EB1008973D7 /* hiddin_later_A@2x.png in Resources */,
 				DC3872DA17AB47D900C9C01B /* SVProgressHUD.bundle in Resources */,
 				DC1C9DF617AC6B450067F63D /* hiddin_nav_refresh@2x.png in Resources */,
@@ -589,12 +602,14 @@
 				DC1C9DE717AC34D30067F63D /* hiddin_text_horizontal@2x.png in Resources */,
 				DCF9E13217A9C1CE00377705 /* hiddin_keep_C@2x.png in Resources */,
 				DCF9E13817A9CBC100377705 /* hiddin_left_reload@2x.png in Resources */,
+				DC37FF4117ADDAA700A6C056 /* hiddin_getstarted@2x.png in Resources */,
 				DC264B4917A481EF008973D7 /* hiddin_left_A@2x.png in Resources */,
 				DC0DB06817A42BB6006CC531 /* FBUserSettingsViewResources.bundle in Resources */,
 				DC0DB03417A42A32006CC531 /* InfoPlist.strings in Resources */,
 				DCF9E13417A9C1CE00377705 /* hiddin_later_C@2x.png in Resources */,
 				DC3872D417AB44AD00C9C01B /* hiddin_save_A@2x.png in Resources */,
 				DC264B4617A481EF008973D7 /* hiddin_right_A@2x.png in Resources */,
+				DC37FF4717ADE8F300A6C056 /* hiddin_wireframe@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -613,7 +628,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC1C9E1217AC7AF90067F63D /* IntroTextViewController.m in Sources */,
 				DC1C9E0417AC71D20067F63D /* MJPopupBackgroundView.m in Sources */,
 				DC1C9E0517AC71D20067F63D /* UIViewController+MJPopupViewController.m in Sources */,
 				DC1C9DF017AC62800067F63D /* TDBadgedCell.m in Sources */,
@@ -623,11 +637,11 @@
 				DC07689717A876AD0000344D /* GetImageOperation.m in Sources */,
 				DCF9E12D17A9729200377705 /* ExampleCell.m in Sources */,
 				DC3872D917AB47D900C9C01B /* SVProgressHUD.m in Sources */,
-				DC1C9E0F17AC75DD0067F63D /* IntroPhotoViewController.m in Sources */,
 				DC2530DF17A4DB390048D5B4 /* MTPopupWindow.m in Sources */,
 				DC0DB09017A42DD1006CC531 /* MenuViewController.m in Sources */,
 				DC0DB03A17A42A32006CC531 /* AppDelegate.m in Sources */,
 				DC0DB09317A42E0F006CC531 /* Reachability.m in Sources */,
+				DC37FF3F17ADD66F00A6C056 /* IntroViewController.m in Sources */,
 				DC0DB09917A44084006CC531 /* ContentViewController.m in Sources */,
 				DC0DB03617A42A32006CC531 /* main.m in Sources */,
 				DC0DB08A17A42DAF006CC531 /* JASidePanelController.m in Sources */,

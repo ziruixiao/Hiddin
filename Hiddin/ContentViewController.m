@@ -22,9 +22,9 @@
 #import "UIViewController+JASidePanel.h"
 #import "SVProgressHUD.h"
 #import "UIViewController+MJPopupViewController.h"
-#import "IntroPhotoViewController.h"
+#import "IntroViewController.h"
 
-@interface ContentViewController () <MJSecondPopupDelegate>
+@interface ContentViewController ()
 
 @end
 
@@ -68,11 +68,9 @@
     
     if (!self.appDelegate.showIntroPhoto) {
         
-        IntroPhotoViewController *introPhotoViewController = (IntroPhotoViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"introPhotoViewController"];
-        introPhotoViewController.delegate = self;
-        self.disableGestures = YES;
-        [self presentPopupViewController:introPhotoViewController animationType:MJPopupViewAnimationFade];
+        IntroViewController *introPhotoViewController = (IntroViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"introViewController"];
         
+        [self presentViewController:introPhotoViewController animated:NO completion:nil];
         self.appDelegate.showIntroPhoto = NO;
     }
     
@@ -457,12 +455,6 @@
          }
      }];
 
-}
-
-- (void)cancelButtonClicked:(IntroPhotoViewController*)introPhotoViewController
-{
-    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
-    self.disableGestures = NO;
 }
 
 - (void)dealloc
