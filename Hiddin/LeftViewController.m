@@ -12,6 +12,7 @@
 #import "ContentViewController.h"
 #import "ContentTableViewController.h"
 #import "TDBadgedCell.h"
+#import "IntroViewController.h"
 
 @interface LeftViewController ()
 
@@ -68,7 +69,7 @@
             return 3;
             break;
         case 3:
-            return 1;
+            return 2;
             break;
         default:
             break;
@@ -177,8 +178,8 @@
                     
                     break; }
                 case 1: {
-                    cell.imageView.image = [UIImage imageNamed:@"hiddin_left_reload.png"];
-                    cell.textLabel.text = @"Log Out";
+                    cell.imageView.image = [UIImage imageNamed:@"hiddin_left_help.png"];
+                    cell.textLabel.text = @"Tutorial";
                     break; }
             }
             break; }
@@ -227,7 +228,9 @@
         if (indexPath.row == 0) {
             [((MenuViewController*)self.sidePanelController) getTimeLine];
         } else if (indexPath.row == 1) {
-            //[((MenuViewController*)self.sidePanelController) getAllTaggedFacebookPhotos];
+            IntroViewController *introPhotoViewController = (IntroViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"introViewController"];
+            
+            [self presentViewController:introPhotoViewController animated:NO completion:nil];
         }
     }
 }

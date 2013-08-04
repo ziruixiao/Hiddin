@@ -9,6 +9,7 @@
 #import "IntroViewController.h"
 #define kCellTextKey @"kCellTextKey"
 #define kCellTagKey @"kCellTagKey"
+#import "SVProgressHUD.h"
 
 @interface IntroViewController ()
 
@@ -45,13 +46,93 @@
     
 }
 
+- (void)setupView3
+{
+    //label is 301
+    //icon next to label is 302
+    //text is 303
+    //imageview is 304
+    //tableview is 305
+    
+    UIImageView *photosImageView = [[UIImageView alloc] initWithFrame:self.myTableView.frame];
+    photosImageView.image = [UIImage imageNamed:@"hiddin_photo_1.png"];
+    photosImageView.contentMode = UIViewContentModeTop;
+    photosImageView.tag = 600;
+    
+    UIButton *topButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [topButton setImage:[UIImage imageNamed:@"hiddin_keep_B.png"] forState:UIControlStateNormal];
+    [topButton addTarget:self action:@selector(view3ButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    topButton.frame = CGRectMake(200, 283, 80, 80);
+    topButton.tag = 603;
+    
+    UIImageView *fingerImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"hiddin_finger.png"]];
+    fingerImage.frame = CGRectMake(40,40,40,40);
+    fingerImage.tag = 610;
+    [topButton addSubview:fingerImage];
+    
+    
+    [UIView transitionWithView:self.view
+                      duration:1.0f
+                       options:UIViewAnimationOptionTransitionCrossDissolve
+                    animations:^{
+                        ((UILabel*)[self.view viewWithTag:301]).text = @"Photos";
+                        ((UIImageView*)[self.view viewWithTag:302]).image = [UIImage imageNamed:@"hiddin_photos.png"];
+                        ((UILabel*)[self.view viewWithTag:303]).text = @"Tap to instantly keep or delete tweets that contain photos from your timeline.";
+                        
+                        [self.myTableView removeFromSuperview];
+                        [self.view2 addSubview:photosImageView];
+                        [self.view2 addSubview:topButton];
+                        
+                    } completion:nil];
+    self.content = nil;
+    myCells = nil;
+    
+    
+    
+}
+
 - (IBAction)getStarted:(id)sender
 {
     [UIView animateWithDuration:1.0f
                      animations:^{
+                         [view2 setCenter:view1.center];
                          [view1 setCenter:CGPointMake(160, -284)];
+                         
                      }
-     ];
+    ];
+}
+
+- (IBAction)view3ButtonPressed:(id)sender
+{
+    UIButton *pressedButton = (UIButton*)sender;
+    if (pressedButton.tag == 603) {
+        [pressedButton setImage:[UIImage imageNamed:@"hiddin_delete_B.png"] forState:UIControlStateNormal];
+        pressedButton.frame = CGRectMake(40,283,80,80);
+        pressedButton.tag = 602;
+        ((UIImageView*)[self.view viewWithTag:600]).image = [UIImage imageNamed:@"hiddin_photo_2.png"];
+    } else if (pressedButton.tag == 602) {
+        [pressedButton setImage:[UIImage imageNamed:@"hiddin_later_B.png"] forState:UIControlStateNormal];
+        pressedButton.frame = CGRectMake(120,283,80,80);
+        pressedButton.tag = 601;
+        ((UIImageView*)[self.view viewWithTag:600]).image = [UIImage imageNamed:@"hiddin_photo_3.png"];
+    } else if (pressedButton.tag == 601) {
+        [pressedButton setImage:[UIImage imageNamed:@"hiddin_save_B.png"] forState:UIControlStateNormal];
+        pressedButton.frame = CGRectMake(120,[UIScreen mainScreen].bounds.size.height-80,80,80);
+        pressedButton.tag = 604;
+        ((UIImageView*)[self.view viewWithTag:600]).image = [UIImage imageNamed:@"hiddin_photo_4.png"];
+    } else if (pressedButton.tag == 604) {
+        for (UIButton *fingerButton in pressedButton.subviews) {
+            if (fingerButton.tag == 610) {
+                [fingerButton removeFromSuperview];
+            }
+        }
+        [pressedButton setImage:[UIImage imageNamed:@"hiddin_continue.png"] forState:UIControlStateNormal];
+        pressedButton.frame = CGRectMake(80,[UIScreen mainScreen].bounds.size.height-70,160,50);
+        pressedButton.tag = 599;
+        ((UIImageView*)[self.view viewWithTag:600]).image = [UIImage imageNamed:@"hiddin_photo_5.png"];
+    } else if (pressedButton.tag == 599) {
+        [self dismissViewControllerAnimated:NO completion:nil];
+    }
 }
 
 - (IBAction)skipIntroduction:(id)sender
@@ -136,14 +217,14 @@
             break;
         case 6:
             cell.tag = 506;
-            cell.textLabel.text = @"";
+            cell.textLabel.text = @"You can also search for keywords to help make managing tweets easier.";
             cell.userInteractionEnabled = NO;
             cell.textLabel.enabled = NO;
             cell.detailTextLabel.enabled = NO;
             break;
         case 7:
             cell.tag = 507;
-            cell.textLabel.text = @"This is a sample tweet.";
+            cell.textLabel.text = @"Tweets are ordered by time so that the most recent ones are at the top.";
             cell.userInteractionEnabled = NO;
             cell.textLabel.enabled = NO;
             cell.detailTextLabel.enabled = NO;
@@ -233,7 +314,8 @@
 
             } else if (indexPath.row == 2) {
                 //TODO: Go to the next part of the tutorial.
-                
+                [SVProgressHUD showSuccessWithStatus:@"Great job!"];
+                [self setupView3];
             }
         }
         
@@ -244,6 +326,7 @@
 
 - (void)swipeCell:(JZSwipeCell *)cell swipeTypeChangedFrom:(JZSwipeType)from to:(JZSwipeType)to
 {
+    
 	// perform custom state changes here
     if (to == JZSwipeTypeShortRight || to == JZSwipeTypeLongRight) { //keep
         //trigger next step
