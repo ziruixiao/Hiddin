@@ -53,7 +53,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 4;
+    return 5;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -70,6 +70,9 @@
             break;
         case 3:
             return 2;
+            break;
+        case 4:
+            return 1;
             break;
         default:
             break;
@@ -91,6 +94,9 @@
             break;
         case 3:
             return @"Settings";
+            break;
+        case 4:
+            return @"Facebook";
             break;
         default:
             return @"";
@@ -180,6 +186,14 @@
                 case 1: {
                     cell.imageView.image = [UIImage imageNamed:@"hiddin_left_help.png"];
                     cell.textLabel.text = @"Tutorial";
+                    break; }
+            }
+            break; }
+        case 4: {
+            switch (indexPath.row) {
+                case 0: {
+                    cell.imageView.image = [UIImage imageNamed:@"hiddin_left_facebook.png"];
+                    cell.textLabel.text = @"Facebook";
                     break; }
             }
             break; }

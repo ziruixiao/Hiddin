@@ -65,7 +65,8 @@
          */
         
     } else {
-        if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]){
+        //we need a new way to check
+        if (![SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]){
             UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"contentTextNavigationController"];
             
             ContentTableViewController *tempContentVC = (ContentTableViewController*)[tempContentNC.viewControllers objectAtIndex:0];

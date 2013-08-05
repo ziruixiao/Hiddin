@@ -75,9 +75,9 @@
                       duration:1.0f
                        options:UIViewAnimationOptionTransitionCrossDissolve
                     animations:^{
-                        ((UILabel*)[self.view viewWithTag:301]).text = @"Photos";
+                        //((UILabel*)[self.view viewWithTag:301]).text = @"Photos";
                         ((UIImageView*)[self.view viewWithTag:302]).image = [UIImage imageNamed:@"hiddin_photos.png"];
-                        ((UILabel*)[self.view viewWithTag:303]).text = @"Tap to instantly keep or delete tweets that contain photos from your timeline.";
+                        ((UILabel*)[self.view viewWithTag:303]).text = @"Tap the button to keep this photo.";
                         
                         [self.myTableView removeFromSuperview];
                         [self.view2 addSubview:photosImageView];
@@ -93,6 +93,9 @@
 
 - (IBAction)getStarted:(id)sender
 {
+    ((UILabel*)[self.view viewWithTag:303]).text = @"Swipe right to keep a tweet.";
+    ((UILabel*)[self.view viewWithTag:303]).font = [UIFont boldSystemFontOfSize:18.0];
+    
     [UIView animateWithDuration:1.0f
                      animations:^{
                          [view2 setCenter:view1.center];
@@ -106,21 +109,25 @@
 {
     UIButton *pressedButton = (UIButton*)sender;
     if (pressedButton.tag == 603) {
+        ((UILabel*)[self.view viewWithTag:303]).text = @"Tap the button to delete this photo.";
         [pressedButton setImage:[UIImage imageNamed:@"hiddin_delete_B.png"] forState:UIControlStateNormal];
         pressedButton.frame = CGRectMake(40,283,80,80);
         pressedButton.tag = 602;
         ((UIImageView*)[self.view viewWithTag:600]).image = [UIImage imageNamed:@"hiddin_photo_2.png"];
     } else if (pressedButton.tag == 602) {
+        ((UILabel*)[self.view viewWithTag:303]).text = @"Tap the button to skip this photo.";
         [pressedButton setImage:[UIImage imageNamed:@"hiddin_later_B.png"] forState:UIControlStateNormal];
         pressedButton.frame = CGRectMake(120,283,80,80);
         pressedButton.tag = 601;
         ((UIImageView*)[self.view viewWithTag:600]).image = [UIImage imageNamed:@"hiddin_photo_3.png"];
     } else if (pressedButton.tag == 601) {
+        ((UILabel*)[self.view viewWithTag:303]).text = @"Tap the button to save this photo.";
         [pressedButton setImage:[UIImage imageNamed:@"hiddin_save_B.png"] forState:UIControlStateNormal];
         pressedButton.frame = CGRectMake(120,[UIScreen mainScreen].bounds.size.height-80,80,80);
         pressedButton.tag = 604;
         ((UIImageView*)[self.view viewWithTag:600]).image = [UIImage imageNamed:@"hiddin_photo_4.png"];
     } else if (pressedButton.tag == 604) {
+        ((UILabel*)[self.view viewWithTag:303]).text = @"Great Job!";
         for (UIButton *fingerButton in pressedButton.subviews) {
             if (fingerButton.tag == 610) {
                 [fingerButton removeFromSuperview];
@@ -305,6 +312,7 @@
                 ((ExampleCell*)[self.view2 viewWithTag:502]).textLabel.enabled = YES;
                 ((ExampleCell*)[self.view2 viewWithTag:502]).detailTextLabel.enabled = YES;
                 
+                ((UILabel*)[self.view viewWithTag:303]).text = @"Swipe short left to delete a tweet.";
                 UIImageView *redArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"hiddin_arrow_red.png"]];
                 redArrow.frame = CGRectMake(0,9,253,67);
                 redArrow.alpha = 0.4;
@@ -321,6 +329,7 @@
                 ((ExampleCell*)[self.view2 viewWithTag:504]).textLabel.enabled = YES;
                 ((ExampleCell*)[self.view2 viewWithTag:504]).detailTextLabel.enabled = YES;
                 
+                ((UILabel*)[self.view viewWithTag:303]).text = @"Swipe long left to skip a tweet.";
                 UIImageView *yellowArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"hiddin_arrow_yellow.png"]];
                 yellowArrow.frame = CGRectMake(0,9,253,67);
                 yellowArrow.alpha = 0.5;

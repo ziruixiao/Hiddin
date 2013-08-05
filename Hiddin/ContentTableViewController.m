@@ -54,14 +54,14 @@
     if (content.count < 1) {
         NSLog(@"there are no results");
     }
-    if (!self.appDelegate.showIntroPhoto) {
+   // if (self.appDelegate.showIntroPhoto) {
         
-        IntroViewController *introTextViewController = (IntroViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"introViewController"];
+        IntroViewController *introViewController = (IntroViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"introViewController"];
         
-        [self presentViewController:introTextViewController animated:NO completion:nil];
+        [self presentViewController:introViewController animated:NO completion:nil];
         
         self.appDelegate.showIntroPhoto = NO;
-    }
+   // }
 
 }
 

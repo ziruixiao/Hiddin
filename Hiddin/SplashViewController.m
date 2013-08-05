@@ -12,6 +12,7 @@
 #import "ContentViewController.h"
 #import "ContentTableViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "IntroViewController.h"
 
 @interface SplashViewController () <FBLoginViewDelegate>
 
