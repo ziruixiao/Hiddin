@@ -93,6 +93,9 @@
 		DC3872D517AB44AD00C9C01B /* hiddin_save_B@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC3872D317AB44AD00C9C01B /* hiddin_save_B@2x.png */; };
 		DC3872D917AB47D900C9C01B /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3872D717AB47D900C9C01B /* SVProgressHUD.m */; };
 		DC3872DA17AB47D900C9C01B /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DC3872D817AB47D900C9C01B /* SVProgressHUD.bundle */; };
+		DCF0C8A317B00DA90008AA20 /* BannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF0C8A217B00DA90008AA20 /* BannerViewController.m */; };
+		DCF0C8A517B00DBE0008AA20 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCF0C8A417B00DBE0008AA20 /* iAd.framework */; };
+		DCF0C8AC17B04D930008AA20 /* hiddin_left_retweet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCF0C8AB17B04D930008AA20 /* hiddin_left_retweet@2x.png */; };
 		DCF9E12A17A9725C00377705 /* JZSwipeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF9E12917A9725C00377705 /* JZSwipeCell.m */; };
 		DCF9E12D17A9729200377705 /* ExampleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF9E12C17A9729200377705 /* ExampleCell.m */; };
 		DCF9E13217A9C1CE00377705 /* hiddin_keep_C@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCF9E12F17A9C1CE00377705 /* hiddin_keep_C@2x.png */; };
@@ -220,6 +223,10 @@
 		DC3872D617AB47D900C9C01B /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		DC3872D717AB47D900C9C01B /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		DC3872D817AB47D900C9C01B /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		DCF0C8A117B00DA90008AA20 /* BannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerViewController.h; sourceTree = "<group>"; };
+		DCF0C8A217B00DA90008AA20 /* BannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerViewController.m; sourceTree = "<group>"; };
+		DCF0C8A417B00DBE0008AA20 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		DCF0C8AB17B04D930008AA20 /* hiddin_left_retweet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_left_retweet@2x.png"; sourceTree = "<group>"; };
 		DCF9E12817A9725C00377705 /* JZSwipeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZSwipeCell.h; sourceTree = "<group>"; };
 		DCF9E12917A9725C00377705 /* JZSwipeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZSwipeCell.m; sourceTree = "<group>"; };
 		DCF9E12B17A9729200377705 /* ExampleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleCell.h; sourceTree = "<group>"; };
@@ -241,6 +248,7 @@
 				DC0DB02C17A42A32006CC531 /* CoreGraphics.framework in Frameworks */,
 				DC0DB09617A4373A006CC531 /* FacebookSDK.framework in Frameworks */,
 				DC0DB02A17A42A32006CC531 /* Foundation.framework in Frameworks */,
+				DCF0C8A517B00DBE0008AA20 /* iAd.framework in Frameworks */,
 				DC0DB06217A42B67006CC531 /* libsqlite3.dylib in Frameworks */,
 				DC0DB07217A42BEC006CC531 /* libz.dylib in Frameworks */,
 				DC2530DC17A4D94C0048D5B4 /* MessageUI.framework in Frameworks */,
@@ -291,6 +299,7 @@
 		DC0DB02817A42A32006CC531 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DCF0C8A417B00DBE0008AA20 /* iAd.framework */,
 				DC1C9DEC17AC599B0067F63D /* Twitter.framework */,
 				DC2530DB17A4D94C0048D5B4 /* MessageUI.framework */,
 				DC0DB09517A4373A006CC531 /* FacebookSDK.framework */,
@@ -327,6 +336,8 @@
 				DC37FF3E17ADD66F00A6C056 /* IntroViewController.m */,
 				DC2530E017A4FB760048D5B4 /* LeftViewController.h */,
 				DC2530E117A4FB760048D5B4 /* LeftViewController.m */,
+				DCF0C8A117B00DA90008AA20 /* BannerViewController.h */,
+				DCF0C8A217B00DA90008AA20 /* BannerViewController.m */,
 				DC0DB09717A44084006CC531 /* ContentViewController.h */,
 				DC0DB09817A44084006CC531 /* ContentViewController.m */,
 				DC07689817A8A1EF0000344D /* ContentTableViewController.h */,
@@ -499,6 +510,7 @@
 		DC264B3D17A47EB6008973D7 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DCF0C8AB17B04D930008AA20 /* hiddin_left_retweet@2x.png */,
 				DC37FF5A17AEC44000A6C056 /* hiddin_arrow_yellow@2x.png */,
 				DC37FF5B17AEC44000A6C056 /* hiddin_arrow_red@2x.png */,
 				DC37FF5C17AEC44000A6C056 /* hiddin_arrow_green@2x.png */,
@@ -614,6 +626,7 @@
 				DC0DB07B17A42C4C006CC531 /* Main_iPhone.storyboard in Resources */,
 				DC264B3917A47EB1008973D7 /* hiddin_delete_A@2x.png in Resources */,
 				DC0DB07C17A42C4C006CC531 /* Main_iPad.storyboard in Resources */,
+				DCF0C8AC17B04D930008AA20 /* hiddin_left_retweet@2x.png in Resources */,
 				DC1C9DEA17AC48EB0067F63D /* hiddin_facebook_login@2x.png in Resources */,
 				DC2530E717A4FEDD0048D5B4 /* hiddin_left_twitter@2x.png in Resources */,
 				DC0DB04517A42A32006CC531 /* Images.xcassets in Resources */,
@@ -691,6 +704,7 @@
 				DC0DB09017A42DD1006CC531 /* MenuViewController.m in Sources */,
 				DC0DB03A17A42A32006CC531 /* AppDelegate.m in Sources */,
 				DC0DB09317A42E0F006CC531 /* Reachability.m in Sources */,
+				DCF0C8A317B00DA90008AA20 /* BannerViewController.m in Sources */,
 				DC37FF3F17ADD66F00A6C056 /* IntroViewController.m in Sources */,
 				DC0DB09917A44084006CC531 /* ContentViewController.m in Sources */,
 				DC0DB03617A42A32006CC531 /* main.m in Sources */,

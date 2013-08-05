@@ -317,7 +317,7 @@
                           newContent.contentActive = @"yes";
                           newContent.contentSorting = @"none";
                           
-                          newContent.contentUserID = twitterAccount.identifier;
+                          newContent.contentUserID = twitterAccount.username;
                           
                           if (![newContent alreadyExists:newContent.contentID]) {
                               [newContent insertContent:newContent];

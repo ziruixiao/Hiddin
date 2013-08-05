@@ -51,6 +51,9 @@
 
     [toolContent getCurrentContent:self.content withType:self.typeSelected];
     
+    if (content.count < 1) {
+        NSLog(@"there are no results");
+    }
     if (!self.appDelegate.showIntroPhoto) {
         
         IntroViewController *introTextViewController = (IntroViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"introViewController"];
@@ -84,7 +87,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 100.0;
+    return 95.0;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -111,11 +114,19 @@
 	{
 		cell = [[ExampleCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:[ExampleCell cellID]];
 	}
-    if ([typeSelected isEqualToString:@"tweet_text"]) {
-        cell.imageView.image = [UIImage imageNamed:@"hiddin_left_twitter.png"];
-    } else {
-        //detect retweets and change the logo a little.
+    if ([typeSelected isEqualToString:@"tweet_text"]||[typeSelected isEqualToString:@"tweet_text_later"]||[typeSelected isEqualToString:@"tweet_text_done"]) {
+        cell.imageView.contentMode = UIViewContentModeTop;
+        if (![((Content*)[self.content objectAtIndex:indexPath.row]).contentUserID isEqualToString:((Content*)[self.content objectAtIndex:indexPath.row]).contentFromName]) {
+            cell.imageView.image = [UIImage imageNamed:@"hiddin_left_retweet.png"];
+        } else {
+            
+            cell.imageView.image = [UIImage imageNamed:@"hiddin_left_twitter.png"];
+        }
+        
     }
+    
+    //add a number label
+        
     cell.textLabel.font = [UIFont systemFontOfSize:14];
     cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
     cell.textLabel.numberOfLines = 0;
@@ -159,6 +170,7 @@
         cell.cellContentID = ((Content*)[self.content objectAtIndex:indexPath.row]).contentID;
     }
     
+    //add time ago
     
 	cell.delegate = self;
 	

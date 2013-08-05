@@ -65,14 +65,15 @@
     
     [self.activeView addSubview:currentImage];
     
-    self.caption = [[UILabel alloc] initWithFrame:CGRectMake(0,0,200,100)];
+    self.caption = [[UILabel alloc] initWithFrame:CGRectMake(0,0,240,100)];
     self.caption.center = currentImage.center;
     self.caption.numberOfLines = 0;
     self.caption.font = [UIFont systemFontOfSize:14.0];
-    self.caption.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.5];
+    self.caption.backgroundColor = [UIColor clearColor];
+    
     self.caption.textColor = [UIColor whiteColor];
     self.caption.tag = 707;
-    //[self.activeView addSubview:caption];
+    [self.activeView addSubview:caption];
     
     NSLog(@"The user has selected to see this type of content: %@",self.typeSelected);
     
@@ -183,8 +184,23 @@
     NSString *newContentID = (((Content*)[self.content objectAtIndex:selectedIndex]).contentID);
     self.toolContent.contentID = newContentID;
     self.toolContent.contentLink = (((Content*)[self.content objectAtIndex:selectedIndex]).contentLink);
-    self.caption.text = (((Content*)[self.content objectAtIndex:selectedIndex]).contentDescription);
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:(((Content*)[self.content objectAtIndex:selectedIndex]).contentDescription)];
     
+    
+    /*
+    NSShadow *shadow = [[NSShadow alloc] init];
+    [shadow setShadowColor:[UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:1.0]];
+    [shadow setShadowBlurRadius:10.0];
+    [shadow setShadowOffset:CGSizeMake(0,0)];
+    
+    
+    [attributedString addAttribute:NSShadowAttributeName
+                             value:shadow
+                             range:NSMakeRange(0, [attributedString length])]; */
+    
+    
+    
+    self.caption.attributedText = attributedString;
     //////////////////START QUEUE STUFF/////////////////
     //Part 1) Populate the URLs that I need.
     NSMutableArray *neededURLs = [NSMutableArray arrayWithCapacity:7];
