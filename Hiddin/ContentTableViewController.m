@@ -257,7 +257,7 @@
                     [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
                 }
                
-                [self deleteTweetWithID:selectedContentID];
+                //[self deleteTweetWithID:selectedContentID];
             }
             
 		}

@@ -73,7 +73,7 @@
     
     self.caption.textColor = [UIColor whiteColor];
     self.caption.tag = 707;
-    [self.activeView addSubview:caption];
+    //[self.activeView addSubview:caption];
     
     NSLog(@"The user has selected to see this type of content: %@",self.typeSelected);
     
@@ -293,7 +293,7 @@
 {
     if ([self.typeSelected isEqualToString:@"tweet_media"]) {
         
-        [self deleteCurrentTweet];
+        //[self deleteCurrentTweet];
         
     } else {
         /*
