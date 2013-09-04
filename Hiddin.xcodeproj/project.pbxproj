@@ -97,6 +97,26 @@
 		DCA510EA17D6DE4800286F66 /* hiddin_twitter_error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCA510E917D6DE4800286F66 /* hiddin_twitter_error@2x.png */; };
 		DCA510ED17D6DE5F00286F66 /* ErrorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCA510EC17D6DE5F00286F66 /* ErrorViewController.m */; };
 		DCA510EF17D6DF5300286F66 /* hiddin_error_tryagain@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCA510EE17D6DF5300286F66 /* hiddin_error_tryagain@2x.png */; };
+		DCA5110017D77A7B00286F66 /* WETouchableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCA510F817D77A7B00286F66 /* WETouchableView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DCA5110117D77A7B00286F66 /* WEPopoverContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCA510FA17D77A7B00286F66 /* WEPopoverContainerView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DCA5110217D77A7B00286F66 /* WEPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCA510FC17D77A7B00286F66 /* WEPopoverController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DCA5110317D77A7B00286F66 /* UIBarButtonItem+WEPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = DCA510FF17D77A7B00286F66 /* UIBarButtonItem+WEPopover.m */; };
+		DCA5110617D77AC000286F66 /* WEPopoverContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCA5110517D77AC000286F66 /* WEPopoverContentViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DCA5111617D77DB600286F66 /* popoverArrowDown.png in Resources */ = {isa = PBXBuildFile; fileRef = DCA5110717D77DB600286F66 /* popoverArrowDown.png */; };
+		DCA5111717D77DB600286F66 /* popoverArrowDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCA5110817D77DB600286F66 /* popoverArrowDown@2x.png */; };
+		DCA5111817D77DB600286F66 /* popoverArrowDownSimple.png in Resources */ = {isa = PBXBuildFile; fileRef = DCA5110917D77DB600286F66 /* popoverArrowDownSimple.png */; };
+		DCA5111917D77DB600286F66 /* popoverArrowLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = DCA5110A17D77DB600286F66 /* popoverArrowLeft.png */; };
+		DCA5111A17D77DB600286F66 /* popoverArrowLeft@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCA5110B17D77DB600286F66 /* popoverArrowLeft@2x.png */; };
+		DCA5111B17D77DB600286F66 /* popoverArrowLeftSimple.png in Resources */ = {isa = PBXBuildFile; fileRef = DCA5110C17D77DB600286F66 /* popoverArrowLeftSimple.png */; };
+		DCA5111C17D77DB600286F66 /* popoverArrowRight.png in Resources */ = {isa = PBXBuildFile; fileRef = DCA5110D17D77DB600286F66 /* popoverArrowRight.png */; };
+		DCA5111D17D77DB600286F66 /* popoverArrowRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCA5110E17D77DB600286F66 /* popoverArrowRight@2x.png */; };
+		DCA5111E17D77DB600286F66 /* popoverArrowRightSimple.png in Resources */ = {isa = PBXBuildFile; fileRef = DCA5110F17D77DB600286F66 /* popoverArrowRightSimple.png */; };
+		DCA5111F17D77DB600286F66 /* popoverArrowUp.png in Resources */ = {isa = PBXBuildFile; fileRef = DCA5111017D77DB600286F66 /* popoverArrowUp.png */; };
+		DCA5112017D77DB600286F66 /* popoverArrowUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCA5111117D77DB600286F66 /* popoverArrowUp@2x.png */; };
+		DCA5112117D77DB600286F66 /* popoverArrowUpSimple.png in Resources */ = {isa = PBXBuildFile; fileRef = DCA5111217D77DB600286F66 /* popoverArrowUpSimple.png */; };
+		DCA5112217D77DB600286F66 /* popoverBg.png in Resources */ = {isa = PBXBuildFile; fileRef = DCA5111317D77DB600286F66 /* popoverBg.png */; };
+		DCA5112317D77DB600286F66 /* popoverBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCA5111417D77DB600286F66 /* popoverBg@2x.png */; };
+		DCA5112417D77DB600286F66 /* popoverBgSimple.png in Resources */ = {isa = PBXBuildFile; fileRef = DCA5111517D77DB600286F66 /* popoverBgSimple.png */; };
 		DCF0C8A317B00DA90008AA20 /* BannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF0C8A217B00DA90008AA20 /* BannerViewController.m */; };
 		DCF0C8A517B00DBE0008AA20 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCF0C8A417B00DBE0008AA20 /* iAd.framework */; };
 		DCF0C8AC17B04D930008AA20 /* hiddin_left_retweet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCF0C8AB17B04D930008AA20 /* hiddin_left_retweet@2x.png */; };
@@ -231,6 +251,32 @@
 		DCA510EB17D6DE5F00286F66 /* ErrorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorViewController.h; sourceTree = "<group>"; };
 		DCA510EC17D6DE5F00286F66 /* ErrorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorViewController.m; sourceTree = "<group>"; };
 		DCA510EE17D6DF5300286F66 /* hiddin_error_tryagain@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_error_tryagain@2x.png"; sourceTree = "<group>"; };
+		DCA510F717D77A7B00286F66 /* WETouchableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WETouchableView.h; sourceTree = "<group>"; };
+		DCA510F817D77A7B00286F66 /* WETouchableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WETouchableView.m; sourceTree = "<group>"; };
+		DCA510F917D77A7B00286F66 /* WEPopoverContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverContainerView.h; sourceTree = "<group>"; };
+		DCA510FA17D77A7B00286F66 /* WEPopoverContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPopoverContainerView.m; sourceTree = "<group>"; };
+		DCA510FB17D77A7B00286F66 /* WEPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverController.h; sourceTree = "<group>"; };
+		DCA510FC17D77A7B00286F66 /* WEPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPopoverController.m; sourceTree = "<group>"; };
+		DCA510FD17D77A7B00286F66 /* WEPopoverParentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverParentView.h; sourceTree = "<group>"; };
+		DCA510FE17D77A7B00286F66 /* UIBarButtonItem+WEPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+WEPopover.h"; sourceTree = "<group>"; };
+		DCA510FF17D77A7B00286F66 /* UIBarButtonItem+WEPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+WEPopover.m"; sourceTree = "<group>"; };
+		DCA5110417D77AC000286F66 /* WEPopoverContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverContentViewController.h; sourceTree = "<group>"; };
+		DCA5110517D77AC000286F66 /* WEPopoverContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPopoverContentViewController.m; sourceTree = "<group>"; };
+		DCA5110717D77DB600286F66 /* popoverArrowDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverArrowDown.png; sourceTree = "<group>"; };
+		DCA5110817D77DB600286F66 /* popoverArrowDown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popoverArrowDown@2x.png"; sourceTree = "<group>"; };
+		DCA5110917D77DB600286F66 /* popoverArrowDownSimple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverArrowDownSimple.png; sourceTree = "<group>"; };
+		DCA5110A17D77DB600286F66 /* popoverArrowLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverArrowLeft.png; sourceTree = "<group>"; };
+		DCA5110B17D77DB600286F66 /* popoverArrowLeft@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popoverArrowLeft@2x.png"; sourceTree = "<group>"; };
+		DCA5110C17D77DB600286F66 /* popoverArrowLeftSimple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverArrowLeftSimple.png; sourceTree = "<group>"; };
+		DCA5110D17D77DB600286F66 /* popoverArrowRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverArrowRight.png; sourceTree = "<group>"; };
+		DCA5110E17D77DB600286F66 /* popoverArrowRight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popoverArrowRight@2x.png"; sourceTree = "<group>"; };
+		DCA5110F17D77DB600286F66 /* popoverArrowRightSimple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverArrowRightSimple.png; sourceTree = "<group>"; };
+		DCA5111017D77DB600286F66 /* popoverArrowUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverArrowUp.png; sourceTree = "<group>"; };
+		DCA5111117D77DB600286F66 /* popoverArrowUp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popoverArrowUp@2x.png"; sourceTree = "<group>"; };
+		DCA5111217D77DB600286F66 /* popoverArrowUpSimple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverArrowUpSimple.png; sourceTree = "<group>"; };
+		DCA5111317D77DB600286F66 /* popoverBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverBg.png; sourceTree = "<group>"; };
+		DCA5111417D77DB600286F66 /* popoverBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popoverBg@2x.png"; sourceTree = "<group>"; };
+		DCA5111517D77DB600286F66 /* popoverBgSimple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverBgSimple.png; sourceTree = "<group>"; };
 		DCF0C8A117B00DA90008AA20 /* BannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerViewController.h; sourceTree = "<group>"; };
 		DCF0C8A217B00DA90008AA20 /* BannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerViewController.m; sourceTree = "<group>"; };
 		DCF0C8A417B00DBE0008AA20 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
@@ -338,6 +384,8 @@
 				DC0DB03917A42A32006CC531 /* AppDelegate.m */,
 				DC0DB08E17A42DD1006CC531 /* MenuViewController.h */,
 				DC0DB08F17A42DD1006CC531 /* MenuViewController.m */,
+				DCA5110417D77AC000286F66 /* WEPopoverContentViewController.h */,
+				DCA5110517D77AC000286F66 /* WEPopoverContentViewController.m */,
 				DC0DB08317A42D60006CC531 /* SplashViewController.h */,
 				DC0DB08417A42D60006CC531 /* SplashViewController.m */,
 				DC37FF3D17ADD66F00A6C056 /* IntroViewController.h */,
@@ -414,6 +462,15 @@
 		DC0DB08D17A42DBA006CC531 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				DCA510F717D77A7B00286F66 /* WETouchableView.h */,
+				DCA510F817D77A7B00286F66 /* WETouchableView.m */,
+				DCA510F917D77A7B00286F66 /* WEPopoverContainerView.h */,
+				DCA510FA17D77A7B00286F66 /* WEPopoverContainerView.m */,
+				DCA510FB17D77A7B00286F66 /* WEPopoverController.h */,
+				DCA510FC17D77A7B00286F66 /* WEPopoverController.m */,
+				DCA510FD17D77A7B00286F66 /* WEPopoverParentView.h */,
+				DCA510FE17D77A7B00286F66 /* UIBarButtonItem+WEPopover.h */,
+				DCA510FF17D77A7B00286F66 /* UIBarButtonItem+WEPopover.m */,
 				DC37FF6017AEC82300A6C056 /* UIView+Badge.h */,
 				DC37FF6117AEC82300A6C056 /* UIView+Badge.m */,
 				DC0DB08C17A42DB3006CC531 /* JASidePanels */,
@@ -510,6 +567,21 @@
 		DC264B3D17A47EB6008973D7 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DCA5110717D77DB600286F66 /* popoverArrowDown.png */,
+				DCA5110817D77DB600286F66 /* popoverArrowDown@2x.png */,
+				DCA5110917D77DB600286F66 /* popoverArrowDownSimple.png */,
+				DCA5110A17D77DB600286F66 /* popoverArrowLeft.png */,
+				DCA5110B17D77DB600286F66 /* popoverArrowLeft@2x.png */,
+				DCA5110C17D77DB600286F66 /* popoverArrowLeftSimple.png */,
+				DCA5110D17D77DB600286F66 /* popoverArrowRight.png */,
+				DCA5110E17D77DB600286F66 /* popoverArrowRight@2x.png */,
+				DCA5110F17D77DB600286F66 /* popoverArrowRightSimple.png */,
+				DCA5111017D77DB600286F66 /* popoverArrowUp.png */,
+				DCA5111117D77DB600286F66 /* popoverArrowUp@2x.png */,
+				DCA5111217D77DB600286F66 /* popoverArrowUpSimple.png */,
+				DCA5111317D77DB600286F66 /* popoverBg.png */,
+				DCA5111417D77DB600286F66 /* popoverBg@2x.png */,
+				DCA5111517D77DB600286F66 /* popoverBgSimple.png */,
 				DCA510EE17D6DF5300286F66 /* hiddin_error_tryagain@2x.png */,
 				DCA510E917D6DE4800286F66 /* hiddin_twitter_error@2x.png */,
 				DCA510E717D6C8BE00286F66 /* hiddin_done_twitter@2x.png */,
@@ -626,7 +698,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCA5111B17D77DB600286F66 /* popoverArrowLeftSimple.png in Resources */,
+				DCA5111817D77DB600286F66 /* popoverArrowDownSimple.png in Resources */,
 				DCF9E13317A9C1CE00377705 /* hiddin_delete_C@2x.png in Resources */,
+				DCA5111917D77DB600286F66 /* popoverArrowLeft.png in Resources */,
 				DC0DB07B17A42C4C006CC531 /* Main_iPhone.storyboard in Resources */,
 				DC264B3917A47EB1008973D7 /* hiddin_delete_A@2x.png in Resources */,
 				DC0DB07C17A42C4C006CC531 /* Main_iPad.storyboard in Resources */,
@@ -639,13 +714,17 @@
 				DC37FF5E17AEC44000A6C056 /* hiddin_arrow_red@2x.png in Resources */,
 				DC0DB06717A42BB6006CC531 /* FacebookSDKResources.bundle in Resources */,
 				DC264B3B17A47EB1008973D7 /* hiddin_keep_A@2x.png in Resources */,
+				DCA5111617D77DB600286F66 /* popoverArrowDown.png in Resources */,
 				DC19A09017A5C11500BC784C /* hiddin_nav@2x.png in Resources */,
 				DC37FF3C17ADD3A400A6C056 /* hiddin_splash@2x.png in Resources */,
 				DC37FF4417ADDCF600A6C056 /* hiddin_tweets@2x.png in Resources */,
+				DCA5111E17D77DB600286F66 /* popoverArrowRightSimple.png in Resources */,
 				DC1C9DF317AC66380067F63D /* hiddin_left_keep@2x.png in Resources */,
 				DC1C9DF417AC66380067F63D /* hiddin_left_later@2x.png in Resources */,
 				DC264B4817A481EF008973D7 /* hiddin_left_B@2x.png in Resources */,
 				DCA510EA17D6DE4800286F66 /* hiddin_twitter_error@2x.png in Resources */,
+				DCA5112317D77DB600286F66 /* popoverBg@2x.png in Resources */,
+				DCA5112417D77DB600286F66 /* popoverBgSimple.png in Resources */,
 				DC0DB09E17A455F2006CC531 /* MyContent.sqlite in Resources */,
 				DC264B3A17A47EB1008973D7 /* hiddin_delete_B@2x.png in Resources */,
 				DC264B3817A47EB1008973D7 /* hiddin_later_B@2x.png in Resources */,
@@ -653,6 +732,7 @@
 				DC37FF4D17AE431F00A6C056 /* hiddin_photo_2@2x.png in Resources */,
 				DC264B3717A47EB1008973D7 /* hiddin_later_A@2x.png in Resources */,
 				DC3872DA17AB47D900C9C01B /* SVProgressHUD.bundle in Resources */,
+				DCA5111F17D77DB600286F66 /* popoverArrowUp.png in Resources */,
 				DC1C9DF617AC6B450067F63D /* hiddin_nav_refresh@2x.png in Resources */,
 				DC264B4717A481EF008973D7 /* hiddin_right_B@2x.png in Resources */,
 				DC3872D517AB44AD00C9C01B /* hiddin_save_B@2x.png in Resources */,
@@ -660,6 +740,7 @@
 				DC37FF5517AE4ABC00A6C056 /* hiddin_photo_5@2x.png in Resources */,
 				DC37FF5F17AEC44000A6C056 /* hiddin_arrow_green@2x.png in Resources */,
 				DCA510E617D6C70300286F66 /* done@2x.png in Resources */,
+				DCA5111C17D77DB600286F66 /* popoverArrowRight.png in Resources */,
 				DC1C9DEB17AC48EB0067F63D /* hiddin_twitter_login@2x.png in Resources */,
 				DC1C9DE717AC34D30067F63D /* hiddin_text_horizontal@2x.png in Resources */,
 				DCF9E13217A9C1CE00377705 /* hiddin_keep_C@2x.png in Resources */,
@@ -673,13 +754,19 @@
 				DC37FF4E17AE431F00A6C056 /* hiddin_photo_1@2x.png in Resources */,
 				DC37FF5917AE4F0700A6C056 /* hiddin_left_help@2x.png in Resources */,
 				DCA510EF17D6DF5300286F66 /* hiddin_error_tryagain@2x.png in Resources */,
+				DCA5112017D77DB600286F66 /* popoverArrowUp@2x.png in Resources */,
 				DCF9E13417A9C1CE00377705 /* hiddin_later_C@2x.png in Resources */,
 				DC37FF4F17AE431F00A6C056 /* hiddin_finger@2x.png in Resources */,
+				DCA5111717D77DB600286F66 /* popoverArrowDown@2x.png in Resources */,
 				DC3872D417AB44AD00C9C01B /* hiddin_save_A@2x.png in Resources */,
 				DC264B4617A481EF008973D7 /* hiddin_right_A@2x.png in Resources */,
+				DCA5112217D77DB600286F66 /* popoverBg.png in Resources */,
 				DC37FF4C17AE431F00A6C056 /* hiddin_photo_3@2x.png in Resources */,
 				DC37FF5117AE48CE00A6C056 /* hiddin_photo_4@2x.png in Resources */,
+				DCA5112117D77DB600286F66 /* popoverArrowUpSimple.png in Resources */,
+				DCA5111D17D77DB600286F66 /* popoverArrowRight@2x.png in Resources */,
 				DC37FF4717ADE8F300A6C056 /* hiddin_wireframe@2x.png in Resources */,
+				DCA5111A17D77DB600286F66 /* popoverArrowLeft@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -700,9 +787,11 @@
 			files = (
 				DC37FF6217AEC82300A6C056 /* UIView+Badge.m in Sources */,
 				DC1C9DF017AC62800067F63D /* TDBadgedCell.m in Sources */,
+				DCA5110017D77A7B00286F66 /* WETouchableView.m in Sources */,
 				DC0DB08B17A42DAF006CC531 /* UIViewController+JASidePanel.m in Sources */,
 				DC07689A17A8A1EF0000344D /* ContentTableViewController.m in Sources */,
 				DC07689617A876AD0000344D /* AsynchImageView.m in Sources */,
+				DCA5110117D77A7B00286F66 /* WEPopoverContainerView.m in Sources */,
 				DC07689717A876AD0000344D /* GetImageOperation.m in Sources */,
 				DCF9E12D17A9729200377705 /* ExampleCell.m in Sources */,
 				DC3872D917AB47D900C9C01B /* SVProgressHUD.m in Sources */,
@@ -710,11 +799,14 @@
 				DC2530DF17A4DB390048D5B4 /* MTPopupWindow.m in Sources */,
 				DC0DB09017A42DD1006CC531 /* MenuViewController.m in Sources */,
 				DCA510E417D6C0BE00286F66 /* DoneViewController.m in Sources */,
+				DCA5110317D77A7B00286F66 /* UIBarButtonItem+WEPopover.m in Sources */,
 				DC0DB03A17A42A32006CC531 /* AppDelegate.m in Sources */,
 				DC0DB09317A42E0F006CC531 /* Reachability.m in Sources */,
 				DCF0C8A317B00DA90008AA20 /* BannerViewController.m in Sources */,
 				DC37FF3F17ADD66F00A6C056 /* IntroViewController.m in Sources */,
 				DC0DB09917A44084006CC531 /* ContentViewController.m in Sources */,
+				DCA5110617D77AC000286F66 /* WEPopoverContentViewController.m in Sources */,
+				DCA5110217D77A7B00286F66 /* WEPopoverController.m in Sources */,
 				DC0DB03617A42A32006CC531 /* main.m in Sources */,
 				DC0DB08A17A42DAF006CC531 /* JASidePanelController.m in Sources */,
 				DCF9E12A17A9725C00377705 /* JZSwipeCell.m in Sources */,

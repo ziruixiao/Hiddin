@@ -180,6 +180,7 @@
     
     [cell.textLabel sizeToFit];
     int contentTime = 0;
+    
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         
         //attributedtext here
@@ -210,8 +211,15 @@
         
         //[attString addAttribute:NSBackgroundColorAttributeName value:bananaColor range:NSMakeRange(0, contentText.length)];
         
-        cell.textLabel.attributedText = attString;
+        
         cell.cellContentID = ((Content*)[searchResults objectAtIndex:indexPath.row]).contentID;
+        
+        NSMutableAttributedString *timeString = [[NSMutableAttributedString alloc] initWithString:[self relativeDateFromTimestamp:contentTime]];
+        //TODO: ADD THE ALIGNMENT HERE AND ADD THE TIME
+        [attString insertAttributedString:timeString atIndex:attString.length];
+        
+        cell.textLabel.attributedText = attString;
+        
     } else {
         contentTime = ((Content*)[self.content objectAtIndex:indexPath.row]).contentTimestamp;
         
@@ -220,6 +228,7 @@
     }
     
     //add time ago
+
     //this string is the time in relative [self relativeDateFromTimestamp:contentTime];
     
 	cell.delegate = self;

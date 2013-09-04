@@ -11,9 +11,14 @@
 #import <Social/Social.h>
 #import "SVProgressHUD.h"
 
-@interface MenuViewController : JASidePanelController <UIGestureRecognizerDelegate,UIAlertViewDelegate>
+@class WEPopoverController;
+
+@interface MenuViewController : JASidePanelController <UIGestureRecognizerDelegate,UIAlertViewDelegate> {
+    WEPopoverController *popoverController;
+}
 
 @property (strong,nonatomic) AppDelegate *appDelegate;
+@property (nonatomic, retain) WEPopoverController *popoverController;
 
 - (void)getAllTaggedFacebookPhotos;
 - (void)getAllPosts;

@@ -9,8 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "Content.h"
 
-@interface LeftViewController : UITableViewController
+@class WEPopoverController;
+
+@interface LeftViewController : UITableViewController {
+    WEPopoverController *popoverController;
+}
 
 @property (strong,nonatomic) Content *toolContent;
+@property (nonatomic, retain) WEPopoverController *popoverController;
 
 @end

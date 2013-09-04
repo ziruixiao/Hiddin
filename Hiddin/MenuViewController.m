@@ -14,12 +14,16 @@
 #import "LeftViewController.h"
 #import "ErrorViewController.h"
 
+#import "WEPopoverController.h"
+#import "WEPopoverContentViewController.h"
+
 @interface MenuViewController ()
 
 @end
 
 @implementation MenuViewController
 @synthesize appDelegate;
+@synthesize popoverController;
 
 //EMPTY - CUSTOM INITIALIZATION
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -45,6 +49,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self showAccounts];
     appDelegate = [[UIApplication sharedApplication] delegate];
     [self setLeftPanel:[self.storyboard instantiateViewControllerWithIdentifier:@"leftViewController"]];
     
@@ -231,6 +236,26 @@
                           }];
 }
 
+- (void)showAccounts
+{
+    if (self.popoverController) {
+		[self.popoverController dismissPopoverAnimated:YES];
+		self.popoverController = nil;
+		
+	} else {
+        NSLog(@"here");
+		UIViewController *contentViewController = [[WEPopoverContentViewController alloc] initWithStyle:UITableViewStylePlain];
+		
+		self.popoverController = [[WEPopoverController alloc] initWithContentViewController:contentViewController];
+		[self.popoverController presentPopoverFromRect:CGRectMake(0, 0, 320, 80)
+												inView:self.centerPanel.view
+							  permittedArrowDirections:UIPopoverArrowDirectionUp
+											  animated:YES];
+	}
+
+}
+
+
 - (void)getTimeLine
 {
     ACAccountStore *account = [[ACAccountStore alloc] init];
@@ -247,6 +272,9 @@
              
              if ([arrayOfAccounts count] > 0)
              {
+                 //prompt popup here
+                 
+                 
                  ACAccount *twitterAccount = [arrayOfAccounts firstObject];
                  
                  NSURL *requestURL = [NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/user_timeline.json"];

@@ -98,7 +98,11 @@
     
     [UIView animateWithDuration:1.0f
                      animations:^{
-                         [view2 setCenter:view1.center];
+                         if ([UIScreen mainScreen].bounds.size.height==480) {
+                             [view2 setCenter:CGPointMake(view1.center.x,view1.center.y-44)];
+                         } else {
+                             [view2 setCenter:view1.center];
+                         }
                          [view1 setCenter:CGPointMake(160, -284)];
                          
                      }

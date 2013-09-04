@@ -13,6 +13,8 @@
 #import "ContentTableViewController.h"
 #import "TDBadgedCell.h"
 #import "IntroViewController.h"
+#import "WEPopoverController.h"
+#import "WEPopoverContentViewController.h"
 
 @interface LeftViewController ()
 
@@ -20,7 +22,7 @@
 
 @implementation LeftViewController
 
-@synthesize toolContent;
+@synthesize toolContent,popoverController;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -240,7 +242,22 @@
         [self.sidePanelController showCenterPanelAnimated:YES];
     } else if (indexPath.section == 3) {
         if (indexPath.row == 0) {
-            [((MenuViewController*)self.sidePanelController) getTimeLine];
+            //[((MenuViewController*)self.sidePanelController) getTimeLine];
+            
+            if (self.popoverController) {
+                [self.popoverController dismissPopoverAnimated:YES];
+                self.popoverController = nil;
+                
+            } else {
+                NSLog(@"here");
+                UIViewController *contentViewController = [[WEPopoverContentViewController alloc] initWithStyle:UITableViewStylePlain];
+                
+                self.popoverController = [[WEPopoverController alloc] initWithContentViewController:contentViewController];
+                [self.popoverController presentPopoverFromRect:[tableView cellForRowAtIndexPath:indexPath].frame
+                                                        inView:self.view
+                                      permittedArrowDirections:UIPopoverArrowDirectionUp
+                                                      animated:YES];
+            }
         } else if (indexPath.row == 1) {
             IntroViewController *introPhotoViewController = (IntroViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"introViewController"];
             
