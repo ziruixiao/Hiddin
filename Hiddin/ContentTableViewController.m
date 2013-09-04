@@ -291,7 +291,7 @@
                 }
                 
             } else if ([self.action isEqualToString:@"delete"]) {
-                [self.toolContent updateContent:self.toolContent inField:@"sorting" toNew:@"tweet_media_deleted" ifInt:-1];
+                [self.toolContent updateContent:self.toolContent inField:@"sorting" toNew:@"tweet_text_deleted" ifInt:-1];
                 if ([self.searchDisplayController isActive]) {
                     [searchResults removeObjectAtIndex:indexPath.row];
                     [self.searchDisplayController.searchResultsTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
@@ -307,7 +307,7 @@
                     [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
                 }
                
-                //[self deleteTweetWithID:selectedContentID];
+                [self deleteTweetWithID:selectedContentID];
             }
             
 		}

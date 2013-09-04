@@ -33,6 +33,7 @@
 @property (strong,nonatomic) NSMutableDictionary *images;
 
 @property (strong,nonatomic) UILabel *caption;
+@property (strong,nonatomic) UIView *captionView;
 
 @property (strong, nonatomic) IBOutlet UIView *activeView;
 @property BOOL disableGestures;

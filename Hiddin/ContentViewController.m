@@ -21,7 +21,6 @@
 #import "MenuViewController.h"
 #import "UIViewController+JASidePanel.h"
 #import "SVProgressHUD.h"
-#import "UIViewController+MJPopupViewController.h"
 #import "IntroViewController.h"
 #import "UIView+Badge.h"
 #import "DoneViewController.h"
@@ -36,7 +35,7 @@
 @implementation ContentViewController
 @synthesize appDelegate,content,selectedIndex;
 @synthesize topButton1,topButton2,topButton3,bottomButton1,bottomButton2,bottomButton3,topView;
-@synthesize toolContent,typeSelected,imageDownloadQueue,images,activeView,disableGestures,caption;
+@synthesize toolContent,typeSelected,imageDownloadQueue,images,activeView,disableGestures,caption,captionView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -69,14 +68,25 @@
     
     [self.activeView addSubview:currentImage];
     
+    self.captionView = [[UIView alloc] initWithFrame:CGRectMake(0,0,300,100)];
+    self.captionView.layer.cornerRadius = 15.0;
+    self.captionView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.7];
+    self.captionView.center = self.view.center;
+    self.caption.center = self.captionView.center;
+    self.captionView.tag = 708;
+    
+    [self.view addSubview:self.captionView];
+    
     self.caption = [[UILabel alloc] initWithFrame:CGRectMake(0,0,240,100)];
-    self.caption.center = currentImage.center;
+    self.caption.center = self.captionView.center;
     self.caption.numberOfLines = 0;
     self.caption.font = [UIFont systemFontOfSize:14.0];
     self.caption.backgroundColor = [UIColor clearColor];
     
     self.caption.textColor = [UIColor whiteColor];
     self.caption.tag = 707;
+    
+    [self.view addSubview:self.caption];
     //[self.activeView addSubview:caption];
     
     NSLog(@"The user has selected to see this type of content: %@",self.typeSelected);
@@ -141,6 +151,12 @@
                 
                 self.bottomButton3.alpha = 0.0;
                 self.bottomButton3.userInteractionEnabled = NO;
+                
+                [self.view viewWithTag:707].alpha = 0.0;
+                [self.view viewWithTag:707].userInteractionEnabled = NO;
+                
+                [self.view viewWithTag:708].alpha = 0.0;
+                [self.view viewWithTag:708].userInteractionEnabled = NO;
             }];
             
         } else {
@@ -162,6 +178,12 @@
                 
                 self.bottomButton3.alpha = 1.0;
                 self.bottomButton3.userInteractionEnabled = YES;
+                
+                [self.view viewWithTag:707].alpha = 1.0;
+                [self.view viewWithTag:707].userInteractionEnabled = YES;
+                
+                [self.view viewWithTag:708].alpha = 1.0;
+                [self.view viewWithTag:708].userInteractionEnabled = YES;
             }];
         }
     }
@@ -195,7 +217,8 @@
 {
     //update the number which should be shown somewhere
     
-    if (selectedIndex >= self.content.count) {
+    if (selectedIndex >= self.content.count || self.content.count == 0) {
+        
         UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"doneNavigationController"];
         
         DoneViewController *tempContentVC = (DoneViewController*)[tempContentNC.viewControllers objectAtIndex:0];
@@ -211,6 +234,7 @@
     NSString *newContentID = (((Content*)[self.content objectAtIndex:selectedIndex]).contentID);
     self.toolContent.contentID = newContentID;
     self.toolContent.contentLink = (((Content*)[self.content objectAtIndex:selectedIndex]).contentLink);
+    self.toolContent.contentDescription = (((Content*)[self.content objectAtIndex:selectedIndex]).contentDescription);
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:(((Content*)[self.content objectAtIndex:selectedIndex]).contentDescription)];
     
     
@@ -228,6 +252,18 @@
     
     
     self.caption.attributedText = attributedString;
+    
+    
+    CGSize constraint = CGSizeMake(260, 20000.0f);
+    
+    CGSize size = [self.toolContent.contentDescription sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+    
+    CGFloat height = MAX(size.height + 50.0f, 95.0f);
+    [self.view viewWithTag:708].frame = CGRectMake(0,0,300,height);
+    [self.view viewWithTag:708].center = self.view.center;
+    
+    
+    [self.view bringSubviewToFront:[self.view viewWithTag:707]];
     //////////////////START QUEUE STUFF/////////////////
     //Part 1) Populate the URLs that I need.
     NSMutableArray *neededURLs = [NSMutableArray arrayWithCapacity:7];
@@ -322,7 +358,7 @@
         
     if ([self.typeSelected isEqualToString:@"tweet_media"]) {
         
-        //[self deleteCurrentTweet];
+        [self deleteCurrentTweet];
         
     } else {
         /*

@@ -54,8 +54,6 @@
 		DC1C9DF317AC66380067F63D /* hiddin_left_keep@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC1C9DF117AC66380067F63D /* hiddin_left_keep@2x.png */; };
 		DC1C9DF417AC66380067F63D /* hiddin_left_later@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC1C9DF217AC66380067F63D /* hiddin_left_later@2x.png */; };
 		DC1C9DF617AC6B450067F63D /* hiddin_nav_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC1C9DF517AC6B450067F63D /* hiddin_nav_refresh@2x.png */; };
-		DC1C9E0417AC71D20067F63D /* MJPopupBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1C9E0117AC71D20067F63D /* MJPopupBackgroundView.m */; };
-		DC1C9E0517AC71D20067F63D /* UIViewController+MJPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1C9E0317AC71D20067F63D /* UIViewController+MJPopupViewController.m */; };
 		DC2530DC17A4D94C0048D5B4 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC2530DB17A4D94C0048D5B4 /* MessageUI.framework */; };
 		DC2530DF17A4DB390048D5B4 /* MTPopupWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2530DE17A4DB390048D5B4 /* MTPopupWindow.m */; };
 		DC2530E217A4FB760048D5B4 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2530E117A4FB760048D5B4 /* LeftViewController.m */; };
@@ -183,10 +181,6 @@
 		DC1C9DF117AC66380067F63D /* hiddin_left_keep@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_left_keep@2x.png"; sourceTree = "<group>"; };
 		DC1C9DF217AC66380067F63D /* hiddin_left_later@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_left_later@2x.png"; sourceTree = "<group>"; };
 		DC1C9DF517AC6B450067F63D /* hiddin_nav_refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_nav_refresh@2x.png"; sourceTree = "<group>"; };
-		DC1C9E0017AC71D20067F63D /* MJPopupBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPopupBackgroundView.h; sourceTree = "<group>"; };
-		DC1C9E0117AC71D20067F63D /* MJPopupBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPopupBackgroundView.m; sourceTree = "<group>"; };
-		DC1C9E0217AC71D20067F63D /* UIViewController+MJPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MJPopupViewController.h"; sourceTree = "<group>"; };
-		DC1C9E0317AC71D20067F63D /* UIViewController+MJPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MJPopupViewController.m"; sourceTree = "<group>"; };
 		DC2530DB17A4D94C0048D5B4 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		DC2530DD17A4DB390048D5B4 /* MTPopupWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTPopupWindow.h; sourceTree = "<group>"; };
 		DC2530DE17A4DB390048D5B4 /* MTPopupWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTPopupWindow.m; sourceTree = "<group>"; };
@@ -423,7 +417,6 @@
 				DC37FF6017AEC82300A6C056 /* UIView+Badge.h */,
 				DC37FF6117AEC82300A6C056 /* UIView+Badge.m */,
 				DC0DB08C17A42DB3006CC531 /* JASidePanels */,
-				DC1C9E0617AC71D90067F63D /* MJPopup */,
 				DC1C9E1A17AC88B60067F63D /* MTPopupWindow */,
 				DC0DB09417A42E12006CC531 /* Reachability */,
 				DC3872DB17AB47E200C9C01B /* SVProgressHUD */,
@@ -439,17 +432,6 @@
 				DC0DB09217A42E0F006CC531 /* Reachability.m */,
 			);
 			name = Reachability;
-			sourceTree = "<group>";
-		};
-		DC1C9E0617AC71D90067F63D /* MJPopup */ = {
-			isa = PBXGroup;
-			children = (
-				DC1C9E0017AC71D20067F63D /* MJPopupBackgroundView.h */,
-				DC1C9E0117AC71D20067F63D /* MJPopupBackgroundView.m */,
-				DC1C9E0217AC71D20067F63D /* UIViewController+MJPopupViewController.h */,
-				DC1C9E0317AC71D20067F63D /* UIViewController+MJPopupViewController.m */,
-			);
-			name = MJPopup;
 			sourceTree = "<group>";
 		};
 		DC1C9E1917AC88AA0067F63D /* TableViewCell */ = {
@@ -717,8 +699,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC37FF6217AEC82300A6C056 /* UIView+Badge.m in Sources */,
-				DC1C9E0417AC71D20067F63D /* MJPopupBackgroundView.m in Sources */,
-				DC1C9E0517AC71D20067F63D /* UIViewController+MJPopupViewController.m in Sources */,
 				DC1C9DF017AC62800067F63D /* TDBadgedCell.m in Sources */,
 				DC0DB08B17A42DAF006CC531 /* UIViewController+JASidePanel.m in Sources */,
 				DC07689A17A8A1EF0000344D /* ContentTableViewController.m in Sources */,

@@ -9,7 +9,6 @@
 #import "DoneViewController.h"
 #import "MenuViewController.h"
 #import "UIViewController+JASidePanel.h"
-#import "UIViewController+MJPopupViewController.h"
 #import "ContentTableViewController.h"
 #import "ContentViewController.h"
 
@@ -41,17 +40,25 @@
                                                                     style:UIBarButtonItemStylePlain
                                                                    target:self action:@selector(refreshData)];
     self.navigationItem.rightBarButtonItem = refreshItem;
-    [self loadLabels];
+    //[self loadLabels];
 	// Do any additional setup after loading the view.
 }
-
+/*
 - (void)loadLabels
 {
-    //load the number of "done" ones into green
-    //load the number of "later" ones into yellow
-    //load the number of "deleted" ones into red
+    int myArray[8] = {0,0,0,0,0,0,0,0};
     
-}
+    [toolContent getMenuCounts:myArray];
+    
+    //load the number of "done" ones into green
+    button1.text = [NSString stringWithFormat:@"%i",(myArray[2]+myArray[5])];
+    
+    //load the number of "later" ones into yellow
+    button2.text = [NSString stringWithFormat:@"%i",(myArray[1]+myArray[4])];
+    //load the number of "deleted" ones into red
+    button3.text = [NSString stringWithFormat:@"%i",(myArray[6]+myArray[7])];
+    
+}*/
 
 - (IBAction)tweetAboutIt:(id)sender
 {

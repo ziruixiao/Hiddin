@@ -10,7 +10,6 @@
 #import "MenuViewController.h"
 #import "UIViewController+JASidePanel.h"
 #import "SVProgressHUD.h"
-#import "UIViewController+MJPopupViewController.h"
 #import "ContentViewController.h"
 #import "ContentTableViewController.h"
 
