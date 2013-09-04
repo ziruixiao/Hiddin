@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSString *urlString;
 @property (nonatomic) GetImageOperation *loadOperation;
 @property BOOL finishedLoading;
+@property (strong,nonatomic) UIActivityIndicatorView *spinner;
 
 - (void)loadImageFromNetwork:(NSOperationQueue*) queue;
 - (id)initWithURLString:(NSString*) urlString andFrame:(CGRect)frame;

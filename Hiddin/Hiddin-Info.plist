@@ -9,7 +9,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
-	<string>felixxiao.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>com.felixxiao.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -30,7 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>0.85</string>
+	<string>0.9</string>
 	<key>FacebookAppID</key>
 	<string>740788049291135</string>
 	<key>FacebookDisplayName</key>

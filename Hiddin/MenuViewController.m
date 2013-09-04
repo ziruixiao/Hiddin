@@ -12,6 +12,7 @@
 #import "ContentViewController.h"
 #import "ContentTableViewController.h"
 #import "LeftViewController.h"
+#import "ErrorViewController.h"
 
 @interface MenuViewController ()
 
@@ -337,7 +338,9 @@
                   }];
              }
          } else {
+             NSLog(@"no access");
              // Handle failure to get account access
+             self.centerPanel = [self.storyboard instantiateViewControllerWithIdentifier:@"errorNavigationController"];
          }
      }];
 }

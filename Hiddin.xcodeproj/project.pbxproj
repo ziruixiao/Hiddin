@@ -93,6 +93,12 @@
 		DC3872D517AB44AD00C9C01B /* hiddin_save_B@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC3872D317AB44AD00C9C01B /* hiddin_save_B@2x.png */; };
 		DC3872D917AB47D900C9C01B /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3872D717AB47D900C9C01B /* SVProgressHUD.m */; };
 		DC3872DA17AB47D900C9C01B /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DC3872D817AB47D900C9C01B /* SVProgressHUD.bundle */; };
+		DCA510E417D6C0BE00286F66 /* DoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCA510E317D6C0BE00286F66 /* DoneViewController.m */; };
+		DCA510E617D6C70300286F66 /* done@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCA510E517D6C70300286F66 /* done@2x.png */; };
+		DCA510E817D6C8BE00286F66 /* hiddin_done_twitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCA510E717D6C8BE00286F66 /* hiddin_done_twitter@2x.png */; };
+		DCA510EA17D6DE4800286F66 /* hiddin_twitter_error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCA510E917D6DE4800286F66 /* hiddin_twitter_error@2x.png */; };
+		DCA510ED17D6DE5F00286F66 /* ErrorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCA510EC17D6DE5F00286F66 /* ErrorViewController.m */; };
+		DCA510EF17D6DF5300286F66 /* hiddin_error_tryagain@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCA510EE17D6DF5300286F66 /* hiddin_error_tryagain@2x.png */; };
 		DCF0C8A317B00DA90008AA20 /* BannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF0C8A217B00DA90008AA20 /* BannerViewController.m */; };
 		DCF0C8A517B00DBE0008AA20 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCF0C8A417B00DBE0008AA20 /* iAd.framework */; };
 		DCF0C8AC17B04D930008AA20 /* hiddin_left_retweet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCF0C8AB17B04D930008AA20 /* hiddin_left_retweet@2x.png */; };
@@ -223,6 +229,14 @@
 		DC3872D617AB47D900C9C01B /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		DC3872D717AB47D900C9C01B /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		DC3872D817AB47D900C9C01B /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		DCA510E217D6C0BE00286F66 /* DoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoneViewController.h; sourceTree = "<group>"; };
+		DCA510E317D6C0BE00286F66 /* DoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoneViewController.m; sourceTree = "<group>"; };
+		DCA510E517D6C70300286F66 /* done@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "done@2x.png"; sourceTree = "<group>"; };
+		DCA510E717D6C8BE00286F66 /* hiddin_done_twitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_done_twitter@2x.png"; sourceTree = "<group>"; };
+		DCA510E917D6DE4800286F66 /* hiddin_twitter_error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_twitter_error@2x.png"; sourceTree = "<group>"; };
+		DCA510EB17D6DE5F00286F66 /* ErrorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorViewController.h; sourceTree = "<group>"; };
+		DCA510EC17D6DE5F00286F66 /* ErrorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorViewController.m; sourceTree = "<group>"; };
+		DCA510EE17D6DF5300286F66 /* hiddin_error_tryagain@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiddin_error_tryagain@2x.png"; sourceTree = "<group>"; };
 		DCF0C8A117B00DA90008AA20 /* BannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerViewController.h; sourceTree = "<group>"; };
 		DCF0C8A217B00DA90008AA20 /* BannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerViewController.m; sourceTree = "<group>"; };
 		DCF0C8A417B00DBE0008AA20 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
@@ -342,6 +356,10 @@
 				DC0DB09817A44084006CC531 /* ContentViewController.m */,
 				DC07689817A8A1EF0000344D /* ContentTableViewController.h */,
 				DC07689917A8A1EF0000344D /* ContentTableViewController.m */,
+				DCA510E217D6C0BE00286F66 /* DoneViewController.h */,
+				DCA510E317D6C0BE00286F66 /* DoneViewController.m */,
+				DCA510EB17D6DE5F00286F66 /* ErrorViewController.h */,
+				DCA510EC17D6DE5F00286F66 /* ErrorViewController.m */,
 				DCF9E12B17A9729200377705 /* ExampleCell.h */,
 				DCF9E12C17A9729200377705 /* ExampleCell.m */,
 				DC07689117A876AD0000344D /* AsynchImageView.h */,
@@ -510,6 +528,10 @@
 		DC264B3D17A47EB6008973D7 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DCA510EE17D6DF5300286F66 /* hiddin_error_tryagain@2x.png */,
+				DCA510E917D6DE4800286F66 /* hiddin_twitter_error@2x.png */,
+				DCA510E717D6C8BE00286F66 /* hiddin_done_twitter@2x.png */,
+				DCA510E517D6C70300286F66 /* done@2x.png */,
 				DCF0C8AB17B04D930008AA20 /* hiddin_left_retweet@2x.png */,
 				DC37FF5A17AEC44000A6C056 /* hiddin_arrow_yellow@2x.png */,
 				DC37FF5B17AEC44000A6C056 /* hiddin_arrow_red@2x.png */,
@@ -628,6 +650,7 @@
 				DC0DB07C17A42C4C006CC531 /* Main_iPad.storyboard in Resources */,
 				DCF0C8AC17B04D930008AA20 /* hiddin_left_retweet@2x.png in Resources */,
 				DC1C9DEA17AC48EB0067F63D /* hiddin_facebook_login@2x.png in Resources */,
+				DCA510E817D6C8BE00286F66 /* hiddin_done_twitter@2x.png in Resources */,
 				DC2530E717A4FEDD0048D5B4 /* hiddin_left_twitter@2x.png in Resources */,
 				DC0DB04517A42A32006CC531 /* Images.xcassets in Resources */,
 				DC264B3C17A47EB1008973D7 /* hiddin_keep_B@2x.png in Resources */,
@@ -640,6 +663,7 @@
 				DC1C9DF317AC66380067F63D /* hiddin_left_keep@2x.png in Resources */,
 				DC1C9DF417AC66380067F63D /* hiddin_left_later@2x.png in Resources */,
 				DC264B4817A481EF008973D7 /* hiddin_left_B@2x.png in Resources */,
+				DCA510EA17D6DE4800286F66 /* hiddin_twitter_error@2x.png in Resources */,
 				DC0DB09E17A455F2006CC531 /* MyContent.sqlite in Resources */,
 				DC264B3A17A47EB1008973D7 /* hiddin_delete_B@2x.png in Resources */,
 				DC264B3817A47EB1008973D7 /* hiddin_later_B@2x.png in Resources */,
@@ -653,6 +677,7 @@
 				DC2530E817A4FEDD0048D5B4 /* hiddin_left_facebook@2x.png in Resources */,
 				DC37FF5517AE4ABC00A6C056 /* hiddin_photo_5@2x.png in Resources */,
 				DC37FF5F17AEC44000A6C056 /* hiddin_arrow_green@2x.png in Resources */,
+				DCA510E617D6C70300286F66 /* done@2x.png in Resources */,
 				DC1C9DEB17AC48EB0067F63D /* hiddin_twitter_login@2x.png in Resources */,
 				DC1C9DE717AC34D30067F63D /* hiddin_text_horizontal@2x.png in Resources */,
 				DCF9E13217A9C1CE00377705 /* hiddin_keep_C@2x.png in Resources */,
@@ -665,6 +690,7 @@
 				DC37FF5D17AEC44000A6C056 /* hiddin_arrow_yellow@2x.png in Resources */,
 				DC37FF4E17AE431F00A6C056 /* hiddin_photo_1@2x.png in Resources */,
 				DC37FF5917AE4F0700A6C056 /* hiddin_left_help@2x.png in Resources */,
+				DCA510EF17D6DF5300286F66 /* hiddin_error_tryagain@2x.png in Resources */,
 				DCF9E13417A9C1CE00377705 /* hiddin_later_C@2x.png in Resources */,
 				DC37FF4F17AE431F00A6C056 /* hiddin_finger@2x.png in Resources */,
 				DC3872D417AB44AD00C9C01B /* hiddin_save_A@2x.png in Resources */,
@@ -700,8 +726,10 @@
 				DC07689717A876AD0000344D /* GetImageOperation.m in Sources */,
 				DCF9E12D17A9729200377705 /* ExampleCell.m in Sources */,
 				DC3872D917AB47D900C9C01B /* SVProgressHUD.m in Sources */,
+				DCA510ED17D6DE5F00286F66 /* ErrorViewController.m in Sources */,
 				DC2530DF17A4DB390048D5B4 /* MTPopupWindow.m in Sources */,
 				DC0DB09017A42DD1006CC531 /* MenuViewController.m in Sources */,
+				DCA510E417D6C0BE00286F66 /* DoneViewController.m in Sources */,
 				DC0DB03A17A42A32006CC531 /* AppDelegate.m in Sources */,
 				DC0DB09317A42E0F006CC531 /* Reachability.m in Sources */,
 				DCF0C8A317B00DA90008AA20 /* BannerViewController.m in Sources */,

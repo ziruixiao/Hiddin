@@ -95,7 +95,9 @@
             [self reloadImageView];
             [self addButtons];
         } else {
-            NSLog(@"There's nothing here!");
+            //set to doneviewcontroller
+            self.sidePanelController.centerPanel = [self.storyboard instantiateViewControllerWithIdentifier:@"doneNavigationController"];
+            
         }
     
     UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showOrRemove:)];
@@ -488,6 +490,8 @@
              }
          } else {
              // Handle failure to get account access
+             NSLog(@"issue");
+             self.sidePanelController.centerPanel = [self.storyboard instantiateViewControllerWithIdentifier:@"errorViewController"];
          }
      }];
 

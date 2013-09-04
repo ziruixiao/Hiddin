@@ -9,7 +9,7 @@
 #import "AsynchImageView.h"
 
 @implementation AsynchImageView
-@synthesize finishedLoading;
+@synthesize finishedLoading,spinner;
 
 // This class implements a "self-loading" UIImageView. When a new AsynchImageView is
 // created, the frame etc. are set up, but the image itself is not loaded until
@@ -28,6 +28,12 @@
         self.backgroundColor = [UIColor blackColor];
         // set the tag so we can find this image on the UI if we need to
         self.finishedLoading = NO;
+        
+        //add the spinner
+        self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        self.spinner.center = self.center;
+        [self addSubview:self.spinner];
+        [self.spinner startAnimating];
     }
     return self;
 }
@@ -51,8 +57,10 @@
     if ([operation isEqual:self.loadOperation]) {
         [self.loadOperation removeObserver:self forKeyPath:@"isFinished"];
         if ([self.loadOperation imageWasFound]) {
+            [self.spinner stopAnimating];
             self.image=[UIImage imageWithData:[self.loadOperation data]];
             self.finishedLoading = YES;
+            
         }
         else {
             // if there was a problem loading the image then show a "timeout" image.

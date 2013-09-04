@@ -333,6 +333,122 @@
             </objects>
             <point key="canvasLocation" x="290" y="1389"/>
         </scene>
+        <!--Done View Controller-->
+        <scene sceneID="7d4-Ix-Mb9">
+            <objects>
+                <viewController storyboardIdentifier="doneViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wsp-Qm-lJh" customClass="DoneViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y2O-gT-Gr4"/>
+                        <viewControllerLayoutGuide type="bottom" id="3Nr-pv-Pdi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iWZ-z0-8dB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="done.png" translatesAutoresizingMaskIntoConstraints="NO" id="60h-Uu-wGe">
+                                <rect key="frame" x="0.0" y="69" width="320" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edC-kx-cyf">
+                                <rect key="frame" x="49" y="144" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igt-ZI-uCg">
+                                <rect key="frame" x="135" y="144" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VCg-jY-rCZ">
+                                <rect key="frame" x="221" y="144" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Make sure to check back soon!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y7a-0L-mb3">
+                                <rect key="frame" x="0.0" y="345" width="320" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbS-l3-FGh">
+                                <rect key="frame" x="40" y="277" width="240" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" image="hiddin_done_twitter.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tweetAboutIt:" destination="wsp-Qm-lJh" eventType="touchUpInside" id="0yc-4z-IWy"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="93Y-mW-eek"/>
+                    <connections>
+                        <outlet property="button1" destination="edC-kx-cyf" id="T1D-PA-ifr"/>
+                        <outlet property="button2" destination="igt-ZI-uCg" id="Fff-Z2-VfH"/>
+                        <outlet property="button3" destination="VCg-jY-rCZ" id="AXk-22-3BG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fwN-QG-aBj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="290" y="2063"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="3gE-Es-XB4">
+            <objects>
+                <navigationController storyboardIdentifier="errorNavigationController" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aYc-4g-Fux" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2YW-Pd-zwG">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="dSQ-qg-euY" kind="relationship" relationship="rootViewController" id="qMX-MV-dvE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="esY-Og-XgO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="674" y="2063"/>
+        </scene>
+        <!--Error View Controller-->
+        <scene sceneID="wjs-xX-qJi">
+            <objects>
+                <viewController storyboardIdentifier="errorViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dSQ-qg-euY" customClass="ErrorViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uqt-dL-WWk"/>
+                        <viewControllerLayoutGuide type="bottom" id="UT2-lY-8uV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kRX-f1-02f">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hiddin_twitter_error.png" translatesAutoresizingMaskIntoConstraints="NO" id="PRT-7g-Syt">
+                                <rect key="frame" x="0.0" y="85" width="320" height="200"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lB9-40-squ">
+                                <rect key="frame" x="40" y="293" width="240" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" image="hiddin_error_tryagain.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tryAgain:" destination="dSQ-qg-euY" eventType="touchUpInside" id="pIu-Xo-ozH"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="VNk-v2-dni"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gCI-oa-6wJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1060" y="2063"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="8SX-8i-4ja">
             <objects>
@@ -347,6 +463,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Akq-3W-9Pe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-71" y="1389"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="rxg-X7-FgV">
+            <objects>
+                <navigationController storyboardIdentifier="doneNavigationController" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Em2-EK-qGa" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fFW-aG-o5I">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="wsp-Qm-lJh" kind="relationship" relationship="rootViewController" id="Xis-MV-wd8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jOS-xC-khr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-71" y="2063"/>
         </scene>
         <!--Content View Controller-->
         <scene sceneID="qYS-T1-Pv4">
@@ -584,7 +715,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="done.png" width="320" height="200"/>
         <image name="hiddin_delete_A.png" width="100" height="100"/>
+        <image name="hiddin_done_twitter.png" width="240" height="60"/>
+        <image name="hiddin_error_tryagain.png" width="240" height="60"/>
         <image name="hiddin_getstarted.png" width="240" height="60"/>
         <image name="hiddin_keep_A.png" width="100" height="100"/>
         <image name="hiddin_later_A.png" width="100" height="100"/>
@@ -596,6 +730,7 @@
         <image name="hiddin_splash.png" width="200" height="200"/>
         <image name="hiddin_text_horizontal.png" width="320" height="100"/>
         <image name="hiddin_tweets.png" width="120" height="120"/>
+        <image name="hiddin_twitter_error.png" width="320" height="200"/>
         <image name="hiddin_twitter_login.png" width="240" height="60"/>
         <image name="hiddin_wireframe.png" width="320" height="500"/>
     </resources>

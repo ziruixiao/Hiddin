@@ -52,7 +52,8 @@
     [toolContent getCurrentContent:self.content withType:self.typeSelected];
     
     if (content.count < 1) {
-        NSLog(@"there are no results");
+            //set to doneviewcontroller
+            self.sidePanelController.centerPanel = [self.storyboard instantiateViewControllerWithIdentifier:@"doneNavigationController"];
     }
    // if (self.appDelegate.showIntroPhoto) {
         
@@ -71,6 +72,29 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (NSString*)relativeDateFromTimestamp:(int)time
+{
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:time];
+    
+    NSDate *todayDate = [NSDate date];
+    double ti = [date timeIntervalSinceDate:todayDate];
+    ti = ti * -1;
+    if(ti < 1) {
+    	return @"never";
+    } else 	if (ti < 60) {
+    	return @"less than a minute ago";
+    } else if (ti < 3600) {
+    	int diff = round(ti / 60);
+    	return [NSString stringWithFormat:@"%d minutes ago", diff];
+    } else if (ti < 86400) {
+    	int diff = round(ti / 60 / 60);
+    	return[NSString stringWithFormat:@"%d hours ago", diff];
+    } else {
+    	int diff = round(ti / 60 / 60 / 24);
+    	return[NSString stringWithFormat:@"%d days ago", diff];
+    }
+}
+
 - (void)refreshData
 {
     [SVProgressHUD showWithStatus:@"Reloading tweets..."];
@@ -87,7 +111,15 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 95.0;
+    NSString *text = ((Content*)[content objectAtIndex:[indexPath row]]).contentDescription;
+    
+    CGSize constraint = CGSizeMake(260, 20000.0f);
+    
+    CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+    
+    CGFloat height = MAX(size.height + 50.0f, 95.0f);
+    
+    return height;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -116,12 +148,18 @@
 	}
     if ([typeSelected isEqualToString:@"tweet_text"]||[typeSelected isEqualToString:@"tweet_text_later"]||[typeSelected isEqualToString:@"tweet_text_done"]) {
         cell.imageView.contentMode = UIViewContentModeTop;
-        if (![((Content*)[self.content objectAtIndex:indexPath.row]).contentUserID isEqualToString:((Content*)[self.content objectAtIndex:indexPath.row]).contentFromName]) {
+        if ([typeSelected isEqualToString:@"tweet_text_done"]) {
+            cell.imageView.image = [UIImage imageNamed:@"hiddin_left_keep.png"];
+        } else if ([typeSelected isEqualToString:@"tweet_text_later"]) {
+            cell.imageView.image = [UIImage imageNamed:@"hiddin_left_later.png"];
+        } else if (![((Content*)[self.content objectAtIndex:indexPath.row]).contentUserID isEqualToString:((Content*)[self.content objectAtIndex:indexPath.row]).contentFromName]) {
             cell.imageView.image = [UIImage imageNamed:@"hiddin_left_retweet.png"];
         } else {
             
             cell.imageView.image = [UIImage imageNamed:@"hiddin_left_twitter.png"];
         }
+        
+        
         
     }
     
@@ -132,12 +170,13 @@
     cell.textLabel.numberOfLines = 0;
     
     [cell.textLabel sizeToFit];
-    
+    int contentTime = 0;
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         
         //attributedtext here
         //self.searchDisplayController.searchBar.text;
         NSString *contentText = ((Content*)[searchResults objectAtIndex:indexPath.row]).contentDescription;
+        contentTime = ((Content*)[searchResults objectAtIndex:indexPath.row]).contentTimestamp;
         NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] initWithString:contentText];
         
         UIColor *bananaColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:102/255.0 alpha:0.7];
@@ -165,12 +204,14 @@
         cell.textLabel.attributedText = attString;
         cell.cellContentID = ((Content*)[searchResults objectAtIndex:indexPath.row]).contentID;
     } else {
+        contentTime = ((Content*)[self.content objectAtIndex:indexPath.row]).contentTimestamp;
         
         cell.textLabel.text = ((Content*)[self.content objectAtIndex:indexPath.row]).contentDescription;
         cell.cellContentID = ((Content*)[self.content objectAtIndex:indexPath.row]).contentID;
     }
     
     //add time ago
+    //this string is the time in relative [self relativeDateFromTimestamp:contentTime];
     
 	cell.delegate = self;
 	
@@ -337,6 +378,8 @@ shouldReloadTableForSearchString:(NSString *)searchString
              }
          } else {
              // Handle failure to get account access
+             NSLog(@"no access");
+             self.sidePanelController.centerPanel = [self.storyboard instantiateViewControllerWithIdentifier:@"errorViewController"];
          }
      }];
     
