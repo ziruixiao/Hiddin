@@ -24,6 +24,10 @@
 #import "UIViewController+MJPopupViewController.h"
 #import "IntroViewController.h"
 #import "UIView+Badge.h"
+#import "DoneViewController.h"
+#import "ErrorViewController.h"
+
+
 
 @interface ContentViewController ()
 
@@ -96,7 +100,15 @@
             [self addButtons];
         } else {
             //set to doneviewcontroller
-            self.sidePanelController.centerPanel = [self.storyboard instantiateViewControllerWithIdentifier:@"doneNavigationController"];
+            
+            UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"doneNavigationController"];
+            
+            DoneViewController *tempContentVC = (DoneViewController*)[tempContentNC.viewControllers objectAtIndex:0];
+            
+            tempContentVC.ref = @"photo";
+            
+            
+            self.sidePanelController.centerPanel = tempContentNC;
             
         }
     
@@ -182,6 +194,19 @@
 - (void)reloadImageView
 {
     //update the number which should be shown somewhere
+    
+    if (selectedIndex >= self.content.count) {
+        UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"doneNavigationController"];
+        
+        DoneViewController *tempContentVC = (DoneViewController*)[tempContentNC.viewControllers objectAtIndex:0];
+        
+        tempContentVC.ref = @"photo";
+        
+        
+        self.sidePanelController.centerPanel = tempContentNC;
+        return;
+    }
+    
     NSString *newContentURL = (((Content*)[self.content objectAtIndex:selectedIndex]).contentImageURL);
     NSString *newContentID = (((Content*)[self.content objectAtIndex:selectedIndex]).contentID);
     self.toolContent.contentID = newContentID;
@@ -293,6 +318,8 @@
 
 - (IBAction)deletePressed:(id)sender
 {
+    if (self.selectedIndex < self.content.count) {
+        
     if ([self.typeSelected isEqualToString:@"tweet_media"]) {
         
         //[self deleteCurrentTweet];
@@ -370,20 +397,56 @@
             //[self reloadImageView];
         }];
     }
+    } else {
+        UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"doneNavigationController"];
+        
+        DoneViewController *tempContentVC = (DoneViewController*)[tempContentNC.viewControllers objectAtIndex:0];
+        
+        tempContentVC.ref = @"photo";
+        
+        
+        self.sidePanelController.centerPanel = tempContentNC;
+        return;
+    }
 }
 
 - (IBAction)laterPressed:(id)sender
 {
-    [self.toolContent updateContent:self.toolContent inField:@"sorting" toNew:@"later" ifInt:-1];
-    [self.content removeObjectAtIndex:self.selectedIndex];
-    [self reloadImageView];
+    
+    if (self.selectedIndex < self.content.count) {
+        [self.toolContent updateContent:self.toolContent inField:@"sorting" toNew:@"later" ifInt:-1];
+        [self.content removeObjectAtIndex:self.selectedIndex];
+        [self reloadImageView];
+    } else {
+        UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"doneNavigationController"];
+        
+        DoneViewController *tempContentVC = (DoneViewController*)[tempContentNC.viewControllers objectAtIndex:0];
+        
+        tempContentVC.ref = @"photo";
+        
+        
+        self.sidePanelController.centerPanel = tempContentNC;
+        return;
+    }
 }
 
 - (IBAction)keepPressed:(id)sender
 {
-    [self.toolContent updateContent:self.toolContent inField:@"sorting" toNew:@"keep" ifInt:-1];
-    [self.content removeObjectAtIndex:self.selectedIndex];
-    [self reloadImageView];
+    if (self.selectedIndex < self.content.count) {
+        [self.toolContent updateContent:self.toolContent inField:@"sorting" toNew:@"keep" ifInt:-1];
+        [self.content removeObjectAtIndex:self.selectedIndex];
+        [self reloadImageView];
+    } else {
+        UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"doneNavigationController"];
+        
+        DoneViewController *tempContentVC = (DoneViewController*)[tempContentNC.viewControllers objectAtIndex:0];
+        
+        tempContentVC.ref = @"photo";
+        
+        
+        self.sidePanelController.centerPanel = tempContentNC;
+        return;
+    }
 }
 
 - (IBAction)leftPressed:(id)sender
@@ -491,7 +554,13 @@
          } else {
              // Handle failure to get account access
              NSLog(@"issue");
-             self.sidePanelController.centerPanel = [self.storyboard instantiateViewControllerWithIdentifier:@"errorViewController"];
+             UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"errorNavigationController"];
+             
+             ErrorViewController *tempContentVC = (ErrorViewController*)[tempContentNC.viewControllers objectAtIndex:0];
+             
+             tempContentVC.ref = @"photo";
+             
+             self.sidePanelController.centerPanel = tempContentNC;
          }
      }];
 

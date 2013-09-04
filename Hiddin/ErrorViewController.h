@@ -12,4 +12,6 @@
 
 - (IBAction)tryAgain:(id)sender;
 
+@property (strong,nonatomic) NSString *ref;
+
 @end

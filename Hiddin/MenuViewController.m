@@ -340,7 +340,13 @@
          } else {
              NSLog(@"no access");
              // Handle failure to get account access
-             self.centerPanel = [self.storyboard instantiateViewControllerWithIdentifier:@"errorNavigationController"];
+             UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"errorNavigationController"];
+             
+             ErrorViewController *tempContentVC = (ErrorViewController*)[tempContentNC.viewControllers objectAtIndex:0];
+             
+             tempContentVC.ref = @"text";
+             
+             self.centerPanel = tempContentNC;
          }
      }];
 }

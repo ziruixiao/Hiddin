@@ -10,13 +10,15 @@
 #import "MenuViewController.h"
 #import "UIViewController+JASidePanel.h"
 #import "UIViewController+MJPopupViewController.h"
+#import "ContentTableViewController.h"
+#import "ContentViewController.h"
 
 @interface DoneViewController ()
 
 @end
 
 @implementation DoneViewController
-@synthesize appDelegate,toolContent,button1,button2,button3;
+@synthesize appDelegate,toolContent,button1,button2,button3,ref;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -53,13 +55,17 @@
 
 - (IBAction)tweetAboutIt:(id)sender
 {
+     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
+         NSLog(@"twitter avail");
+     
     SLComposeViewController *tweetSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-    [tweetSheet setInitialText:@"I just used #hiddin to clean my Twitter timeline! @hiddinapp"]; //Add here your text
+    [tweetSheet setInitialText:@"I just used #hiddin to clean my Twitter timeline! @hiddinapp http://itunes.com/apps/hiddin"]; //Add here your text
     
     // Add an image
     //[tweetSheet addImage:[UIImage imageNamed:@"AnyCloud.co.png"]]; //Add here the name of your picture
     // Add a link
-    [tweetSheet addURL:[NSURL URLWithString:@"http://itunes.com/apps/hiddin"]];
+         [self presentViewController:tweetSheet animated:YES completion:nil];
+     }
 }
 
 - (void)refreshData
@@ -68,7 +74,26 @@
     [((MenuViewController*)self.sidePanelController) getTimeLine];
     [SVProgressHUD dismiss];
     self.toolContent = [[Content alloc] init];
-    self.sidePanelController.centerPanel = [self.storyboard instantiateViewControllerWithIdentifier:@"contentTextNavigationController"];
+    if ([ref isEqualToString:@""]) {
+        UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"contentTextNavigationController"];
+        
+        ContentTableViewController *tempContentVC = (ContentTableViewController*)[tempContentNC.viewControllers objectAtIndex:0];
+        
+        tempContentVC.typeSelected = @"tweet_text";
+        
+        self.sidePanelController.centerPanel = tempContentNC;
+        
+    } else {
+        
+        UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"contentNavigationController"];
+        
+        ContentViewController *tempContentVC = (ContentViewController*)[tempContentNC.viewControllers objectAtIndex:0];
+        
+        tempContentVC.typeSelected = @"tweet_media";
+        
+        self.sidePanelController.centerPanel = tempContentNC;
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning

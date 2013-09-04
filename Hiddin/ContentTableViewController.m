@@ -13,6 +13,8 @@
 #define kCellTextKey @"kCellTextKey"
 #define kCellTagKey @"kCellTagKey"
 #import "IntroViewController.h"
+#import "DoneViewController.h"
+#import "ErrorViewController.h"
 
 @interface ContentTableViewController ()
 
@@ -53,7 +55,14 @@
     
     if (content.count < 1) {
             //set to doneviewcontroller
-            self.sidePanelController.centerPanel = [self.storyboard instantiateViewControllerWithIdentifier:@"doneNavigationController"];
+        UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"doneNavigationController"];
+        
+        DoneViewController *tempContentVC = (DoneViewController*)[tempContentNC.viewControllers objectAtIndex:0];
+        
+        tempContentVC.ref = @"text";
+        
+        
+        self.sidePanelController.centerPanel = tempContentNC;
     }
    // if (self.appDelegate.showIntroPhoto) {
         
@@ -379,7 +388,14 @@ shouldReloadTableForSearchString:(NSString *)searchString
          } else {
              // Handle failure to get account access
              NSLog(@"no access");
-             self.sidePanelController.centerPanel = [self.storyboard instantiateViewControllerWithIdentifier:@"errorViewController"];
+             UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"errorNavigationController"];
+             
+             ErrorViewController *tempContentVC = (ErrorViewController*)[tempContentNC.viewControllers objectAtIndex:0];
+             
+             tempContentVC.ref = @"text";
+             
+             self.sidePanelController.centerPanel = tempContentNC;
+             
          }
      }];
     

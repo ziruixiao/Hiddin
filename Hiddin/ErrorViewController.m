@@ -7,12 +7,19 @@
 //
 
 #import "ErrorViewController.h"
+#import "MenuViewController.h"
+#import "UIViewController+JASidePanel.h"
+#import "SVProgressHUD.h"
+#import "UIViewController+MJPopupViewController.h"
+#import "ContentViewController.h"
+#import "ContentTableViewController.h"
 
 @interface ErrorViewController ()
 
 @end
 
 @implementation ErrorViewController
+@synthesize ref;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,7 +40,39 @@
 
 - (IBAction)tryAgain:(id)sender
 {
+    ACAccountStore *account = [[ACAccountStore alloc] init];
+    ACAccountType *accountType = [account
+                                  accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
     
+    [account requestAccessToAccountsWithType:accountType
+                                     options:nil completion:^(BOOL granted, NSError *error)
+     {
+         if (granted == YES)
+         {
+             if ([ref isEqualToString:@"photo"]) {
+                 UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"contentNavigationController"];
+                 
+                 ContentViewController *tempContentVC = (ContentViewController*)[tempContentNC.viewControllers objectAtIndex:0];
+                 
+                 tempContentVC.typeSelected = @"tweet_media";
+                 
+                 self.sidePanelController.centerPanel = tempContentNC;
+             } else {
+                 UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"contentTextNavigationController"];
+                 
+                 ContentTableViewController *tempContentVC = (ContentTableViewController*)[tempContentNC.viewControllers objectAtIndex:0];
+                 
+                 tempContentVC.typeSelected = @"tweet_text";
+                 
+                 self.sidePanelController.centerPanel = tempContentNC;
+             }
+         } else {
+             NSLog(@"no access");
+             // Handle failure to get account access
+             
+         }
+     }];
+
 }
 
 - (void)didReceiveMemoryWarning
