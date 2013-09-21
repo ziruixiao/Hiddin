@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Content.h"
+#import "AppDelegate.h"
 
 @class WEPopoverController;
 
@@ -17,5 +18,5 @@
 
 @property (strong,nonatomic) Content *toolContent;
 @property (nonatomic, retain) WEPopoverController *popoverController;
-
+@property (strong,nonatomic) AppDelegate *appDelegate;
 @end

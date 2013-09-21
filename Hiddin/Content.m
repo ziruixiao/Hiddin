@@ -277,7 +277,7 @@
     } else {
         NSLog(@"%s SQL error '%s' (%1d)",query_stmt,sqlite3_errmsg(MyContent),sqlite3_errcode(MyContent));
     }
-    return @"none";
+    return @"0";
 }
 
 - (NSString*)getMinTwitterID
@@ -307,7 +307,7 @@
     } else {
         NSLog(@"%s SQL error '%s' (%1d)",query_stmt,sqlite3_errmsg(MyContent),sqlite3_errcode(MyContent));
     }
-    return @"none";
+    return @"0";
 }
 
 - (BOOL)alreadyExists:(NSString*)myContentID

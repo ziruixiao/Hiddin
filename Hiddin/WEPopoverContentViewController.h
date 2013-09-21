@@ -14,6 +14,8 @@
 }
 
 @property int numRows;
-@property (strong,nonatomic) NSArray *accounts;
+@property (strong,nonatomic) NSMutableArray *accounts;
+
+- (id)initWithStyle:(UITableViewStyle)style andAccounts:(NSMutableArray*)myAccounts;
 
 @end

@@ -15,10 +15,11 @@
 #pragma mark -
 #pragma mark Initialization
 
-- (id)initWithStyle:(UITableViewStyle)style {
+- (id)initWithStyle:(UITableViewStyle)style andAccounts:(NSMutableArray*)myAccounts {
     // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
     if ((self = [super initWithStyle:style])) {
-        numRows = 2;
+        self.accounts = myAccounts;
+        numRows = self.accounts.count;
 		self.contentSizeForViewInPopover = CGSizeMake(240,numRows*44);
     }
     return self;

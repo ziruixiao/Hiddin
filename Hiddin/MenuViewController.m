@@ -275,13 +275,13 @@
          {
              NSArray *arrayOfAccounts = [account
                                          accountsWithAccountType:accountType];
-             self.appDelegate.allAccounts = [arrayOfAccounts mutableCopy];
+             self.appDelegate.allAccounts = [NSMutableArray array];
              if ([arrayOfAccounts count] > 0)
              {
                  //prompt popup here
                  for (int x =0; x < arrayOfAccounts.count; x++) {
                      NSLog(@"%@",((ACAccount*)[arrayOfAccounts objectAtIndex:x]).username);
-                     
+                     [self.appDelegate.allAccounts addObject:((ACAccount*)[arrayOfAccounts objectAtIndex:x]).username];
                  }
                  
                  ACAccount *twitterAccount = [arrayOfAccounts firstObject];
@@ -301,7 +301,8 @@
                  [parameters setObject:@"1" forKey:@"include_entities"];
                  [parameters setObject:@"true" forKey:@"include_rts"];
                  [parameters setObject:@"false" forKey:@"trim_user"];
-                 [parameters setObject:[toolContent getMaxTwitterID] forKey:@"since_id"];
+                 if (![[toolContent getMaxTwitterID] isEqualToString:@"0"])
+                     [parameters setObject:[toolContent getMaxTwitterID] forKey:@"since_id"];
                  
                  SLRequest *postRequest = [SLRequest
                                            requestForServiceType:SLServiceTypeTwitter
@@ -436,7 +437,8 @@
                  [parameters setObject:@"1" forKey:@"include_entities"];
                  [parameters setObject:@"true" forKey:@"include_rts"];
                  [parameters setObject:@"false" forKey:@"trim_user"];
-                 [parameters setObject:[toolContent getMinTwitterID] forKey:@"max_id"];
+                 if (![[toolContent getMaxTwitterID] isEqualToString:@"0"])
+                     [parameters setObject:[toolContent getMinTwitterID] forKey:@"max_id"];
                  
                  SLRequest *postRequest = [SLRequest
                                            requestForServiceType:SLServiceTypeTwitter

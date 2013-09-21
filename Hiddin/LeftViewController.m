@@ -22,7 +22,7 @@
 
 @implementation LeftViewController
 
-@synthesize toolContent,popoverController;
+@synthesize toolContent,popoverController,appDelegate;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -37,6 +37,7 @@
 {
     [super viewDidLoad];
     self.toolContent = [[Content alloc] init];
+    self.appDelegate = [[UIApplication sharedApplication] delegate];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -250,9 +251,8 @@
                 
             } else {
                 NSLog(@"here");
-                WEPopoverContentViewController *contentViewController = [[WEPopoverContentViewController alloc] initWithStyle:UITableViewStylePlain];
-                contentViewController.numRows = 2;
-                contentViewController.accounts = [NSArray arrayWithObjects:@"felixxxiao",@"sdsfs", nil];
+                WEPopoverContentViewController *contentViewController = [[WEPopoverContentViewController alloc] initWithStyle:UITableViewStylePlain andAccounts:self.appDelegate.allAccounts];
+
                 self.popoverController = [[WEPopoverController alloc] initWithContentViewController:contentViewController];
                 [self.popoverController presentPopoverFromRect:[tableView cellForRowAtIndexPath:indexPath].frame
                                                         inView:self.view
