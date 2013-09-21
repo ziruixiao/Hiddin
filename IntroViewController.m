@@ -10,6 +10,7 @@
 #define kCellTextKey @"kCellTextKey"
 #define kCellTagKey @"kCellTagKey"
 #import "SVProgressHUD.h"
+#import "Content.h"
 
 @interface IntroViewController ()
 
@@ -32,6 +33,11 @@
 {
     [super viewDidLoad];
     [self setupView2];
+    
+    Content *toolContent = [[Content alloc] init];
+    NSLog(@"Max ID is: %@",[toolContent getMaxTwitterID]);
+    NSLog(@"Min ID is: %@",[toolContent getMinTwitterID]);
+    
 	// Do any additional setup after loading the view.
 }
 

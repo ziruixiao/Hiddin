@@ -362,7 +362,7 @@ shouldReloadTableForSearchString:(NSString *)searchString
          {
              NSArray *arrayOfAccounts = [account
                                          accountsWithAccountType:accountType];
-             
+             self.appDelegate.allAccounts = [arrayOfAccounts mutableCopy];
              if ([arrayOfAccounts count] > 0)
              {
                  ACAccount *twitterAccount = [arrayOfAccounts firstObject];

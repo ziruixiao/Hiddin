@@ -258,6 +258,12 @@
 
 - (void)getTimeLine
 {
+    [self getMaxTimeline];
+    [self getMinTimeline];
+}
+
+- (void)getMinTimeline
+{
     ACAccountStore *account = [[ACAccountStore alloc] init];
     ACAccountType *accountType = [account
                                   accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
@@ -269,13 +275,23 @@
          {
              NSArray *arrayOfAccounts = [account
                                          accountsWithAccountType:accountType];
-             
+             self.appDelegate.allAccounts = [arrayOfAccounts mutableCopy];
              if ([arrayOfAccounts count] > 0)
              {
                  //prompt popup here
-                 
+                 for (int x =0; x < arrayOfAccounts.count; x++) {
+                     NSLog(@"%@",((ACAccount*)[arrayOfAccounts objectAtIndex:x]).username);
+                     
+                 }
                  
                  ACAccount *twitterAccount = [arrayOfAccounts firstObject];
+                 
+                 //CHECK THE DATABASE AND GET THE LOWEST AND THE HIGHEST ID
+                 //SEND 2 SEPARATE REQUESTS EACH TIME
+                 
+                 //REQUEST 1////////////////////////
+                 
+                 Content *toolContent = [[Content alloc] init];
                  
                  NSURL *requestURL = [NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/user_timeline.json"];
                  
@@ -285,6 +301,7 @@
                  [parameters setObject:@"1" forKey:@"include_entities"];
                  [parameters setObject:@"true" forKey:@"include_rts"];
                  [parameters setObject:@"false" forKey:@"trim_user"];
+                 [parameters setObject:[toolContent getMaxTwitterID] forKey:@"since_id"];
                  
                  SLRequest *postRequest = [SLRequest
                                            requestForServiceType:SLServiceTypeTwitter
@@ -377,6 +394,142 @@
              self.centerPanel = tempContentNC;
          }
      }];
+
+}
+
+- (void)getMaxTimeline
+{
+    ACAccountStore *account = [[ACAccountStore alloc] init];
+    ACAccountType *accountType = [account
+                                  accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+    
+    [account requestAccessToAccountsWithType:accountType
+                                     options:nil completion:^(BOOL granted, NSError *error)
+     {
+         if (granted == YES)
+         {
+             NSArray *arrayOfAccounts = [account
+                                         accountsWithAccountType:accountType];
+             self.appDelegate.allAccounts = [arrayOfAccounts mutableCopy];
+             if ([arrayOfAccounts count] > 0)
+             {
+                 //prompt popup here
+                 for (int x =0; x < arrayOfAccounts.count; x++) {
+                     NSLog(@"%@",((ACAccount*)[arrayOfAccounts objectAtIndex:x]).username);
+                     
+                 }
+                 
+                 ACAccount *twitterAccount = [arrayOfAccounts firstObject];
+                 
+                 //CHECK THE DATABASE AND GET THE LOWEST AND THE HIGHEST ID
+                 //SEND 2 SEPARATE REQUESTS EACH TIME
+                 
+                 //REQUEST 1////////////////////////
+                 
+                 Content *toolContent = [[Content alloc] init];
+                 
+                 NSURL *requestURL = [NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/user_timeline.json"];
+                 
+                 NSMutableDictionary *parameters =
+                 [[NSMutableDictionary alloc] init];
+                 [parameters setObject:@"200" forKey:@"count"];
+                 [parameters setObject:@"1" forKey:@"include_entities"];
+                 [parameters setObject:@"true" forKey:@"include_rts"];
+                 [parameters setObject:@"false" forKey:@"trim_user"];
+                 [parameters setObject:[toolContent getMinTwitterID] forKey:@"max_id"];
+                 
+                 SLRequest *postRequest = [SLRequest
+                                           requestForServiceType:SLServiceTypeTwitter
+                                           requestMethod:SLRequestMethodGET
+                                           URL:requestURL parameters:parameters];
+                 postRequest.account = twitterAccount;
+                 
+                 
+                 
+                 [postRequest performRequestWithHandler:
+                  ^(NSData *responseData, NSHTTPURLResponse
+                    *urlResponse, NSError *error)
+                  {
+                      NSDictionary *twitterDictionary = [NSJSONSerialization
+                                                         JSONObjectWithData:responseData
+                                                         options:NSJSONReadingMutableLeaves
+                                                         error:&error];
+                      //NSLog(@"%@",twitterDictionary);
+                      
+                      NSLog(@"count is %i",[twitterDictionary count]);
+                      for (NSDictionary *tweetData in twitterDictionary) {
+                          Content *newContent = [[Content alloc] init];
+                          if ([[tweetData objectForKey:@"entities"] objectForKey:@"media"]) { //there's media attached
+                              newContent.contentType = @"tweet_media";
+                              newContent.contentImageURL = [[[[tweetData objectForKey:@"entities"] objectForKey:@"media"] objectAtIndex:0] objectForKey:@"media_url"];
+                              newContent.contentThumbnailURL = [NSString stringWithFormat:@"%@:thumb",newContent.contentImageURL];
+                              
+                          } else {
+                              newContent.contentType = @"tweet_text";
+                              newContent.contentImageURL = @"none";
+                          }
+                          
+                          
+                          NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+                          NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+                          [dateFormatter setLocale:usLocale];
+                          [dateFormatter setDateStyle:NSDateFormatterLongStyle];
+                          [dateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
+                          
+                          [dateFormatter setDateFormat: @"EEE MMM dd HH:mm:ss Z yyyy"];
+                          
+                          NSDate *date = [dateFormatter dateFromString:[tweetData objectForKey:@"created_at"]];
+                          
+                          newContent.contentTimestamp = [date timeIntervalSince1970]/1;
+                          
+                          newContent.contentID = [tweetData objectForKey:@"id_str"];
+                          
+                          if ([tweetData objectForKey:@"retweeted_status"]) {
+                              newContent.contentFromID = [[tweetData objectForKey:@"retweeted_status"] objectForKey:@"id_str"];
+                              newContent.contentFromName = [[[tweetData objectForKey:@"retweeted_status"] objectForKey:@"user"] objectForKey:@"screen_name"];
+                              newContent.contentLink = [NSString stringWithFormat:@"http://twitter.com/%@/status/%@",newContent.contentFromName,newContent.contentFromID];
+                          } else {
+                              
+                              newContent.contentFromID = [[tweetData objectForKey:@"user"] objectForKey:@"id_str"];
+                              newContent.contentFromName = [[tweetData objectForKey:@"user"] objectForKey:@"screen_name"];
+                              newContent.contentLink = [NSString stringWithFormat:@"http://twitter.com/%@/status/%@",newContent.contentFromName,newContent.contentID];
+                          }
+                          
+                          newContent.contentDescription = [[tweetData objectForKey:@"text"] stringByReplacingOccurrencesOfString:@"\"" withString:@"*"];
+                          newContent.contentActive = @"yes";
+                          newContent.contentSorting = @"none";
+                          
+                          newContent.contentUserID = twitterAccount.username;
+                          
+                          if (![newContent alreadyExists:newContent.contentID]) {
+                              [newContent insertContent:newContent];
+                          }
+                          
+                      }
+                      
+                      
+                      /*
+                       if (self.dataSource.count != 0) {
+                       dispatch_async(dispatch_get_main_queue(), ^{
+                       [self.tweetTableView reloadData];
+                       });
+                       }
+                       */
+                  }];
+             }
+         } else {
+             NSLog(@"no access");
+             // Handle failure to get account access
+             UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"errorNavigationController"];
+             
+             ErrorViewController *tempContentVC = (ErrorViewController*)[tempContentNC.viewControllers objectAtIndex:0];
+             
+             tempContentVC.ref = @"text";
+             
+             self.centerPanel = tempContentNC;
+         }
+     }];
+    
 }
 
 - (void)getTwitterFollowers
@@ -392,7 +545,7 @@
          {
              NSArray *arrayOfAccounts = [account
                                          accountsWithAccountType:accountType];
-             
+             self.appDelegate.allAccounts = [arrayOfAccounts mutableCopy];
              if ([arrayOfAccounts count] > 0)
              {
                  ACAccount *twitterAccount = [arrayOfAccounts firstObject];

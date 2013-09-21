@@ -250,8 +250,9 @@
                 
             } else {
                 NSLog(@"here");
-                UIViewController *contentViewController = [[WEPopoverContentViewController alloc] initWithStyle:UITableViewStylePlain];
-                
+                WEPopoverContentViewController *contentViewController = [[WEPopoverContentViewController alloc] initWithStyle:UITableViewStylePlain];
+                contentViewController.numRows = 2;
+                contentViewController.accounts = [NSArray arrayWithObjects:@"felixxxiao",@"sdsfs", nil];
                 self.popoverController = [[WEPopoverController alloc] initWithContentViewController:contentViewController];
                 [self.popoverController presentPopoverFromRect:[tableView cellForRowAtIndexPath:indexPath].frame
                                                         inView:self.view

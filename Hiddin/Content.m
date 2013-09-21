@@ -249,6 +249,67 @@
     }
 }
 
+- (NSString*)getMaxTwitterID
+{
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    MyContent = [appDelegate MyContent];
+    sqlite3_stmt *statement;
+    
+    NSString *querySQL = [NSString stringWithFormat:@"SELECT MAX(id) FROM local WHERE type='tweet_media' OR type='tweet_text'"];
+    
+    const char *query_stmt = [querySQL UTF8String];
+    
+    if (sqlite3_prepare_v2(MyContent,query_stmt,-1,&statement,NULL) == SQLITE_OK) {
+        
+        if (sqlite3_step(statement) == SQLITE_ROW) {
+            NSString *temp;
+            
+            const char* myStatement = (const char*) sqlite3_column_text(statement,0);
+            if (myStatement) {
+                temp = [[NSString alloc] initWithUTF8String:myStatement];
+                return temp;
+            }
+            
+            
+        }
+        sqlite3_finalize(statement);
+        
+    } else {
+        NSLog(@"%s SQL error '%s' (%1d)",query_stmt,sqlite3_errmsg(MyContent),sqlite3_errcode(MyContent));
+    }
+    return @"none";
+}
+
+- (NSString*)getMinTwitterID
+{
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    MyContent = [appDelegate MyContent];
+    sqlite3_stmt *statement;
+    
+    NSString *querySQL = [NSString stringWithFormat:@"SELECT MIN(id) FROM local WHERE type='tweet_media' OR type='tweet_text'"];
+    
+    const char *query_stmt = [querySQL UTF8String];
+    
+    if (sqlite3_prepare_v2(MyContent,query_stmt,-1,&statement,NULL) == SQLITE_OK) {
+        
+        if (sqlite3_step(statement) == SQLITE_ROW) {
+            NSString *temp;
+            const char* myStatement = (const char*) sqlite3_column_text(statement,0);
+            if (myStatement) {
+                temp = [[NSString alloc] initWithUTF8String:myStatement];
+                return temp;
+            }
+            
+            
+        }
+        sqlite3_finalize(statement);
+        
+    } else {
+        NSLog(@"%s SQL error '%s' (%1d)",query_stmt,sqlite3_errmsg(MyContent),sqlite3_errcode(MyContent));
+    }
+    return @"none";
+}
+
 - (BOOL)alreadyExists:(NSString*)myContentID
 {
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];

@@ -13,4 +13,7 @@
 
 }
 
+@property int numRows;
+@property (strong,nonatomic) NSArray *accounts;
+
 @end

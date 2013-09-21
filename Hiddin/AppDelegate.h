@@ -38,6 +38,9 @@ extern NSString *const FBSessionStateChangedNotification;
 @property BOOL showIntroPhoto;
 @property BOOL showIntroText;
 
+@property (strong,nonatomic) NSMutableArray *allAccounts;
+@property (strong,nonatomic) NSString *selectedAccount;
+
 //SQLite database methods
 - (void)openDB;
 - (void)closeDB;

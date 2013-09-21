@@ -10,7 +10,7 @@
 
 
 @implementation WEPopoverContentViewController
-
+@synthesize numRows,accounts;
 
 #pragma mark -
 #pragma mark Initialization
@@ -18,7 +18,8 @@
 - (id)initWithStyle:(UITableViewStyle)style {
     // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
     if ((self = [super initWithStyle:style])) {
-		self.contentSizeForViewInPopover = CGSizeMake(200, 100);
+        numRows = 2;
+		self.contentSizeForViewInPopover = CGSizeMake(240,numRows*44);
     }
     return self;
 }
@@ -30,7 +31,7 @@
     [super viewDidLoad];
 
 	self.tableView.rowHeight = 44.0;
-	self.view.backgroundColor = [UIColor blackColor];
+	self.view.backgroundColor = [UIColor whiteColor];
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -75,7 +76,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 1;
+    return [accounts count];
 }
 
 
@@ -90,8 +91,8 @@
     }
     
     // Configure the cell...
-	cell.textLabel.text = [NSString stringWithFormat:@"Item %d", [indexPath row]]; 
-	cell.textLabel.textColor = [UIColor whiteColor];
+	cell.textLabel.text = [accounts objectAtIndex:indexPath.row];
+	cell.textLabel.textColor = [UIColor blackColor];
     return cell;
 }
 
@@ -101,7 +102,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here. Create and push another view controller.
-	
+	//[((WEPopoverController*)self) dismissPopoverAnimated:YES];
+    //[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

@@ -31,5 +31,7 @@
 - (void)getCurrentContent:(NSMutableArray*)array withType:(NSString*)selectedType;
 - (BOOL)alreadyExists:(NSString*)myContentID;
 - (void)getMenuCounts:(int[])array;
+- (NSString*)getMinTwitterID;
+- (NSString*)getMaxTwitterID;
 
 @end
