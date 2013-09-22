@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 
 NSString *const FBSessionStateChangedNotification =
-@"FelixXiao.com.Hiddin.Login:FBSessionStateChangedNotification";
+@"com.felixxiao.Hiddin.Login:FBSessionStateChangedNotification";
 
 @implementation AppDelegate
 @synthesize MyContent,databasePath,dirPaths,docsDir;
@@ -21,6 +21,13 @@ NSString *const FBSessionStateChangedNotification =
     [self createEditableCopyOfDatabaseIfNeeded];
     [self createDefaultCopyOfDatabaseIfNeeded];
     [self openDB];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![[defaults objectForKey:@"selectedAccount"] isEqualToString:@""]&&[defaults objectForKey:@"selectedAccount"]) {
+        selectedAccount = [defaults objectForKey:@"selectedAccount"];
+    } else {
+        selectedAccount = @"";
+    }
     
     return YES;
 }
@@ -136,6 +143,8 @@ NSString *const FBSessionStateChangedNotification =
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:selectedAccount forKey:@"selectedAccount"];
     [FBSession.activeSession close];
 }
 

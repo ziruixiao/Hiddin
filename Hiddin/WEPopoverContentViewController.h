@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WEPopoverController.h"
+#import "AppDelegate.h"
 
 
 @interface WEPopoverContentViewController : UITableViewController {
@@ -15,6 +17,7 @@
 
 @property int numRows;
 @property (strong,nonatomic) NSMutableArray *accounts;
+@property (strong,nonatomic) NSString *popupChosen;
 
 - (id)initWithStyle:(UITableViewStyle)style andAccounts:(NSMutableArray*)myAccounts;
 

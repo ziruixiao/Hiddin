@@ -23,6 +23,8 @@
 @property (strong,nonatomic) NSString* contentLink; //the link of the story, used for Facebook workaround
 @property (strong,nonatomic) NSString* contentDescription; //the description of the content
 @property (strong,nonatomic) NSString* contentThumbnailURL; //the url of the thumbnail associated with this content
+@property (strong,nonatomic) NSString *contentAccountName;
+
 //lastupdate field in the back
 
 - (void)insertContent:(Content*)newContent;

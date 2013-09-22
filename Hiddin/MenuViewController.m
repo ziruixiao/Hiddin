@@ -278,13 +278,21 @@
              self.appDelegate.allAccounts = [NSMutableArray array];
              if ([arrayOfAccounts count] > 0)
              {
+                 ACAccount *twitterAccount;
+                 
                  //prompt popup here
                  for (int x =0; x < arrayOfAccounts.count; x++) {
                      NSLog(@"%@",((ACAccount*)[arrayOfAccounts objectAtIndex:x]).username);
                      [self.appDelegate.allAccounts addObject:((ACAccount*)[arrayOfAccounts objectAtIndex:x]).username];
+                     if ([((ACAccount*)[arrayOfAccounts objectAtIndex:x]).username isEqualToString:appDelegate.selectedAccount]) {
+                         twitterAccount = ((ACAccount*)[arrayOfAccounts objectAtIndex:x]);
+                         break;
+                     }
                  }
                  
-                 ACAccount *twitterAccount = [arrayOfAccounts firstObject];
+                 if ([appDelegate.selectedAccount isEqualToString:@""]) {
+                     twitterAccount = [arrayOfAccounts firstObject];
+                 }
                  
                  //CHECK THE DATABASE AND GET THE LOWEST AND THE HIGHEST ID
                  //SEND 2 SEPARATE REQUESTS EACH TIME
@@ -400,27 +408,37 @@
 
 - (void)getMaxTimeline
 {
-    ACAccountStore *account = [[ACAccountStore alloc] init];
-    ACAccountType *accountType = [account
+    ACAccountStore *account2 = [[ACAccountStore alloc] init];
+    ACAccountType *accountType2 = [account2
                                   accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
     
-    [account requestAccessToAccountsWithType:accountType
+    [account2 requestAccessToAccountsWithType:accountType2
                                      options:nil completion:^(BOOL granted, NSError *error)
      {
          if (granted == YES)
          {
-             NSArray *arrayOfAccounts = [account
-                                         accountsWithAccountType:accountType];
-             self.appDelegate.allAccounts = [arrayOfAccounts mutableCopy];
-             if ([arrayOfAccounts count] > 0)
+             NSArray *arrayOfAccounts2 = [account2
+                                         accountsWithAccountType:accountType2];
+             self.appDelegate.allAccounts = [arrayOfAccounts2 mutableCopy];
+             if ([arrayOfAccounts2 count] > 0)
              {
+                 ACAccount *twitterAccount2;
+                 
                  //prompt popup here
-                 for (int x =0; x < arrayOfAccounts.count; x++) {
-                     NSLog(@"%@",((ACAccount*)[arrayOfAccounts objectAtIndex:x]).username);
+                 for (int x =0; x < arrayOfAccounts2.count; x++) {
+                     NSLog(@"%@",((ACAccount*)[arrayOfAccounts2 objectAtIndex:x]).username);
+                     [self.appDelegate.allAccounts addObject:((ACAccount*)[arrayOfAccounts2 objectAtIndex:x]).username];
+                     if ([((ACAccount*)[arrayOfAccounts2 objectAtIndex:x]).username isEqualToString:appDelegate.selectedAccount]) {
+                         twitterAccount2 = ((ACAccount*)[arrayOfAccounts2 objectAtIndex:x]);
+                         break;
+                     }
+                     
                      
                  }
                  
-                 ACAccount *twitterAccount = [arrayOfAccounts firstObject];
+                 if ([appDelegate.selectedAccount isEqualToString:@""]) {
+                     twitterAccount2 = [arrayOfAccounts2 firstObject];
+                 }
                  
                  //CHECK THE DATABASE AND GET THE LOWEST AND THE HIGHEST ID
                  //SEND 2 SEPARATE REQUESTS EACH TIME
@@ -429,37 +447,37 @@
                  
                  Content *toolContent = [[Content alloc] init];
                  
-                 NSURL *requestURL = [NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/user_timeline.json"];
+                 NSURL *requestURL2 = [NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/user_timeline.json"];
                  
-                 NSMutableDictionary *parameters =
+                 NSMutableDictionary *parameters2 =
                  [[NSMutableDictionary alloc] init];
-                 [parameters setObject:@"200" forKey:@"count"];
-                 [parameters setObject:@"1" forKey:@"include_entities"];
-                 [parameters setObject:@"true" forKey:@"include_rts"];
-                 [parameters setObject:@"false" forKey:@"trim_user"];
-                 if (![[toolContent getMaxTwitterID] isEqualToString:@"0"])
-                     [parameters setObject:[toolContent getMinTwitterID] forKey:@"max_id"];
+                 [parameters2 setObject:@"200" forKey:@"count"];
+                 [parameters2 setObject:@"1" forKey:@"include_entities"];
+                 [parameters2 setObject:@"true" forKey:@"include_rts"];
+                 [parameters2 setObject:@"false" forKey:@"trim_user"];
+                 if (![[toolContent getMinTwitterID] isEqualToString:@"0"])
+                     [parameters2 setObject:[toolContent getMinTwitterID] forKey:@"max_id"];
                  
-                 SLRequest *postRequest = [SLRequest
+                 SLRequest *postRequest2 = [SLRequest
                                            requestForServiceType:SLServiceTypeTwitter
                                            requestMethod:SLRequestMethodGET
-                                           URL:requestURL parameters:parameters];
-                 postRequest.account = twitterAccount;
+                                           URL:requestURL2 parameters:parameters2];
+                 postRequest2.account = twitterAccount2;
                  
                  
                  
-                 [postRequest performRequestWithHandler:
-                  ^(NSData *responseData, NSHTTPURLResponse
-                    *urlResponse, NSError *error)
+                 [postRequest2 performRequestWithHandler:
+                  ^(NSData *responseData2, NSHTTPURLResponse
+                    *urlResponse2, NSError *error2)
                   {
-                      NSDictionary *twitterDictionary = [NSJSONSerialization
-                                                         JSONObjectWithData:responseData
+                      NSDictionary *twitterDictionary2 = [NSJSONSerialization
+                                                         JSONObjectWithData:responseData2
                                                          options:NSJSONReadingMutableLeaves
-                                                         error:&error];
+                                                         error:&error2];
                       //NSLog(@"%@",twitterDictionary);
                       
-                      NSLog(@"count is %i",[twitterDictionary count]);
-                      for (NSDictionary *tweetData in twitterDictionary) {
+                      NSLog(@"count is %i",[twitterDictionary2 count]);
+                      for (NSDictionary *tweetData in twitterDictionary2) {
                           Content *newContent = [[Content alloc] init];
                           if ([[tweetData objectForKey:@"entities"] objectForKey:@"media"]) { //there's media attached
                               newContent.contentType = @"tweet_media";
@@ -501,7 +519,7 @@
                           newContent.contentActive = @"yes";
                           newContent.contentSorting = @"none";
                           
-                          newContent.contentUserID = twitterAccount.username;
+                          newContent.contentUserID = twitterAccount2.username;
                           
                           if (![newContent alreadyExists:newContent.contentID]) {
                               [newContent insertContent:newContent];

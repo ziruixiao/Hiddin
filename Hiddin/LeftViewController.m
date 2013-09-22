@@ -22,7 +22,7 @@
 
 @implementation LeftViewController
 
-@synthesize toolContent,popoverController,appDelegate;
+@synthesize toolContent,popoverController,appDelegate,contentVC;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -38,6 +38,12 @@
     [super viewDidLoad];
     self.toolContent = [[Content alloc] init];
     self.appDelegate = [[UIApplication sharedApplication] delegate];
+    
+    
+    
+    self.contentVC = [[WEPopoverContentViewController alloc] initWithStyle:UITableViewStylePlain andAccounts:self.appDelegate.allAccounts];
+    
+    [self.contentVC addObserver:self forKeyPath:@"popupChosen" options:NSKeyValueObservingOptionNew context:NULL];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -49,6 +55,24 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)operation change:(NSDictionary *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"popupChosen"]) {
+        [self.popoverController dismissPopoverAnimated:YES];
+        [self.view setNeedsDisplay];
+        
+        //SET EVERYTHING ELSE TO REFRESH
+        [((MenuViewController*)self.sidePanelController) getTimeLine];
+        
+    }
+    
+}
+
+- (void)dealloc
+{
+    [self.contentVC removeObserver:self forKeyPath:@"popupChosen" context:nil];
 }
 
 #pragma mark - Table view data source
@@ -183,7 +207,7 @@
             switch (indexPath.row) {
                 case 0: {
                     cell.imageView.image = [UIImage imageNamed:@"hiddin_left_reload.png"];
-                    cell.textLabel.text = @"Refresh Content";
+                    cell.textLabel.text = @"Change Account";
                     
                     break; }
                 case 1: {
@@ -250,14 +274,14 @@
                 self.popoverController = nil;
                 
             } else {
-                NSLog(@"here");
-                WEPopoverContentViewController *contentViewController = [[WEPopoverContentViewController alloc] initWithStyle:UITableViewStylePlain andAccounts:self.appDelegate.allAccounts];
+               
 
-                self.popoverController = [[WEPopoverController alloc] initWithContentViewController:contentViewController];
+                self.popoverController = [[WEPopoverController alloc] initWithContentViewController:self.contentVC];
                 [self.popoverController presentPopoverFromRect:[tableView cellForRowAtIndexPath:indexPath].frame
                                                         inView:self.view
-                                      permittedArrowDirections:UIPopoverArrowDirectionUp
+                                      permittedArrowDirections:UIPopoverArrowDirectionDown
                                                       animated:YES];
+                
             }
         } else if (indexPath.row == 1) {
             IntroViewController *introPhotoViewController = (IntroViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"introViewController"];

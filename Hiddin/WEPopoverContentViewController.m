@@ -10,7 +10,7 @@
 
 
 @implementation WEPopoverContentViewController
-@synthesize numRows,accounts;
+@synthesize numRows,accounts,popupChosen;
 
 #pragma mark -
 #pragma mark Initialization
@@ -104,6 +104,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here. Create and push another view controller.
 	//[((WEPopoverController*)self) dismissPopoverAnimated:YES];
+    ((AppDelegate*)[[UIApplication sharedApplication] delegate]).selectedAccount = [tableView cellForRowAtIndexPath:indexPath].textLabel.text;
+    self.popupChosen = [tableView cellForRowAtIndexPath:indexPath].textLabel.text;
+    [self didChangeValueForKey:@"popupChosen"];
+    //do something now to reflect the change
+    NSLog(@"%@",popupChosen);
+    //dismiss the view contorller
     //[self dismissViewControllerAnimated:YES completion:nil];
 }
 

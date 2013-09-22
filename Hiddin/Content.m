@@ -15,15 +15,16 @@
     sqlite3 *MyContent;
 }
 
-@synthesize contentID,contentType,contentTimestamp,contentUserID,contentFromID,contentFromName,contentImageURL,contentActive,contentSorting,contentLink,contentDescription,contentThumbnailURL;
+@synthesize contentID,contentType,contentTimestamp,contentUserID,contentFromID,contentFromName,contentImageURL,contentActive,contentSorting,contentLink,contentDescription,contentThumbnailURL,contentAccountName;
 
 - (void)insertContent:(Content*)newContent
 {
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     MyContent = [appDelegate MyContent];
+    newContent.contentAccountName = appDelegate.selectedAccount;
     
     sqlite3_stmt *statement;
-    NSString *querySQL = [NSString stringWithFormat:@"INSERT INTO local (id,type,timestamp,userID,fromID,fromName,imageURL,active,sorting,lastupdate,link,description,thumbnailURL) VALUES (\"%@\",\"%@\",%i,\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",%i,\"%@\",\"%@\",\"%@\")",newContent.contentID,newContent.contentType,newContent.contentTimestamp,newContent.contentUserID,newContent.contentFromID,newContent.contentFromName,newContent.contentImageURL,newContent.contentActive,newContent.contentSorting,newContent.contentTimestamp,newContent.contentLink,newContent.contentDescription,newContent.contentThumbnailURL];
+    NSString *querySQL = [NSString stringWithFormat:@"INSERT INTO local (id,type,timestamp,userID,fromID,fromName,imageURL,active,sorting,lastupdate,link,description,thumbnailURL,accountname) VALUES (\"%@\",\"%@\",%i,\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",%i,\"%@\",\"%@\",\"%@\",\"%@\")",newContent.contentID,newContent.contentType,newContent.contentTimestamp,newContent.contentUserID,newContent.contentFromID,newContent.contentFromName,newContent.contentImageURL,newContent.contentActive,newContent.contentSorting,newContent.contentTimestamp,newContent.contentLink,newContent.contentDescription,newContent.contentThumbnailURL,newContent.contentAccountName];
     const char *query_stmt = [querySQL UTF8String];
     
     if (sqlite3_prepare_v2(MyContent,query_stmt,-1,&statement,NULL) == SQLITE_OK) {
@@ -104,6 +105,10 @@
             temp = [temp initWithUTF8String:(const char*) sqlite3_column_text(statement,12)];
             newContent.contentThumbnailURL = temp;
             
+            //field 13: currenty: 'accountname'
+            temp = [temp initWithUTF8String:(const char*) sqlite3_column_text(statement,13)];
+            newContent.contentAccountName = temp;
+            
         } else {
             NSLog(@"%s SQL error '%s' (%1d)",query_stmt,sqlite3_errmsg(MyContent),sqlite3_errcode(MyContent));
         }
@@ -158,24 +163,25 @@
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     MyContent = [appDelegate MyContent];
     sqlite3_stmt *statement;
+    NSString *activeAccount = appDelegate.selectedAccount;
     
     
     NSString *querySQL;
     
     if ([selectedType isEqualToString:@"tweet_media_later"]) {
         selectedType = @"tweet_media";
-        querySQL = [NSString stringWithFormat: @"SELECT * FROM local WHERE type=\"%@\" AND sorting='later' ORDER BY lastupdate DESC",selectedType];
+        querySQL = [NSString stringWithFormat: @"SELECT * FROM local WHERE type=\"%@\" AND sorting='later' AND accountname=\"%@\" ORDER BY lastupdate DESC",selectedType,activeAccount];
     } else if ([selectedType isEqualToString:@"tweet_media_done"]) {
         selectedType = @"tweet_media";
-        querySQL = [NSString stringWithFormat: @"SELECT * FROM local WHERE type=\"%@\" AND sorting='keep' ORDER BY lastupdate DESC",selectedType];
+        querySQL = [NSString stringWithFormat: @"SELECT * FROM local WHERE type=\"%@\" AND sorting='keep' AND accountname=\"%@\" ORDER BY lastupdate DESC",selectedType,activeAccount];
     } else if ([selectedType isEqualToString:@"tweet_text_later"]) {
         selectedType = @"tweet_text";
-        querySQL = [NSString stringWithFormat: @"SELECT * FROM local WHERE type=\"%@\" AND sorting='later' ORDER BY lastupdate DESC",selectedType];
+        querySQL = [NSString stringWithFormat: @"SELECT * FROM local WHERE type=\"%@\" AND sorting='later' AND accountname=\"%@\" ORDER BY lastupdate DESC",selectedType,activeAccount];
     } else if ([selectedType isEqualToString:@"tweet_text_done"]) {
         selectedType = @"tweet_text";
-        querySQL = [NSString stringWithFormat: @"SELECT * FROM local WHERE type=\"%@\" AND sorting='keep' ORDER BY lastupdate DESC",selectedType];
+        querySQL = [NSString stringWithFormat: @"SELECT * FROM local WHERE type=\"%@\" AND sorting='keep' AND accountname=\"%@\" ORDER BY lastupdate DESC",selectedType,activeAccount];
     } else {
-        querySQL = [NSString stringWithFormat: @"SELECT * FROM local WHERE type=\"%@\" AND sorting='none' ORDER BY lastupdate DESC",selectedType];
+        querySQL = [NSString stringWithFormat: @"SELECT * FROM local WHERE type=\"%@\" AND sorting='none' AND accountname=\"%@\" ORDER BY lastupdate DESC",selectedType,activeAccount];
     }
     const char *query_stmt = [querySQL UTF8String];
     
@@ -203,8 +209,9 @@
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     MyContent = [appDelegate MyContent];
     sqlite3_stmt *statement;
+    NSString *activeAccount = appDelegate.selectedAccount;
     
-    NSString *querySQL = [NSString stringWithFormat:@"SELECT * FROM local WHERE type='tweet_media' OR type='tweet_text'"];
+    NSString *querySQL = [NSString stringWithFormat:@"SELECT * FROM local WHERE accountname=\"%@\" AND (type='tweet_media' OR type='tweet_text')",activeAccount];
     
     const char *query_stmt = [querySQL UTF8String];
     
