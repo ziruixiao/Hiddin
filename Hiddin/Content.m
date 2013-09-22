@@ -262,7 +262,7 @@
     MyContent = [appDelegate MyContent];
     sqlite3_stmt *statement;
     
-    NSString *querySQL = [NSString stringWithFormat:@"SELECT MAX(id) FROM local WHERE type='tweet_media' OR type='tweet_text'"];
+    NSString *querySQL = [NSString stringWithFormat:@"SELECT MAX(id) FROM local WHERE accountname=\"%@\" AND (type='tweet_media' OR type='tweet_text')",appDelegate.selectedAccount];
     
     const char *query_stmt = [querySQL UTF8String];
     
@@ -293,7 +293,7 @@
     MyContent = [appDelegate MyContent];
     sqlite3_stmt *statement;
     
-    NSString *querySQL = [NSString stringWithFormat:@"SELECT MIN(id) FROM local WHERE type='tweet_media' OR type='tweet_text'"];
+    NSString *querySQL = [NSString stringWithFormat:@"SELECT MIN(id) FROM local WHERE accountname=\"%@\" AND (type='tweet_media' OR type='tweet_text')",appDelegate.selectedAccount];
     
     const char *query_stmt = [querySQL UTF8String];
     

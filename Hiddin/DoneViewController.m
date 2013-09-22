@@ -40,6 +40,9 @@
                                                                     style:UIBarButtonItemStylePlain
                                                                    target:self action:@selector(refreshData)];
     self.navigationItem.rightBarButtonItem = refreshItem;
+    
+    
+    
     //[self loadLabels];
 	// Do any additional setup after loading the view.
 }

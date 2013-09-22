@@ -53,7 +53,7 @@
 
     [toolContent getCurrentContent:self.content withType:self.typeSelected];
     
-    if (content.count < 1) {
+    if (self.content.count < 1) {
             //set to doneviewcontroller
         UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"doneNavigationController"];
         
@@ -80,6 +80,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 - (NSString*)relativeDateFromTimestamp:(int)time
 {

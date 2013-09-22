@@ -282,16 +282,17 @@
                  
                  //prompt popup here
                  for (int x =0; x < arrayOfAccounts.count; x++) {
-                     NSLog(@"%@",((ACAccount*)[arrayOfAccounts objectAtIndex:x]).username);
                      [self.appDelegate.allAccounts addObject:((ACAccount*)[arrayOfAccounts objectAtIndex:x]).username];
                      if ([((ACAccount*)[arrayOfAccounts objectAtIndex:x]).username isEqualToString:appDelegate.selectedAccount]) {
-                         twitterAccount = ((ACAccount*)[arrayOfAccounts objectAtIndex:x]);
+                         twitterAccount = [arrayOfAccounts objectAtIndex:x];
                          break;
                      }
                  }
                  
                  if ([appDelegate.selectedAccount isEqualToString:@""]) {
                      twitterAccount = [arrayOfAccounts firstObject];
+                     appDelegate.selectedAccount = twitterAccount.username;
+                     
                  }
                  
                  //CHECK THE DATABASE AND GET THE LOWEST AND THE HIGHEST ID
@@ -426,7 +427,6 @@
                  
                  //prompt popup here
                  for (int x =0; x < arrayOfAccounts2.count; x++) {
-                     NSLog(@"%@",((ACAccount*)[arrayOfAccounts2 objectAtIndex:x]).username);
                      [self.appDelegate.allAccounts addObject:((ACAccount*)[arrayOfAccounts2 objectAtIndex:x]).username];
                      if ([((ACAccount*)[arrayOfAccounts2 objectAtIndex:x]).username isEqualToString:appDelegate.selectedAccount]) {
                          twitterAccount2 = ((ACAccount*)[arrayOfAccounts2 objectAtIndex:x]);
@@ -455,8 +455,13 @@
                  [parameters2 setObject:@"1" forKey:@"include_entities"];
                  [parameters2 setObject:@"true" forKey:@"include_rts"];
                  [parameters2 setObject:@"false" forKey:@"trim_user"];
-                 if (![[toolContent getMinTwitterID] isEqualToString:@"0"])
+                 if ([[toolContent getMinTwitterID] isEqualToString:@"0"]) {
+                     
+                 } else {
+                     
+                 
                      [parameters2 setObject:[toolContent getMinTwitterID] forKey:@"max_id"];
+                 
                  
                  SLRequest *postRequest2 = [SLRequest
                                            requestForServiceType:SLServiceTypeTwitter
@@ -536,6 +541,7 @@
                        }
                        */
                   }];
+                 }
              }
          } else {
              NSLog(@"no access");
