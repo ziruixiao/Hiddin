@@ -53,7 +53,7 @@
 
     [toolContent getCurrentContent:self.content withType:self.typeSelected];
     
-    if (self.content.count < 1) {
+    if (self.content.count < 1 && self.appDelegate.showIntroText == NO) {
             //set to doneviewcontroller
         UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"doneNavigationController"];
         
@@ -64,14 +64,14 @@
         
         self.sidePanelController.centerPanel = tempContentNC;
     }
-   // if (self.appDelegate.showIntroPhoto) {
+   if (self.appDelegate.showIntroText) {
         
         IntroViewController *introViewController = (IntroViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"introViewController"];
         
         [self presentViewController:introViewController animated:NO completion:nil];
         
-        self.appDelegate.showIntroPhoto = NO;
-   // }
+        self.appDelegate.showIntroText = NO;
+   }
 
 }
 

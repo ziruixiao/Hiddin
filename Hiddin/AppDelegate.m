@@ -27,9 +27,50 @@ NSString *const FBSessionStateChangedNotification =
         selectedAccount = [defaults objectForKey:@"selectedAccount"];
     } else {
         selectedAccount = @"";
+        [self setupDefaultAccount];
     }
     
     return YES;
+}
+
+- (void)setupDefaultAccount
+{
+    ACAccountStore *account = [[ACAccountStore alloc] init];
+    ACAccountType *accountType = [account
+                                  accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+    
+    [account requestAccessToAccountsWithType:accountType
+                                     options:nil completion:^(BOOL granted, NSError *error)
+     {
+         if (granted == YES)
+         {
+             NSArray *arrayOfAccounts = [account
+                                         accountsWithAccountType:accountType];
+             self.allAccounts = [NSMutableArray array];
+             if ([arrayOfAccounts count] > 0)
+             {
+                 ACAccount *twitterAccount;
+                 
+                 //prompt popup here
+                 for (int x =0; x < arrayOfAccounts.count; x++) {
+                     [self.allAccounts addObject:((ACAccount*)[arrayOfAccounts objectAtIndex:x]).username];
+                     if ([((ACAccount*)[arrayOfAccounts objectAtIndex:x]).username isEqualToString:self.selectedAccount]) {
+                         twitterAccount = [arrayOfAccounts objectAtIndex:x];
+                         break;
+                     }
+                 }
+                 
+                 if ([self.selectedAccount isEqualToString:@""]) {
+                     twitterAccount = [arrayOfAccounts firstObject];
+                     self.selectedAccount = twitterAccount.username;
+                     
+                 }
+                 
+             }
+         }
+     }];
+    
+
 }
 
 //DONE - CREATES WRITEABLE COPY OF DATABASE IN THE DOCUMENTS FOLDER OF THE APP (IF NEEDED)

@@ -111,14 +111,16 @@
         } else {
             //set to doneviewcontroller
             
-            UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"doneNavigationController"];
+            if (self.appDelegate.showIntroPhoto == NO) {
+                UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"doneNavigationController"];
             
-            DoneViewController *tempContentVC = (DoneViewController*)[tempContentNC.viewControllers objectAtIndex:0];
+                DoneViewController *tempContentVC = (DoneViewController*)[tempContentNC.viewControllers objectAtIndex:0];
             
-            tempContentVC.ref = @"photo";
+                tempContentVC.ref = @"photo";
             
             
-            self.sidePanelController.centerPanel = tempContentNC;
+                self.sidePanelController.centerPanel = tempContentNC;
+            }
             
         }
     

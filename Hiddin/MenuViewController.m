@@ -72,7 +72,7 @@
         
     } else {
         //we need a new way to check
-        if (![SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]){
+        //if (![SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]){
             UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"contentTextNavigationController"];
             
             ContentTableViewController *tempContentVC = (ContentTableViewController*)[tempContentNC.viewControllers objectAtIndex:0];
@@ -84,11 +84,11 @@
             
             [self showCenterPanelAnimated:YES];
             
-        }
-        else {
-            SplashViewController *splashViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"splashViewController"];
-            [self setCenterPanel:splashViewController];
-        }
+        //}
+        //else {
+        //    SplashViewController *splashViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"splashViewController"];
+         //   [self setCenterPanel:splashViewController];
+       // }
     }
 }
 
@@ -330,7 +330,8 @@
                                                          options:NSJSONReadingMutableLeaves
                                                          error:&error];
                       //NSLog(@"%@",twitterDictionary);
-                      
+
+                      NSLog(@"first response received about now");
                       NSLog(@"count is %i",[twitterDictionary count]);
                       for (NSDictionary *tweetData in twitterDictionary) {
                           Content *newContent = [[Content alloc] init];
@@ -480,7 +481,8 @@
                                                          options:NSJSONReadingMutableLeaves
                                                          error:&error2];
                       //NSLog(@"%@",twitterDictionary);
-                      
+                      NSLog(@"response received right about now");
+
                       NSLog(@"count is %i",[twitterDictionary2 count]);
                       for (NSDictionary *tweetData in twitterDictionary2) {
                           Content *newContent = [[Content alloc] init];
@@ -531,7 +533,6 @@
                           }
                           
                       }
-                      
                       
                       /*
                        if (self.dataSource.count != 0) {
