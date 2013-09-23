@@ -61,10 +61,12 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)operation change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:@"popupChosen"]) {
         [self.popoverController dismissPopoverAnimated:YES];
-        [self.view setNeedsDisplay];
+        [self.tableView reloadData];
+        [SVProgressHUD showWithStatus:@"Loading tweets from account..."];
+        //show the popup for loading?
         
         //SET EVERYTHING ELSE TO REFRESH
-        [((MenuViewController*)self.sidePanelController) getTimeLine];
+        [((MenuViewController*)self.sidePanelController) switchAccounts];
         
     }
     
@@ -80,7 +82,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 5;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

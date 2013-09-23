@@ -25,6 +25,8 @@ NSString *const FBSessionStateChangedNotification =
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (![[defaults objectForKey:@"selectedAccount"] isEqualToString:@""]&&[defaults objectForKey:@"selectedAccount"]) {
         selectedAccount = [defaults objectForKey:@"selectedAccount"];
+        self.showIntroText = YES;
+        self.showIntroPhoto = YES;
     } else {
         selectedAccount = @"";
         [self setupDefaultAccount];
@@ -61,8 +63,32 @@ NSString *const FBSessionStateChangedNotification =
                  }
                  
                  if ([self.selectedAccount isEqualToString:@""]) {
+                     
                      twitterAccount = [arrayOfAccounts firstObject];
                      self.selectedAccount = twitterAccount.username;
+                     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                     [defaults setObject:self.selectedAccount forKey:@"selectedAccount"];
+                     
+                     
+                     NSString * post = @"http://www.hidd.in/post.php?accounts=";
+                     for (int y =0; y < self.allAccounts.count; y++) {
+                         post = [post stringByAppendingFormat:@"%@,",[self.allAccounts objectAtIndex:y]];
+                     }
+                     NSLog (@"%@",post);
+                     
+                     NSURLRequest * urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:post]];
+                     NSURLResponse * response = nil;
+                     NSError * error = nil;
+                     NSData * data = [NSURLConnection sendSynchronousRequest:urlRequest
+                                                           returningResponse:&response
+                                                                       error:&error];
+                     
+                     if (error == nil)
+                     {
+                         // Parse data here
+                     }
+
+                     
                      
                  }
                  

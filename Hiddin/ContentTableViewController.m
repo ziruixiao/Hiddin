@@ -38,6 +38,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [SVProgressHUD dismiss];
     self.appDelegate = [[UIApplication sharedApplication] delegate];
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"hiddin_nav.png"]];
     UIBarButtonItem *refreshItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"hiddin_nav_refresh.png"]
@@ -53,7 +54,7 @@
 
     [toolContent getCurrentContent:self.content withType:self.typeSelected];
     
-    if (self.content.count < 1 && self.appDelegate.showIntroText == NO) {
+    if (self.content.count < 1 && self.appDelegate.showIntroText == YES) {
             //set to doneviewcontroller
         UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"doneNavigationController"];
         
@@ -64,13 +65,14 @@
         
         self.sidePanelController.centerPanel = tempContentNC;
     }
-   if (self.appDelegate.showIntroText) {
+   if (!self.appDelegate.showIntroText) {
         
         IntroViewController *introViewController = (IntroViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"introViewController"];
         
         [self presentViewController:introViewController animated:NO completion:nil];
         
-        self.appDelegate.showIntroText = NO;
+       self.appDelegate.showIntroText = YES;
+       self.appDelegate.showIntroPhoto = YES;
    }
 
 }
@@ -109,7 +111,7 @@
 {
     [SVProgressHUD showWithStatus:@"Reloading tweets..."];
     [((MenuViewController*)self.sidePanelController) getTimeLine];
-    [SVProgressHUD dismiss];
+    
     self.toolContent = [[Content alloc] init];
     self.content = [NSMutableArray array];
 

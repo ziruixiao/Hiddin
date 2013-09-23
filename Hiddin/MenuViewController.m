@@ -72,7 +72,7 @@
         
     } else {
         //we need a new way to check
-        //if (![SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]){
+        if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter] && appDelegate.showIntroText == YES){
             UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"contentTextNavigationController"];
             
             ContentTableViewController *tempContentVC = (ContentTableViewController*)[tempContentNC.viewControllers objectAtIndex:0];
@@ -84,11 +84,11 @@
             
             [self showCenterPanelAnimated:YES];
             
-        //}
-        //else {
-        //    SplashViewController *splashViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"splashViewController"];
-         //   [self setCenterPanel:splashViewController];
-       // }
+        }
+        else {
+            SplashViewController *splashViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"splashViewController"];
+            [self setCenterPanel:splashViewController];
+        }
     }
 }
 
@@ -255,11 +255,28 @@
 
 }
 
+- (void)switchAccounts
+{
+    UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"contentTextNavigationController"];
+    
+    ContentTableViewController *tempContentVC = (ContentTableViewController*)[tempContentNC.viewControllers objectAtIndex:0];
+    
+    tempContentVC.typeSelected = @"tweet_text";
+    NSLog(@"run");
+    
+    [self setCenterPanel:tempContentNC];
+    
+    [self showCenterPanelAnimated:YES];
+    [SVProgressHUD dismiss];
+}
+
 
 - (void)getTimeLine
 {
-    [self getMaxTimeline];
+    
+
     [self getMinTimeline];
+    [self getMaxTimeline];
 }
 
 - (void)getMinTimeline
@@ -293,6 +310,10 @@
                      twitterAccount = [arrayOfAccounts firstObject];
                      appDelegate.selectedAccount = twitterAccount.username;
                      
+                     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                    [defaults setObject:appDelegate.selectedAccount forKey:@"selectedAccount"];
+                                         
+                     
                  }
                  
                  //CHECK THE DATABASE AND GET THE LOWEST AND THE HIGHEST ID
@@ -325,12 +346,27 @@
                   ^(NSData *responseData, NSHTTPURLResponse
                     *urlResponse, NSError *error)
                   {
+                      
                       NSDictionary *twitterDictionary = [NSJSONSerialization
                                                          JSONObjectWithData:responseData
                                                          options:NSJSONReadingMutableLeaves
                                                          error:&error];
                       //NSLog(@"%@",twitterDictionary);
-
+                      
+                      UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"contentTextNavigationController"];
+                      
+                      ContentTableViewController *tempContentVC = (ContentTableViewController*)[tempContentNC.viewControllers objectAtIndex:0];
+                      //[tempContentVC refreshData];
+                      [tempContentVC viewDidLoad];
+                      
+                      tempContentVC.typeSelected = @"tweet_text";
+                      NSLog(@"run");
+                      
+                      [self setCenterPanel:tempContentNC];
+                      
+                      [self showCenterPanelAnimated:YES];
+                      [SVProgressHUD dismiss];
+                      
                       NSLog(@"first response received about now");
                       NSLog(@"count is %i",[twitterDictionary count]);
                       for (NSDictionary *tweetData in twitterDictionary) {
@@ -382,6 +418,7 @@
                           }
                           
                       }
+                      
                       
                       
                       /*
@@ -476,11 +513,24 @@
                   ^(NSData *responseData2, NSHTTPURLResponse
                     *urlResponse2, NSError *error2)
                   {
+                      [SVProgressHUD dismiss];
                       NSDictionary *twitterDictionary2 = [NSJSONSerialization
                                                          JSONObjectWithData:responseData2
                                                          options:NSJSONReadingMutableLeaves
                                                          error:&error2];
                       //NSLog(@"%@",twitterDictionary);
+                      
+                      UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"contentTextNavigationController"];
+                      
+                      ContentTableViewController *tempContentVC = (ContentTableViewController*)[tempContentNC.viewControllers objectAtIndex:0];
+                      
+                      tempContentVC.typeSelected = @"tweet_text";
+                      [tempContentVC viewDidLoad];
+                      NSLog(@"run");
+                      
+                      [self setCenterPanel:tempContentNC];
+                      
+                      [self showCenterPanelAnimated:YES];
                       NSLog(@"response received right about now");
 
                       NSLog(@"count is %i",[twitterDictionary2 count]);

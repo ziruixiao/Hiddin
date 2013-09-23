@@ -25,7 +25,7 @@
 - (void)getTimeLine;
 - (void)getTwitterFollowers;
 - (void)lookUpFollowersWithArray:(NSMutableArray*)arrayOfFollowers;
-
+- (void)switchAccounts;
 
 
 @end

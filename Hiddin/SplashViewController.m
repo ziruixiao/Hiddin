@@ -177,10 +177,11 @@
     */
     tempContentVC.typeSelected = @"tweet_text";
     
+    
     [((MenuViewController*)self.sidePanelController) getTimeLine];
     
-    self.appDelegate.showIntroText = YES;
-    self.appDelegate.showIntroPhoto = YES;
+    [tempContentVC viewDidLoad];
+
     [self.sidePanelController setCenterPanel:tempContentNC];
     
     [self.sidePanelController showCenterPanelAnimated:YES];

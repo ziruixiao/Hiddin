@@ -49,6 +49,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [SVProgressHUD dismiss];
     self.appDelegate = [[UIApplication sharedApplication] delegate];
     
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"hiddin_nav.png"]];
@@ -91,12 +92,13 @@
     
     NSLog(@"The user has selected to see this type of content: %@",self.typeSelected);
     
-    if (self.appDelegate.showIntroPhoto) {
+    if (!self.appDelegate.showIntroPhoto) {
         
         IntroViewController *introPhotoViewController = (IntroViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"introViewController"];
         
         [self presentViewController:introPhotoViewController animated:NO completion:nil];
-        self.appDelegate.showIntroPhoto = NO;
+        self.appDelegate.showIntroText = YES;
+        self.appDelegate.showIntroPhoto = YES;
     }
     
     self.toolContent = [[Content alloc] init];
@@ -111,7 +113,7 @@
         } else {
             //set to doneviewcontroller
             
-            if (self.appDelegate.showIntroPhoto == NO) {
+            if (self.appDelegate.showIntroPhoto == YES) {
                 UINavigationController *tempContentNC = [self.storyboard instantiateViewControllerWithIdentifier:@"doneNavigationController"];
             
                 DoneViewController *tempContentVC = (DoneViewController*)[tempContentNC.viewControllers objectAtIndex:0];
@@ -326,7 +328,7 @@
 {
     [SVProgressHUD showWithStatus:@"Reloading tweets..."];
     [((MenuViewController*)self.sidePanelController) getTimeLine];
-    [SVProgressHUD dismiss];
+    
     self.toolContent = [[Content alloc] init];
     self.content = [NSMutableArray array];
     [toolContent getCurrentContent:self.content withType:self.typeSelected];
