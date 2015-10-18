@@ -117,6 +117,9 @@
 		DCA5112217D77DB600286F66 /* popoverBg.png in Resources */ = {isa = PBXBuildFile; fileRef = DCA5111317D77DB600286F66 /* popoverBg.png */; };
 		DCA5112317D77DB600286F66 /* popoverBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCA5111417D77DB600286F66 /* popoverBg@2x.png */; };
 		DCA5112417D77DB600286F66 /* popoverBgSimple.png in Resources */ = {isa = PBXBuildFile; fileRef = DCA5111517D77DB600286F66 /* popoverBgSimple.png */; };
+		DCCC9D3A17EFDAD200FC299F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCCC9D3917EFDAD200FC299F /* Default-568h@2x.png */; };
+		DCCC9D3C17EFDB1D00FC299F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCCC9D3B17EFDB1D00FC299F /* Default@2x.png */; };
+		DCCC9D3E17EFDE0200FC299F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DCCC9D3D17EFDE0200FC299F /* Default.png */; };
 		DCF0C8A317B00DA90008AA20 /* BannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF0C8A217B00DA90008AA20 /* BannerViewController.m */; };
 		DCF0C8A517B00DBE0008AA20 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCF0C8A417B00DBE0008AA20 /* iAd.framework */; };
 		DCF0C8AC17B04D930008AA20 /* hiddin_left_retweet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCF0C8AB17B04D930008AA20 /* hiddin_left_retweet@2x.png */; };
@@ -277,6 +280,9 @@
 		DCA5111317D77DB600286F66 /* popoverBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverBg.png; sourceTree = "<group>"; };
 		DCA5111417D77DB600286F66 /* popoverBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popoverBg@2x.png"; sourceTree = "<group>"; };
 		DCA5111517D77DB600286F66 /* popoverBgSimple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverBgSimple.png; sourceTree = "<group>"; };
+		DCCC9D3917EFDAD200FC299F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		DCCC9D3B17EFDB1D00FC299F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		DCCC9D3D17EFDE0200FC299F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		DCF0C8A117B00DA90008AA20 /* BannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerViewController.h; sourceTree = "<group>"; };
 		DCF0C8A217B00DA90008AA20 /* BannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerViewController.m; sourceTree = "<group>"; };
 		DCF0C8A417B00DBE0008AA20 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
@@ -332,6 +338,9 @@
 		DC0DB01D17A42A32006CC531 = {
 			isa = PBXGroup;
 			children = (
+				DCCC9D3D17EFDE0200FC299F /* Default.png */,
+				DCCC9D3B17EFDB1D00FC299F /* Default@2x.png */,
+				DCCC9D3917EFDAD200FC299F /* Default-568h@2x.png */,
 				DC0DB08D17A42DBA006CC531 /* Libraries */,
 				DC264B3D17A47EB6008973D7 /* Images */,
 				DC0DB02F17A42A32006CC531 /* Hiddin */,
@@ -701,6 +710,7 @@
 				DCA5111B17D77DB600286F66 /* popoverArrowLeftSimple.png in Resources */,
 				DCA5111817D77DB600286F66 /* popoverArrowDownSimple.png in Resources */,
 				DCF9E13317A9C1CE00377705 /* hiddin_delete_C@2x.png in Resources */,
+				DCCC9D3C17EFDB1D00FC299F /* Default@2x.png in Resources */,
 				DCA5111917D77DB600286F66 /* popoverArrowLeft.png in Resources */,
 				DC0DB07B17A42C4C006CC531 /* Main_iPhone.storyboard in Resources */,
 				DC264B3917A47EB1008973D7 /* hiddin_delete_A@2x.png in Resources */,
@@ -716,6 +726,7 @@
 				DC264B3B17A47EB1008973D7 /* hiddin_keep_A@2x.png in Resources */,
 				DCA5111617D77DB600286F66 /* popoverArrowDown.png in Resources */,
 				DC19A09017A5C11500BC784C /* hiddin_nav@2x.png in Resources */,
+				DCCC9D3E17EFDE0200FC299F /* Default.png in Resources */,
 				DC37FF3C17ADD3A400A6C056 /* hiddin_splash@2x.png in Resources */,
 				DC37FF4417ADDCF600A6C056 /* hiddin_tweets@2x.png in Resources */,
 				DCA5111E17D77DB600286F66 /* popoverArrowRightSimple.png in Resources */,
@@ -731,6 +742,7 @@
 				DC37FF4517ADDCF600A6C056 /* hiddin_photos@2x.png in Resources */,
 				DC37FF4D17AE431F00A6C056 /* hiddin_photo_2@2x.png in Resources */,
 				DC264B3717A47EB1008973D7 /* hiddin_later_A@2x.png in Resources */,
+				DCCC9D3A17EFDAD200FC299F /* Default-568h@2x.png in Resources */,
 				DC3872DA17AB47D900C9C01B /* SVProgressHUD.bundle in Resources */,
 				DCA5111F17D77DB600286F66 /* popoverArrowUp.png in Resources */,
 				DC1C9DF617AC6B450067F63D /* hiddin_nav_refresh@2x.png in Resources */,
@@ -944,7 +956,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zirui Xiao (628YG6RJ8U)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -955,6 +967,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = "-ObjC ";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "FC2D6C83-DA94-41B7-8896-4ECE84A75097";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -964,7 +977,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zirui Xiao (628YG6RJ8U)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -975,6 +988,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = "-ObjC ";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "FC2D6C83-DA94-41B7-8896-4ECE84A75097";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

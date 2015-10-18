@@ -30,7 +30,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
 	self.tableView.rowHeight = 44.0;
 	self.view.backgroundColor = [UIColor whiteColor];
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.

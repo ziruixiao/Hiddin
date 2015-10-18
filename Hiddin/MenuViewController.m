@@ -204,7 +204,7 @@
                                       [dateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH:mm:ssZ"];
                                       NSDate* date = [dateFormatter dateFromString:[imageData objectForKey:@"created_time"]];
                                       newContent.contentTimestamp = [date timeIntervalSince1970]/1;
-                                      newContent.contentUserID = self.appDelegate.loggedInUser.id;
+                                      //newContent.contentUserID = self.appDelegate.loggedInUser.id;
                                       newContent.contentFromID = [[imageData objectForKey:@"from"] objectForKey:@"id"];
                                       newContent.contentFromName = [[imageData objectForKey:@"from"] objectForKey:@"name"];
                                       
@@ -469,7 +469,7 @@
                      if ([((ACAccount*)[arrayOfAccounts2 objectAtIndex:x]).username isEqualToString:appDelegate.selectedAccount]) {
                          twitterAccount2 = ((ACAccount*)[arrayOfAccounts2 objectAtIndex:x]);
                          break;
-                     }
+                     }2
                      
                      
                  }
